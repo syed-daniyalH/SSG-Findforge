@@ -4,6 +4,7 @@ import MegaMenu from "./megamenu";
 import MobileMenu from "./mobileNav";
 import { Navlink } from "@/lib/api/menu/utils/buildnavlinks";
 import Button from "@/components/ui/button";
+import { resolveTopLevelSlug } from "@/lib/routes";
 
 interface NavMenuProps {
   navLinks: Navlink[];
@@ -32,7 +33,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ navLinks }) => {
                 </Link>
                 <MegaMenu
                   data={link.children || []}
-                  parentSlug={link.name.toLowerCase() === 'services' ? 'services' : 'pages'}
+                  parentSlug={resolveTopLevelSlug(link.href, link.name)}
                 />
               </div>
             );
@@ -70,4 +71,3 @@ const NavMenu: React.FC<NavMenuProps> = ({ navLinks }) => {
 };
 
 export default NavMenu;
-

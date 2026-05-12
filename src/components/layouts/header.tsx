@@ -43,7 +43,7 @@ const Header = async () => {
             icon="/icons/arrow-right.svg"
             size="medium"
             radius="full"
-            href="/contact"
+            href="/contact-us"
             variant="gradient"
             className="inline-flex z-50"
           />
@@ -59,4 +59,3 @@ const Header = async () => {
 };
 
 export default Header;
-

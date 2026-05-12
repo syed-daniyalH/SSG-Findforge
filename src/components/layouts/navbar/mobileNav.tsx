@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { NavChild, Navlink } from "@/lib/api/menu/utils/buildnavlinks";
 import Button from "@/components/ui/button";
+import { buildMenuSectionHref, resolveTopLevelSlug } from "@/lib/routes";
 
 interface MobileMenuProps {
   navLinks: Navlink[];
@@ -187,7 +188,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navLinks }) => {
                         onClick={() =>
                           slideToPanel({
                             type: "mega",
-                            slug: link.name.toLowerCase(),
+                            slug: resolveTopLevelSlug(link.href, link.name),
                             label: link.name,
                             items,
                           })
@@ -249,9 +250,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navLinks }) => {
                 const hasChildren =
                   category.children && category.children.length > 0;
                 const href =
-                  panel.slug === "services"
-                    ? `/services/${category.slug}`
-                    : `/${category.slug}`;
+                  buildMenuSectionHref(panel.slug, category.slug);
 
                 return (
                   <div
@@ -345,7 +344,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navLinks }) => {
         {/* Footer CTA */}
         <div className="px-6 py-5 border-t border-white/[0.06] shrink-0">
           <Link
-            href="/contact"
+            href="/contact-us"
             onClick={handleClose}
             className="flex items-center justify-center gap-2 w-full py-3 rounded-full bg-[#F05323] text-white text-sm font-semibold hover:bg-[#d94417] transition-colors duration-200"
           >

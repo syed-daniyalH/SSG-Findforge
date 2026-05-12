@@ -1,10 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import Insights from "../cards/insights";
-import { getInsights } from "@/lib/limits";
+import { getBlogCards } from "@/lib/api/blogs";
 
-const Blogs = () => {
-const data = getInsights(3);
+const Blogs = async () => {
+  const data = await getBlogCards(3);
   return (
     <section className="">
       <div
@@ -19,7 +19,7 @@ const data = getInsights(3);
           </p>
         </div>
         <div className="flex gap-2 border-b-2 border-black pb-1">
-          <Link href="/blogs" className="text-black font-semibold font-poppins">
+          <Link href="/blog" className="text-black font-semibold font-poppins">
             View All Insights
           </Link>
           <Image
@@ -41,4 +41,3 @@ const data = getInsights(3);
 };
 
 export default Blogs;
-

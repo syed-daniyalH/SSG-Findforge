@@ -18,7 +18,7 @@ const Stories = () => {
                     </p>
                 </div>
                 <div className="flex gap-2 border-b-2 border-black pb-1">
-                    <Link href="/blogs" className="text-black font-semibold font-poppins">
+                    <Link href="/case-studies" className="text-black font-semibold font-poppins">
                         View All Projects
                     </Link>
                     <Image
@@ -35,4 +35,3 @@ const Stories = () => {
 }
 
 export default Stories
-

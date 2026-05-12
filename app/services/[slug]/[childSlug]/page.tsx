@@ -11,9 +11,8 @@ import Clients from "@/components/ui/clients";
 import CTA from "@/components/ui/cta";
 import ReusableCTA from "@/components/ui/entrepriseCTA";
 import { solutionData } from "@/content/solutions.data";
-import { getServiceBySlug } from "@/lib/api/services";
 import { getMenuStructure } from "@/lib/api/menu/utils/buildnavlinks";
-import { buildMenuChildHref } from "@/lib/routes";
+import { getSubServiceByRoute } from "@/lib/api/subServices";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { SolutionItem } from "@/types/solutions";
@@ -24,124 +23,32 @@ import Link from "next/link";
 import { whyChooseData } from "@/content/whychoose.data";
 
 interface PageProps {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string; childSlug: string }>;
 }
 
-export default async function SubService({ params }: PageProps) {
-  const { slug } = await params;
+export default async function NestedSubServicePage({ params }: PageProps) {
+  const { slug: parentSlug, childSlug } = await params;
+  const subService = await getSubServiceByRoute(parentSlug, childSlug);
 
-  const service = await getServiceBySlug(slug);
+  const servicesMenu = (await getMenuStructure()).find(
+    (item) => item.type.slug === "services",
+  );
+  const menuCategory = servicesMenu?.menu.find(
+    (item) => item.slug?.toLowerCase() === parentSlug.toLowerCase().trim(),
+  );
+  const isMenuLinked = Boolean(
+    menuCategory?.children?.some(
+      (child) => child.slug?.toLowerCase() === childSlug.toLowerCase().trim(),
+    ),
+  );
+  const parentMatchesApi =
+    subService?.service?.slug?.toLowerCase() === parentSlug.toLowerCase().trim();
 
-  if (!service) {
-    const serviceMenu = (await getMenuStructure()).find(
-      (item) => item.type.slug === "services",
-    );
-    const serviceCategory = serviceMenu?.menu.find(
-      (item) => item.slug?.toLowerCase() === slug.toLowerCase().trim(),
-    );
-
-    if (!serviceCategory) {
-      notFound();
-    }
-
-    return (
-      <div className="service-category-page">
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-30 my-10 pt-20 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-          <div className="space-y-6">
-            <Badge
-              text={serviceCategory.name.toUpperCase()}
-              showIcon
-              icon="/icons/compliant-primary.svg"
-              radius="full"
-              size="medium"
-              className="border border-[#E0E7FF] text-primary"
-            />
-            <h1 className="text-primary">{serviceCategory.name}</h1>
-            <p className="text-neutral-dark">
-              {serviceCategory.metaDescription ||
-                `Explore ${serviceCategory.name} capabilities and drill into the detailed sub-services available through the Techionik CMS.`}
-            </p>
-            <div className="buttons-optional flex flex-col md:flex-row gap-6">
-              <Button
-                text="Contact us"
-                radius="full"
-                size="large"
-                variant="gradient"
-                href="/contact-us"
-              />
-            </div>
-          </div>
-
-          <div className="relative xl:w-120 h-100 overflow-hidden rounded-2xl">
-            <Image
-              src={serviceCategory.imageUrl || "/images/ai.webp"}
-              alt={serviceCategory.name}
-              fill
-              priority
-              className="object-cover"
-            />
-          </div>
-        </section>
-
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-30 my-10">
-          <div
-            className="flex
-            md:flex-row md:justify-between md:items-end pb-10
-            flex-col gap-5 items-start"
-          >
-            <div className="w-full lg:w-2/3">
-              <h2 className="text-secondary">Available Sub-services</h2>
-              <p className="text-neutral-dark pt-2">
-                These routes are coming directly from the shared Techionik menu
-                structure and resolve into the connected frontend experience.
-              </p>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {(serviceCategory.children ?? []).map((child) => (
-              <Link
-                key={child.categoryId}
-                href={buildMenuChildHref("services", serviceCategory.slug, child.slug)}
-                className="border border-[#E2E8F0] rounded-2xl p-6 hover:border-primary transition-colors"
-              >
-                <h3 className="text-secondary">{child.name}</h3>
-                <p className="text-neutral-dark pt-3">
-                  Open the CMS-backed detail page for {child.name}.
-                </p>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        <section
-          id="blogs"
-          className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-30 my-10"
-        >
-          <Blogs />
-        </section>
-
-        <section
-          id="cta"
-          className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-30 my-10"
-        >
-          <CTA
-            title="Talk to one of our experts"
-            description="Looking to digitally transform your business? Get in touch to see how we can help you."
-            image="/images/ctaPerson.webp"
-            showBadge={true}
-            button1={{
-              text: "Book A Meeting",
-              href: "/contact-us",
-              icon: "/icons/calendar.svg",
-            }}
-          />
-        </section>
-      </div>
-    );
+  if (!subService || (!parentMatchesApi && !isMenuLinked)) {
+    notFound();
   }
 
-  const apiSolutions = (service.templateData?.solutionsWeDeliver?.cards ??
+  const apiSolutions = (subService.templateData?.solutionsWeDeliver?.cards ??
     []) as Partial<SolutionItem>[];
   const mergedSolutions: SolutionItem[] = apiSolutions.length
     ? apiSolutions.map((item, index) => ({
@@ -152,21 +59,22 @@ export default async function SubService({ params }: PageProps) {
     : solutionData;
 
   const sectionTitle =
-    service.templateData?.solutionsWeDeliver?.title ??
+    subService.templateData?.solutionsWeDeliver?.title ??
     "Cybersecurity Solutions";
   const sectionDescription =
-    service.templateData?.solutionsWeDeliver?.description ??
+    subService.templateData?.solutionsWeDeliver?.description ??
     "Our cybersecurity services combine people, process, and technology to reduce risk and ensure compliance. From 24/7 monitoring to identity access and policy management, we help you build a resilient security posture against evolving threats.";
 
-  const faqItems: FAQItem[] =
-    service.templateData?.faq?.length > 0 ? service.templateData.faq : faqData;
+  const templateFaqItems = (subService.templateData?.faq ?? []) as FAQItem[];
+  const faqItems: FAQItem[] = templateFaqItems.length > 0 ? templateFaqItems : faqData;
 
-  const faqSectionTitle = `${service.name} FAQ's`;
-  const faqSectionDescription = service.templateData?.faqDescription ?? "";
-  const faqSectionLink = service.templateData?.faqLink ?? "#";
+  const faqSectionTitle = `${subService.name} FAQ's`;
+  const faqSectionDescription = "";
+  const faqSectionLink = "#";
 
-  const apiWhyChoose =
-    service.templateData?.whyChooseTechionik as Partial<WhyChooseTechionik> | undefined;
+  const apiWhyChoose = subService.templateData?.whyChooseTechionik as
+    | Partial<WhyChooseTechionik>
+    | undefined;
   const whyChooseDataToUse: WhyChooseTechionik = {
     title: apiWhyChoose?.title ?? whyChooseData.title,
     description: apiWhyChoose?.description ?? whyChooseData.description,
@@ -177,17 +85,17 @@ export default async function SubService({ params }: PageProps) {
       })) ?? whyChooseData.items,
   };
 
-  const serviceCta = service.templateData?.cta;
-  const ctaTitle = serviceCta?.title ?? "Talk to one of our experts";
+  const subServiceCta = subService.templateData?.cta;
+  const ctaTitle = subServiceCta?.title ?? "Talk to one of our experts";
   const ctaDescription =
-    serviceCta?.description ??
+    subServiceCta?.description ??
     "Looking to digitally transform your business? Get in touch to see how we can help you.";
-  const ctaImage = serviceCta?.image ?? "/images/ctaPerson.webp";
+  const ctaImage = subServiceCta?.image ?? "/images/ctaPerson.webp";
   const ctaButton1 =
-    serviceCta?.buttonLabel && serviceCta?.buttonUrl
+    subServiceCta?.buttonLabel && subServiceCta?.buttonUrl
       ? {
-          text: serviceCta.buttonLabel,
-          href: serviceCta.buttonUrl,
+          text: subServiceCta.buttonLabel,
+          href: subServiceCta.buttonUrl,
           icon: "/icons/calendar.svg",
         }
       : {
@@ -201,18 +109,17 @@ export default async function SubService({ params }: PageProps) {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-30 my-10 pt-20 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
         <div className="space-y-6">
           <Badge
-            text={service.name.toUpperCase()}
+            text={subService.name.toUpperCase()}
             showIcon
             icon="/icons/compliant-primary.svg"
             radius="full"
             size="medium"
             className="border border-[#E0E7FF] text-primary"
           />
-          <h1 className="text-primary">{service.title}</h1>
+          <h1 className="text-primary">{subService.title}</h1>
           <p className="text-neutral-dark">
-            We deliver proactive, intelligent cybersecurity solutions that help
-            you prevent, detect, and respond to threats. Designed to protect
-            what matters most -your people, data, and reputation.
+            {subService.shortDescription ||
+              "We deliver proactive, intelligent cybersecurity solutions that help you prevent, detect, and respond to threats. Designed to protect what matters most -your people, data, and reputation."}
           </p>
           <div className="buttons-optional flex flex-col md:flex-row gap-6">
             <Button
@@ -225,10 +132,10 @@ export default async function SubService({ params }: PageProps) {
           </div>
         </div>
 
-        <div className="relative  xl:w-120 h-100 overflow-hidden rounded-2xl">
+        <div className="relative xl:w-120 h-100 overflow-hidden rounded-2xl">
           <Image
-            src="/images/ai.webp"
-            alt="AI"
+            src={subService.imageUrl || "/images/ai.webp"}
+            alt={subService.name}
             fill
             priority
             className="object-cover"
@@ -257,7 +164,6 @@ export default async function SubService({ params }: PageProps) {
             />
           </div>
         </div>
-        {/* Passing the merged API content plus local images/button behavior */}
         <Solutions data={mergedSolutions} />
       </section>
 
@@ -281,7 +187,6 @@ export default async function SubService({ params }: PageProps) {
         id="chooseUs"
         className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-30 my-10"
       >
-        {/* <WhyChooseUs /> */}
         <WhyChooseUs data={whyChooseDataToUse} />
       </section>
 
@@ -334,7 +239,6 @@ export default async function SubService({ params }: PageProps) {
         id="faqs"
         className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-30 my-10"
       >
-        {/* Header Section - Managed at the calling place */}
         <div className="flex md:flex-row md:justify-between md:items-end pb-10 flex-col gap-5 items-start">
           <div className="max-w-2xl">
             <h2 className="text-secondary text-3xl font-bold">
@@ -361,7 +265,6 @@ export default async function SubService({ params }: PageProps) {
           </div>
         </div>
 
-        {/* The Component - Only handles the Accordion */}
         <FAQs data={faqItems} />
       </section>
 

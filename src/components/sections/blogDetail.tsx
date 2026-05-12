@@ -135,7 +135,7 @@ const BlogDetail = ({ blog }: { blog: BlogsProps }) => {
             </div>
           </div>
         )}
-        <p>{blog.description}</p>
+        {blog.description1 ? <p>{blog.description1}</p> : null}
 
         {/* Author Section */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-8 pt-4">
@@ -182,11 +182,15 @@ const BlogDetail = ({ blog }: { blog: BlogsProps }) => {
           <div className="flex gap-12 text-sm">
             <div className="flex flex-col">
               <span className="text-red-500 font-bold uppercase tracking-tighter">Published</span>
-              <span className="text-[#9D9999] font-medium">May 21, 2025</span>
+              <span className="text-[#9D9999] font-medium">
+                {blog.date || "TBD"}
+              </span>
             </div>
             <div className="flex flex-col">
               <span className="text-red-500 font-bold uppercase tracking-tighter">Updated</span>
-              <span className="text-[#9D9999] font-medium">May 21, 2026</span>
+              <span className="text-[#9D9999] font-medium">
+                {blog.date || "TBD"}
+              </span>
             </div>
           </div>
         </div>
@@ -196,4 +200,3 @@ const BlogDetail = ({ blog }: { blog: BlogsProps }) => {
 };
 
 export default BlogDetail;
-

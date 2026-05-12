@@ -1,16 +1,20 @@
+type ApiFetchOptions = RequestInit & {
+  timeoutMs?: number;
+};
+
 const BASE_URL =
   process.env.NEXT_PUBLIC_API_BASE_URL ||
   "https://techionik-nodejs-web-backend.onrender.com";
 
 export async function apiFetch<T>(
   endpoint: string,
-  options?: RequestInit
+  options?: ApiFetchOptions
 ): Promise<T> {
   const response = await fetch(
     `${BASE_URL}${endpoint}`,
     {
       ...options,
-      signal: options?.signal ?? AbortSignal.timeout(10000),
+      signal: options?.signal ?? AbortSignal.timeout(options?.timeoutMs ?? 10000),
 
       headers: {
         "Content-Type": "application/json",

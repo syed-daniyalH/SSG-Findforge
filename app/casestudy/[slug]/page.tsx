@@ -3,6 +3,7 @@ import Process from "@/components/sections/process";
 import Badge from "@/components/ui/badge";
 import CTA from "@/components/ui/cta";
 import Icon from "@/components/ui/icon";
+import { getCaseStudyBySlug } from "@/lib/api/caseStudies";
 import { caseStudyCardsData } from "@/content/casestudy.data";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -16,11 +17,10 @@ export default async function DetailedCaseStudy({
 }) {
   const { slug } = await params;
 
-  // We look for the item where the slug matches our URL parameter
-  // Since your data slug is "/casestudy/name", we check if it ends with the param slug
-  const casestudy = caseStudyCardsData.find((item) => 
-    item.slug.endsWith(slug)
-  );
+  const casestudy =
+    (await getCaseStudyBySlug(slug)) ??
+    caseStudyCardsData.find((item) => item.slug.endsWith(slug)) ??
+    null;
 
   if (!casestudy) {
     notFound();
@@ -258,7 +258,7 @@ export default async function DetailedCaseStudy({
           showBadge={true}
           button1={{
             text: "Book A Meeting",
-            href: "/contact",
+            href: "/contact-us",
             icon: "/icons/calendar.svg",
           }}
         />

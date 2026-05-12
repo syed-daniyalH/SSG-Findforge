@@ -1,7 +1,8 @@
-// import FAQs from "@/components/sections/accordions";
 import Insights from "@/components/cards/insights";
 import Hero from "@/components/sections/hero";
 import FormCTA from "@/components/ui/formCTA";
+import { getAuthorBySlug } from "@/lib/api/authors";
+import { getBlogsByAuthorSlug } from "@/lib/api/blogs";
 import { insightsData } from "@/content/blog.data";
 import { notFound } from "next/navigation";
 
@@ -11,22 +12,21 @@ export default async function AuthorPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  const [apiAuthor, apiBlogs] = await Promise.all([
+    getAuthorBySlug(slug),
+    getBlogsByAuthorSlug(slug),
+  ]);
 
-  // 1. Find the blog entry that contains this author's slug
-  const blogEntry = insightsData.find((b) => b.author.authorSlug === slug);
+  const fallbackBlogs = insightsData.filter((item) => item.author.authorSlug === slug);
+  const author = apiAuthor ?? fallbackBlogs[0]?.author ?? null;
+  const authorBlogs = apiBlogs.length > 0 ? apiBlogs : fallbackBlogs;
 
-  // 2. If the author doesn't exist in our data, show 404
-  if (!blogEntry) {
+  if (!author) {
     notFound();
   }
 
-  const author = blogEntry.author;
-
-  // 3. Filter all blogs written by this specific author
-  const authorBlogs = insightsData.filter((b) => b.author.authorSlug === slug);
-  
   const displayedBlogs = authorBlogs.slice(0, 3);
-  
+
   return (
     <div className="home-page">
       <section
@@ -44,8 +44,10 @@ export default async function AuthorPage({
           }}
           title={author.name}
           description={author.designation || "Technology Expert"}
-          // Mapping your SocialLink interface to Hero's expected format
-          socialLinks={author.socialLinks?.map(s => ({ icon: s.iconUrl, href: s.url }))}
+          socialLinks={author.socialLinks?.map((item) => ({
+            icon: item.iconUrl,
+            href: item.url,
+          }))}
           author={true}
           image={{
             src: author.image,
@@ -55,11 +57,11 @@ export default async function AuthorPage({
       </section>
 
       <section className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-30 my-10">
-          <h2 className="">About Author</h2>
-          <p className="text-neutral-dark mt-6">
-            {author.authorDescription}
-          </p>
-      </section>  
+        <h2 className="">About Author</h2>
+        <p className="text-neutral-dark mt-6">
+          {author.authorDescription}
+        </p>
+      </section>
 
       <section
         id="blogs"
@@ -68,9 +70,9 @@ export default async function AuthorPage({
         <h2 className="mb-10">All Blogs</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {displayedBlogs.map((item, index) => (
-              <Insights key={index} {...item} variant="featured" />
+            <Insights key={`${item.slug}-${index}`} {...item} variant="featured" />
           ))}
-      </div>
+        </div>
       </section>
 
       <section

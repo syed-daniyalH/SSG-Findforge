@@ -195,6 +195,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { NavChild } from "@/lib/api/menu/utils/buildnavlinks";
 import Icon from "@/components/ui/icon";
+import { buildMenuChildHref } from "@/lib/routes";
 
 interface MegaMenuProps {
   data: NavChild[];
@@ -203,6 +204,11 @@ interface MegaMenuProps {
 
 const MegaMenu = ({ data, parentSlug }: MegaMenuProps) => {
   const [activeItem, setActiveItem] = useState<NavChild>(data[0]);
+  const parentLabel =
+    parentSlug === "services"
+      ? "Services"
+      : parentSlug.charAt(0).toUpperCase() + parentSlug.slice(1);
+  const parentHref = parentSlug ? `/${parentSlug}` : "/";
 
   useEffect(() => {
     if (data.length > 0) setActiveItem(data[0]);
@@ -216,8 +222,8 @@ const MegaMenu = ({ data, parentSlug }: MegaMenuProps) => {
         
         {/* --- LEFT COLUMN: MAIN SERVICES LIST --- */}
         <div className="w-[30%] flex flex-col gap-4 border-r border-gray-50 pr-6">
-          <Link href="/services" className="text-[#BD0917] font-bold flex items-center gap-2 mb-4 hover:underline">
-            Our Main Services <span className="text-lg">→</span>
+          <Link href={parentHref} className="text-[#BD0917] font-bold flex items-center gap-2 mb-4 hover:underline">
+            Explore {parentLabel} <span className="text-lg">→</span>
           </Link>
 
           <div className="flex flex-col gap-2">
@@ -252,7 +258,7 @@ const MegaMenu = ({ data, parentSlug }: MegaMenuProps) => {
           {activeItem.children?.map((child) => (
             <Link 
               key={child.id} 
-              href={`/services/${activeItem.slug}/${child.slug}`}
+              href={buildMenuChildHref(parentSlug, activeItem.slug, child.slug)}
               className="group/detail flex flex-col gap-2"
             >
               <h4 className="text-[16px] font-bold text-black group-hover/detail:text-[#BD0917] transition-colors">
@@ -267,7 +273,7 @@ const MegaMenu = ({ data, parentSlug }: MegaMenuProps) => {
 
         {/* --- RIGHT COLUMN: LATEST BLOGS --- */}
         <div className="w-[25%] flex flex-col border-l border-gray-50 pl-10">
-          <Link href="/blogs" className="text-[#BD0917] font-bold flex items-center gap-2 mb-6 hover:underline">
+          <Link href="/blog" className="text-[#BD0917] font-bold flex items-center gap-2 mb-6 hover:underline">
             Our Latest Blogs <span className="text-lg">→</span>
           </Link>
 
@@ -292,7 +298,7 @@ const MegaMenu = ({ data, parentSlug }: MegaMenuProps) => {
               <p className="text-[13px] text-gray-500 line-clamp-2">
                 The choice between a train or bus journey depends on various factors such as the...
               </p>
-              <Link href="#" className="text-[#BD0917] text-sm font-bold flex items-center gap-1 group/more">
+              <Link href="/blog" className="text-[#BD0917] text-sm font-bold flex items-center gap-1 group/more">
                 Read More <span className="group-hover/more:translate-x-1 transition-transform">↗</span>
               </Link>
             </div>
@@ -319,4 +325,3 @@ const MegaMenu = ({ data, parentSlug }: MegaMenuProps) => {
 };
 
 export default MegaMenu;
-

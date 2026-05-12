@@ -51,3 +51,24 @@ export async function getSubServiceCards(): Promise<
     })
   );
 }
+
+export async function getSubServiceByRoute(
+  parentSlug: string,
+  slug: string,
+): Promise<SubService | null> {
+  const normalizedParent = parentSlug.toLowerCase().trim();
+  const normalizedSlug = slug.toLowerCase().trim();
+  const subServices = await getSubServices();
+
+  return (
+    subServices.find(
+      (subService) =>
+        subService.slug?.toLowerCase() === normalizedSlug &&
+        subService.service?.slug?.toLowerCase() === normalizedParent,
+    ) ??
+    subServices.find(
+      (subService) => subService.slug?.toLowerCase() === normalizedSlug,
+    ) ??
+    null
+  );
+}
