@@ -313,7 +313,7 @@ const MegaMenu = ({ data, parentSlug }: MegaMenuProps) => {
                 </div>
               ))}
             </div>
-            <Link href="/reviews" className="text-[#BD0917] text-sm font-bold flex items-center gap-2">
+            <Link href="/testimonial" className="text-[#BD0917] text-sm font-bold flex items-center gap-2">
               Read Customer Reviews <span>→</span>
             </Link>
           </div>

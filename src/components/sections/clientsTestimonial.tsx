@@ -15,7 +15,7 @@ const ClientTestimonial = () => {
                 </div>
                 <div className="flex gap-2 border-b-2 border-black pb-1">
                     <Link
-                        href="/clients"
+                        href="/testimonial"
                         className="text-black font-semibold font-poppins"
                         >
                         View All Clients
@@ -97,4 +97,3 @@ const ClientTestimonial = () => {
 }
 
 export default ClientTestimonial;
-

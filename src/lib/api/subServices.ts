@@ -1,4 +1,5 @@
 import { apiFetch } from "./client";
+import { normalizeComparableSlug } from "../routes";
 
 import {
   SubService,
@@ -56,18 +57,18 @@ export async function getSubServiceByRoute(
   parentSlug: string,
   slug: string,
 ): Promise<SubService | null> {
-  const normalizedParent = parentSlug.toLowerCase().trim();
-  const normalizedSlug = slug.toLowerCase().trim();
+  const normalizedParent = normalizeComparableSlug(parentSlug);
+  const normalizedSlug = normalizeComparableSlug(slug);
   const subServices = await getSubServices();
 
   return (
     subServices.find(
       (subService) =>
-        subService.slug?.toLowerCase() === normalizedSlug &&
-        subService.service?.slug?.toLowerCase() === normalizedParent,
+        normalizeComparableSlug(subService.slug) === normalizedSlug &&
+        normalizeComparableSlug(subService.service?.slug) === normalizedParent,
     ) ??
     subServices.find(
-      (subService) => subService.slug?.toLowerCase() === normalizedSlug,
+      (subService) => normalizeComparableSlug(subService.slug) === normalizedSlug,
     ) ??
     null
   );

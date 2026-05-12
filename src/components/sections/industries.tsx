@@ -14,7 +14,7 @@ const Industries = () => {
             </div>
             <div className="flex gap-2 border-b-2 border-black pb-1">
                 <Link
-                href="/clients"
+                href="/industry"
                 className="text-black font-semibold font-poppins"
                 >
                 View full Industries
@@ -50,4 +50,3 @@ const Industries = () => {
 };
 
 export default Industries;
-

@@ -90,7 +90,7 @@ const ServiceCard = ({ item }: { item: ServiceItem }) => {
           radius="full"
           size="small"
           iconMode="static1"
-          href="/service"
+          href="/services"
           className="w-fit border border-[#E5E5E5]"
       />
       
@@ -99,4 +99,3 @@ const ServiceCard = ({ item }: { item: ServiceItem }) => {
 };
 
 export default ServiceCard;
-

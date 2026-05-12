@@ -2,6 +2,13 @@ export function cleanRouteSlug(value?: string): string {
   return (value ?? "").replace(/^\/+|\/+$/g, "");
 }
 
+export function normalizeComparableSlug(value?: string): string {
+  return cleanRouteSlug(value)
+    .toLowerCase()
+    .trim()
+    .replace(/\bbuisness\b/g, "business");
+}
+
 export function resolveTopLevelSlug(
   href?: string,
   fallback?: string,

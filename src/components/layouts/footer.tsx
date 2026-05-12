@@ -35,11 +35,11 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-6 text-white">Service</h3>
             <ul className="space-y-4 text-sm">
               <li><Link href="/services/ai-automation" className="hover:opacity-100 transition">AI Automation</Link></li>
+              <li><Link href="/services/data-science" className="hover:opacity-100 transition">Data Science</Link></li>
+              <li><Link href="/services/software-services" className="hover:opacity-100 transition">Software Services</Link></li>
               <li><Link href="/services/software-development" className="hover:opacity-100 transition">Software Development</Link></li>
-              <li><Link href="/services/digital-marketing" className="hover:opacity-100 transition">Digital Marketing</Link></li>
-              <li><Link href="/services/web-design" className="hover:opacity-100 transition">Web Design</Link></li>
-              <li><Link href="/services/cybersecurity" className="hover:opacity-100 transition">Cybersecurity</Link></li>
-              <li><Link href="/services/seo" className="hover:opacity-100 transition">SEO</Link></li>
+              <li><Link href="/services/software-services/custom-software-development" className="hover:opacity-100 transition">Custom Software Development</Link></li>
+              <li><Link href="/services/ai-automation/ai-consulting-services" className="hover:opacity-100 transition">AI Consulting Services</Link></li>
             </ul>
           </div>
 
@@ -50,7 +50,7 @@ const Footer = () => {
               <li><Link href="/services" className="hover:opacity-100 transition">Services</Link></li>
               <li><Link href="/about-us" className="hover:opacity-100 transition">About</Link></li>
               <li><Link href="/suites" className="hover:opacity-100 transition">Our Team</Link></li>
-              <li><Link href="/portfolio" className="hover:opacity-100 transition">Portfolio</Link></li>
+              <li><Link href="/casestudy" className="hover:opacity-100 transition">Portfolio</Link></li>
               <li><Link href="/blog" className="hover:opacity-100 transition">Blog</Link></li>
               <li><Link href="/contact-us" className="hover:opacity-100 transition">Contact Us</Link></li>
             </ul>
@@ -64,7 +64,7 @@ const Footer = () => {
               <li><Link href="/privacy-policy" className="hover:opacity-100 transition">Privacy Policy</Link></li>
               <li><Link href="/tax-strategy" className="hover:opacity-100 transition">Recruitment notice</Link></li>
               <li><Link href="/accessibility-statement" className="hover:opacity-100 transition">Modern slavery statement</Link></li>
-              <li><Link href="/corporate-information" className="hover:opacity-100 transition">Corporate information</Link></li>
+              <li><Link href="/about-us" className="hover:opacity-100 transition">Corporate information</Link></li>
               <li><Link href="/contact-us" className="hover:opacity-100 transition">Contact Us</Link></li>
             </ul>
           </div>
@@ -110,4 +110,3 @@ const Footer = () => {
 };
 
 export default Footer;
-

@@ -13,8 +13,9 @@ import ReusableCTA from "@/components/ui/entrepriseCTA";
 import { solutionData } from "@/content/solutions.data";
 import { getMenuStructure } from "@/lib/api/menu/utils/buildnavlinks";
 import { getSubServiceByRoute } from "@/lib/api/subServices";
+import { buildMenuChildHref, normalizeComparableSlug } from "@/lib/routes";
 import Image from "next/image";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { SolutionItem } from "@/types/solutions";
 import { FAQItem } from "@/types/faq";
 import { WhyChooseTechionik } from "@/types/whychoose.type";
@@ -28,27 +29,55 @@ interface PageProps {
 
 export default async function NestedSubServicePage({ params }: PageProps) {
   const { slug: parentSlug, childSlug } = await params;
+  const normalizedParentSlug = normalizeComparableSlug(parentSlug);
+  const normalizedChildSlug = normalizeComparableSlug(childSlug);
   const subService = await getSubServiceByRoute(parentSlug, childSlug);
 
   const servicesMenu = (await getMenuStructure()).find(
     (item) => item.type.slug === "services",
   );
   const menuCategory = servicesMenu?.menu.find(
-    (item) => item.slug?.toLowerCase() === parentSlug.toLowerCase().trim(),
+    (item) => normalizeComparableSlug(item.slug) === normalizedParentSlug,
   );
-  const isMenuLinked = Boolean(
-    menuCategory?.children?.some(
-      (child) => child.slug?.toLowerCase() === childSlug.toLowerCase().trim(),
-    ),
+  const menuChild = menuCategory?.children?.find(
+    (child) => normalizeComparableSlug(child.slug) === normalizedChildSlug,
   );
+  const isMenuLinked = Boolean(menuChild);
   const parentMatchesApi =
-    subService?.service?.slug?.toLowerCase() === parentSlug.toLowerCase().trim();
+    normalizeComparableSlug(subService?.service?.slug) === normalizedParentSlug;
 
-  if (!subService || (!parentMatchesApi && !isMenuLinked)) {
+  const canonicalChildSlug = subService?.slug ?? menuChild?.slug;
+  const requestedSlug = childSlug.toLowerCase().trim();
+
+  if (
+    menuCategory &&
+    canonicalChildSlug &&
+    normalizeComparableSlug(canonicalChildSlug) === normalizedChildSlug &&
+    canonicalChildSlug.toLowerCase().trim() !== requestedSlug
+  ) {
+    redirect(
+      buildMenuChildHref("services", menuCategory.slug, canonicalChildSlug),
+    );
+  }
+
+  if ((!subService && !menuChild) || (subService && !parentMatchesApi && !isMenuLinked)) {
     notFound();
   }
 
-  const apiSolutions = (subService.templateData?.solutionsWeDeliver?.cards ??
+  const displayName = subService?.name ?? menuChild?.name ?? "Service";
+  const displayTitle = subService?.title ?? menuChild?.name ?? "Service";
+  const displayDescription =
+    subService?.shortDescription ||
+    menuChild?.metaDescription ||
+    `This route is connected to the shared Techionik CMS menu. A dedicated detail entry for ${displayName} is not available in the sub-services API yet, so this page is rendering a menu-backed fallback.`;
+  const displayImage =
+    subService?.imageUrl ||
+    menuChild?.imageUrl ||
+    menuCategory?.imageUrl ||
+    "/images/ai.webp";
+  const templateData = subService?.templateData;
+
+  const apiSolutions = (templateData?.solutionsWeDeliver?.cards ??
     []) as Partial<SolutionItem>[];
   const mergedSolutions: SolutionItem[] = apiSolutions.length
     ? apiSolutions.map((item, index) => ({
@@ -59,20 +88,19 @@ export default async function NestedSubServicePage({ params }: PageProps) {
     : solutionData;
 
   const sectionTitle =
-    subService.templateData?.solutionsWeDeliver?.title ??
-    "Cybersecurity Solutions";
+    templateData?.solutionsWeDeliver?.title ?? `${displayName} Solutions`;
   const sectionDescription =
-    subService.templateData?.solutionsWeDeliver?.description ??
-    "Our cybersecurity services combine people, process, and technology to reduce risk and ensure compliance. From 24/7 monitoring to identity access and policy management, we help you build a resilient security posture against evolving threats.";
+    templateData?.solutionsWeDeliver?.description ??
+    `Explore how ${displayName} fits into the ${menuCategory?.name ?? "shared services"} structure provided by the Techionik CMS.`;
 
-  const templateFaqItems = (subService.templateData?.faq ?? []) as FAQItem[];
+  const templateFaqItems = (templateData?.faq ?? []) as FAQItem[];
   const faqItems: FAQItem[] = templateFaqItems.length > 0 ? templateFaqItems : faqData;
 
-  const faqSectionTitle = `${subService.name} FAQ's`;
+  const faqSectionTitle = `${displayName} FAQ's`;
   const faqSectionDescription = "";
   const faqSectionLink = "#";
 
-  const apiWhyChoose = subService.templateData?.whyChooseTechionik as
+  const apiWhyChoose = templateData?.whyChooseTechionik as
     | Partial<WhyChooseTechionik>
     | undefined;
   const whyChooseDataToUse: WhyChooseTechionik = {
@@ -85,7 +113,7 @@ export default async function NestedSubServicePage({ params }: PageProps) {
       })) ?? whyChooseData.items,
   };
 
-  const subServiceCta = subService.templateData?.cta;
+  const subServiceCta = templateData?.cta;
   const ctaTitle = subServiceCta?.title ?? "Talk to one of our experts";
   const ctaDescription =
     subServiceCta?.description ??
@@ -109,17 +137,16 @@ export default async function NestedSubServicePage({ params }: PageProps) {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-30 my-10 pt-20 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
         <div className="space-y-6">
           <Badge
-            text={subService.name.toUpperCase()}
+            text={displayName.toUpperCase()}
             showIcon
             icon="/icons/compliant-primary.svg"
             radius="full"
             size="medium"
             className="border border-[#E0E7FF] text-primary"
           />
-          <h1 className="text-primary">{subService.title}</h1>
+          <h1 className="text-primary">{displayTitle}</h1>
           <p className="text-neutral-dark">
-            {subService.shortDescription ||
-              "We deliver proactive, intelligent cybersecurity solutions that help you prevent, detect, and respond to threats. Designed to protect what matters most -your people, data, and reputation."}
+            {displayDescription}
           </p>
           <div className="buttons-optional flex flex-col md:flex-row gap-6">
             <Button
@@ -134,8 +161,8 @@ export default async function NestedSubServicePage({ params }: PageProps) {
 
         <div className="relative xl:w-120 h-100 overflow-hidden rounded-2xl">
           <Image
-            src={subService.imageUrl || "/images/ai.webp"}
-            alt={subService.name}
+            src={displayImage}
+            alt={displayName}
             fill
             priority
             className="object-cover"

@@ -94,7 +94,7 @@ const USEFUL_LINKS: UsefulLinksCategory[] = [
     category: "Insights",
     links: [
       { label: "Blog", url: "/blog" },
-      { label: "Case Studies", url: "/case-study" },
+      { label: "Case Studies", url: "/casestudy" },
     ],
   },
   {
