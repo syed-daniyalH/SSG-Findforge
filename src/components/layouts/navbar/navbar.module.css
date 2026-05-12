@@ -1,0 +1,11 @@
+.gradient-border {
+  position: relative;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #F05323 0%, #8A3014 100%);
+}
+
+.gradient-border > .submenu-content {
+  background-color: #000;
+  border-radius: 6px;
+  overflow: hidden;
+}

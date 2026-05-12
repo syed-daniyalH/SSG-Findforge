@@ -1,0 +1,170 @@
+@import "tailwindcss";
+
+/* stylelint-disable-next-line at-rule-no-unknown */
+@theme {
+  /* --- TYPOGRAPHY --- */
+  --font-spartan: var(--font-league), sans-serif;
+  --font-jakarta: var(--font-jakarta), sans-serif;
+  --font-poppins: var(--font-poppins), sans-serif;
+
+  /* --- BRAND COLORS --- */
+  --color-primary: #b5020f;
+  --color-secondary: #171717;
+
+  /* --- NEUTRALS & SURFACES --- */
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-surface: #f5f5f5;
+
+  /* --- TEXT & BORDERS (The Grays) --- */
+  --color-neutral-dark: #737373;
+  --color-neutral-mid: #a3a3a3;
+  --color-slate-light: #94a3b8;
+  --color-cool-gray: #8d8d99;
+  --color-border-light: #cfd3d7;
+  --color-ghost-white: #f8fafc; /* --- GRADIENTS --- */ /* Dark-to-Red Accent */
+  --color-slate-gray: #6b7280;
+
+  --background-gradient-hero: linear-gradient(
+    165.41deg,
+    #000000 -5.15%,
+    #bd0917 93.99%
+  );
+
+  /* Red Deepening Gradient */
+  --background-gradient-primary: linear-gradient(
+    180deg,
+    #b5020f 0%,
+    #7f141b 100%
+  );
+
+
+  /* Complex Glass/Light Interaction Gradient */
+  --background-gradient-glass:
+    radial-gradient(
+      141.42% 141.42% at 0% 0%,
+      #ffffff 0%,
+      rgba(255, 255, 255, 0) 50%
+    ),
+    radial-gradient(
+      141.42% 141.42% at 100% 0%,
+      #ffffff 0%,
+      rgba(255, 255, 255, 0) 50%
+    ),
+    linear-gradient(0deg, #b5020f, #b5020f);
+
+  --background-gradient-cta: radial-gradient(
+    108.18% 262.11% at 100% 0%,
+    rgba(181, 2, 15, 0.3) 0%,
+    rgba(181, 2, 15, 0) 50%,
+    rgba(181, 2, 15, 0) 100%
+  );
+
+  --background-gradient-footer: linear-gradient(165.41deg, #000000 -5.15%, #BD0917 93.99%);
+
+
+  /* Precise Shadow Definition */
+  --shadow-soft: 0px 1px 12px 0px #00000040;
+}
+
+@layer base {
+  /* H1 - Hero Headings */
+  h1 {
+    @apply font-spartan font-bold text-white align-middle;
+    line-height: 60px;
+    letter-spacing: -1.5px;
+  }
+
+  h1 {
+    @apply text-[26px] sm:text-[30px] md:text-[40px] lg:text-[60px];
+    @apply leading-12.5 sm:leading-10 md:leading-12.5 lg:leading-15;
+  }
+
+  h2 {
+    @apply text-[28px] md:text-[36px];
+  }
+
+  /* H2 - Section Titles */
+  h2 {
+    @apply font-spartan font-bold text-secondary align-middle;
+    /* font-size: 36px; */
+    line-height: 40px;
+    letter-spacing: -0.9px;
+  }
+
+  /* H3 - Small Headings/Cards */
+  h3 {
+    @apply font-spartan font-bold text-secondary align-middle;
+  }
+
+  h3 {
+    @apply text-[16px] sm:text-[16px] md:text-[18px] lg:text-[18px];
+  }
+
+  /* H4 - Small Headings/Cards */
+  h4 {
+    @apply font-spartan font-bold text-secondary align-middle;
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: -0.45px;
+  }
+
+  /* Body 1 - Large / Hero Paragraphs */
+  .body1 {
+    @apply font-poppins font-normal align-middle;
+    color: #eef2ff;
+    font-size: 20px;
+    line-height: 32px;
+    letter-spacing: -0.6px;
+  }
+
+  /* Body 2 - Standard Paragraphs */
+  .body2 {
+    @apply font-poppins font-normal text-neutral-dark align-middle;
+    font-size: 18px;
+    line-height: 29.25px;
+    letter-spacing: 0%;
+  }
+
+  /* Body 4 - Small Meta Text */
+  .body4 {
+    @apply font-poppins font-normal text-slate-light align-middle;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0%;
+  }
+}
+
+/* --- UTILITIES --- */
+@layer utilities {
+  .bg-grad-hero {
+    background: var(--background-gradient-hero);
+  }
+
+  .bg-grad-primary {
+    background: var(--background-gradient-primary);
+  }
+  .bg-hover-grad-primary:hover {
+    background: var(--background-gradient-primary);
+  }
+
+  .bg-grad-glass {
+    background: var(--background-gradient-glass);
+  }
+
+  .bg-element {
+    background-image: url("/images/element.webp");
+    background-size: contain;
+    background-position: start;
+    background-repeat: no-repeat;
+  }
+
+  .bg-grad-cta {
+    background: var(--background-gradient-cta), #000000;
+  }
+
+  .bg-grad-footer {
+    background: var(--background-gradient-footer);
+  }
+
+}
