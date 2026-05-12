@@ -1,6 +1,30 @@
 import { BASE_URL, ENDPOINTS } from "../../config/apiConfig";
 import { MenuItem, MenuResponse } from "../../../types/menu.type";
 
+const EXCLUDED_MENU_SLUGS = new Set([
+  "sasasa",
+  "asasasasasa",
+]);
+
+function isAllowedMenuSlug(value?: string): boolean {
+  const normalized = (value ?? "").trim().toLowerCase();
+  return Boolean(normalized) && !EXCLUDED_MENU_SLUGS.has(normalized);
+}
+
+function filterMenuItems(items: MenuItem[]): MenuItem[] {
+  return items.map((item) => ({
+    ...item,
+    menu: (item.menu ?? [])
+      .filter((sub) => isAllowedMenuSlug(sub.slug))
+      .map((sub) => ({
+        ...sub,
+        children: (sub.children ?? []).filter((child) =>
+          isAllowedMenuSlug(child.slug),
+        ),
+      })),
+  }));
+}
+
 export interface NavChild {
   id: number;
   name: string;
@@ -44,7 +68,7 @@ export async function getMenuStructure(): Promise<MenuItem[]> {
       return [];
     }
 
-    return json.data;
+    return filterMenuItems(json.data);
   } catch (error) {
     console.error("Unexpected error in getMenuStructure:", error);
     return [];
