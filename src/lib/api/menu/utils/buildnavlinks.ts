@@ -1,5 +1,6 @@
 import { BASE_URL, ENDPOINTS } from "../../config/apiConfig";
 import { MenuItem, MenuResponse } from "../../../types/menu.type";
+import { normalizeComparableSlug, resolveTopLevelSlug } from "../../../routes";
 
 const EXCLUDED_MENU_SLUGS = new Set([
   "sasasa",
@@ -41,6 +42,35 @@ export interface Navlink {
   isMega?: boolean;
   children?: NavChild[];
 }
+
+interface PrimaryNavConfig {
+  name: string;
+  href: string;
+  slugs: string[];
+}
+
+const PRIMARY_NAV_ITEMS: PrimaryNavConfig[] = [
+  {
+    name: "Solutions",
+    href: "/services",
+    slugs: ["services"],
+  },
+  {
+    name: "Industries",
+    href: "/industries",
+    slugs: ["industry", "industries"],
+  },
+  {
+    name: "About Us",
+    href: "/about-us",
+    slugs: ["about-us", "about"],
+  },
+  {
+    name: "Resources",
+    href: "/blog",
+    slugs: ["blog", "blogs", "resource", "resources"],
+  },
+];
 
 export async function getMenuStructure(): Promise<MenuItem[]> {
   try {
@@ -106,7 +136,37 @@ export function mapMenuItemsToNavLinks(items: MenuItem[]): Navlink[] {
   });
 }
 
+function findMatchingNavLink(
+  links: Navlink[],
+  targetSlugs: string[],
+): Navlink | undefined {
+  const normalizedTargets = targetSlugs.map((slug) =>
+    normalizeComparableSlug(slug),
+  );
+
+  return links.find((link) => {
+    const resolvedSlug = normalizeComparableSlug(
+      resolveTopLevelSlug(link.href, link.name),
+    );
+
+    return normalizedTargets.includes(resolvedSlug);
+  });
+}
+
+export function buildPrimaryNavLinks(links: Navlink[]): Navlink[] {
+  return PRIMARY_NAV_ITEMS.map((item) => {
+    const matchedLink = findMatchingNavLink(links, item.slugs);
+
+    return {
+      name: item.name,
+      href: matchedLink?.href ?? item.href,
+      isMega: Boolean(matchedLink?.isMega && matchedLink.children?.length),
+      children: matchedLink?.children,
+    };
+  });
+}
+
 export async function getNavLinks(): Promise<Navlink[]> {
   const menuItems = await getMenuStructure();
-  return mapMenuItemsToNavLinks(menuItems);
+  return buildPrimaryNavLinks(mapMenuItemsToNavLinks(menuItems));
 }
