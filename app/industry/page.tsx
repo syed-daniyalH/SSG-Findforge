@@ -10,12 +10,35 @@ import Clients from "@/components/ui/clients";
 import CTA from "@/components/ui/cta";
 import { auditData } from "@/content/audit.data";
 
+const PRIORITY_INDUSTRY_IDS = ["healthcare", "real-estate"];
+
+function normalizeIndustryId(value: string) {
+  return value.toLowerCase().trim();
+}
+
 export default async function Industry() {
   const apiIndustryCards = await getIndustryCards();
-  const industries = mapApiIndustryCardsToLocalIndustries(
+  const mappedIndustries = mapApiIndustryCardsToLocalIndustries(
     apiIndustryCards,
     industriesData
   );
+  const mappedIndustryById = new Map(
+    mappedIndustries.map((item) => [normalizeIndustryId(item.id), item]),
+  );
+  const fallbackIndustryById = new Map(
+    industriesData.map((item) => [normalizeIndustryId(item.id), item]),
+  );
+
+  const priorityIndustries = PRIORITY_INDUSTRY_IDS.map(
+    (industryId) =>
+      mappedIndustryById.get(industryId) ?? fallbackIndustryById.get(industryId),
+  ).filter((item): item is (typeof industriesData)[number] => Boolean(item));
+
+  const remainingIndustries = mappedIndustries.filter(
+    (item) => !PRIORITY_INDUSTRY_IDS.includes(normalizeIndustryId(item.id)),
+  );
+
+  const industries = [...priorityIndustries, ...remainingIndustries];
 
   return (
     <div className="industry-page">
@@ -124,4 +147,3 @@ export default async function Industry() {
     </div>
   );
 }
-

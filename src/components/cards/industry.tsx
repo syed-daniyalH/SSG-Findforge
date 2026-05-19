@@ -298,13 +298,18 @@ const IndustryCard = ({ item }: { item: IndustryItem }) => {
   if (item.layout === "standard") {
     return (
       <div className="bg-white border border-[#E5E5E599] flex justify-between px-9 py-9 rounded-2xl">
-        <div className="flex gap-6 lg:flex-col lg:gap-15 items-center lg:items-end">
+        <div className="flex flex-col items-start gap-6">
           <div className="w-12 h-12 rounded-lg bg-white border border-[#F5F5F5] flex items-center justify-center shrink-0">
             <Image src={item.icon} alt={item.title} width={20} height={20} className="object-contain" />
           </div>
           <div>
             <h3 className="text-secondary">{item.title}</h3>
             {item.subtitle && <p className="text-neutral-dark">{item.subtitle}</p>}
+            {item.description && (
+              <p className="pt-2 text-sm leading-6 text-neutral-dark">
+                {item.description}
+              </p>
+            )}
           </div>
         </div>
       </div>
@@ -333,4 +338,3 @@ const IndustryCard = ({ item }: { item: IndustryItem }) => {
 };
 
 export default IndustryCard
-
