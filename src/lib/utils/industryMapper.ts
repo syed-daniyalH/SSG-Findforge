@@ -3,17 +3,29 @@ import type { Industry as LocalIndustry } from "@/components/cards/industryCard"
 
 const DEFAULT_ICON = "/icons/business.svg";
 const DEFAULT_IMAGE = "/images/industry-default.webp";
+const PREFERRED_LOCAL_IMAGE_IDS = new Set(["healthcare"]);
+
+function normalizeIndustryKey(value: unknown): string {
+  return String(value ?? "")
+    .toLowerCase()
+    .trim();
+}
 
 export function mapApiIndustryCardToLocalIndustry(
   apiItem: Partial<ApiIndustryCard>,
   fallbackItem: LocalIndustry,
 ): LocalIndustry {
   const slug = apiItem.slug ?? fallbackItem.id;
+  const normalizedSlug = normalizeIndustryKey(slug);
+  const image = PREFERRED_LOCAL_IMAGE_IDS.has(normalizedSlug)
+    ? fallbackItem.image ?? apiItem.imageUrl ?? DEFAULT_IMAGE
+    : apiItem.imageUrl ?? fallbackItem.image ?? DEFAULT_IMAGE;
+
   return {
     id: apiItem.slug ?? apiItem.id ?? fallbackItem.id,
     title: apiItem.title ?? fallbackItem.title,
     description: apiItem.description ?? fallbackItem.description ?? "",
-    image: apiItem.imageUrl ?? fallbackItem.image ?? DEFAULT_IMAGE,
+    image,
     icon: fallbackItem.icon ?? DEFAULT_ICON,
     link: fallbackItem.link ?? `/industry/${slug}`,
   };
