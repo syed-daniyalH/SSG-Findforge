@@ -1,0 +1,9 @@
+<svg width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M110 18L177 56V164L110 202L43 164V56L110 18Z" stroke="#27293B" stroke-width="8" stroke-linejoin="round" />
+  <text x="92" y="102" fill="#27293B" font-family="Arial, Helvetica, sans-serif" font-size="46" font-weight="800" text-anchor="middle">aws</text>
+  <circle cx="140" cy="90" r="13" fill="#27293B" />
+  <path d="M133.5 89.5L138.3 94.3L147.5 84.8" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M74 124C85 134 101 139 118 139C130 139 141 136 151 130" stroke="#27293B" stroke-width="4" stroke-linecap="round" />
+  <path d="M147 131L153 130L149 136" stroke="#27293B" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+  <text x="110" y="152" fill="#4B4E63" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="500" letter-spacing="0.3" text-anchor="middle">certified</text>
+</svg>

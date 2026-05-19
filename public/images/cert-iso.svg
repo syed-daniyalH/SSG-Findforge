@@ -1,0 +1,23 @@
+<svg width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <path id="iso-top-arc" d="M 36 112 A 74 74 0 0 1 184 112" />
+    <path id="iso-bottom-arc" d="M 184 108 A 74 74 0 0 1 36 108" />
+  </defs>
+  <circle cx="110" cy="110" r="90" stroke="#27293B" stroke-width="8" />
+  <circle cx="110" cy="110" r="55" fill="#27293B" />
+  <circle cx="110" cy="110" r="35" stroke="#FFFFFF" stroke-opacity="0.38" stroke-width="2" />
+  <ellipse cx="110" cy="110" rx="23" ry="35" stroke="#FFFFFF" stroke-opacity="0.24" stroke-width="2" />
+  <path d="M75 97H145" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="2" />
+  <path d="M72 110H148" stroke="#FFFFFF" stroke-opacity="0.28" stroke-width="2" />
+  <path d="M75 123H145" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="2" />
+  <circle cx="22" cy="110" r="5" fill="#27293B" />
+  <circle cx="198" cy="110" r="5" fill="#27293B" />
+  <text fill="#27293B" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" letter-spacing="6">
+    <textPath href="#iso-top-arc" startOffset="50%" text-anchor="middle">CERTIFIED</textPath>
+  </text>
+  <text fill="#27293B" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" letter-spacing="6">
+    <textPath href="#iso-bottom-arc" startOffset="50%" text-anchor="middle">HELPDESK</textPath>
+  </text>
+  <text x="110" y="110" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="middle">GLOBAL</text>
+  <text x="110" y="134" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="56" font-weight="900" letter-spacing="-1.5" text-anchor="middle">ISO</text>
+</svg>
