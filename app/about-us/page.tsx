@@ -6,7 +6,6 @@ import Values from "@/components/sections/value";
 import Certificates from "@/components/ui/certificates";
 import Clients from "@/components/ui/clients";
 import CTA from "@/components/ui/cta";
-import FormCTA from "@/components/ui/formCTA";
 import Icon from "@/components/ui/icon";
 import Impacts from "@/components/ui/impact";
 
@@ -125,17 +124,20 @@ export default function About() {
         <ClientTestimonial />
       </section>
 
-      <section id="cta" className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-10 my-10">
-        <FormCTA
-          variant="field"
-          heading="Get our stories delivered weekly"
-          description="We respond within 24 hours"
-          buttonText="Get Started"
-          fields={[{ type: "email", name: "email", placeholder: "Enter email" }]}
+      <section id="expert-cta" className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-10 my-10">
+        <CTA
+          title="Talk to one of our experts"
+          description="Looking to digitally transform your business? Get in touch to see how we can help you."
+          image="/images/ctaPerson.webp"
+          showBadge={true}
+          button1={{
+            text: "Book A Meeting",
+            href: "/contact",
+            icon: "/icons/calendar.svg",
+          }}
         />
       </section>
 
     </div>
   );
 }
-
