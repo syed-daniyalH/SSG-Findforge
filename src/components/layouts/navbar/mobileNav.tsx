@@ -250,7 +250,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navLinks }) => {
                 const hasChildren =
                   category.children && category.children.length > 0;
                 const href =
-                  buildMenuSectionHref(panel.slug, category.slug);
+                  category.href ?? buildMenuSectionHref(panel.slug, category.slug);
 
                 return (
                   <div
@@ -330,7 +330,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navLinks }) => {
               {panel.children.map((child) => (
                 <Link
                   key={child.id}
-                  href={`${panel.parentHref}/${child.slug}`}
+                  href={child.href ?? `${panel.parentHref}/${child.slug}`}
                   onClick={handleClose}
                   className="block px-3 py-2.5 rounded-lg text-white/60 hover:text-[#F05323] hover:bg-white/[0.04] transition-all text-sm"
                 >

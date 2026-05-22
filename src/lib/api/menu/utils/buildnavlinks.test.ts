@@ -58,8 +58,25 @@ describe("buildPrimaryNavLinks", () => {
       {
         name: "Resources",
         href: "/blog",
-        isMega: false,
-        children: undefined,
+        isMega: true,
+        children: expect.arrayContaining([
+          expect.objectContaining({
+            name: "Blog",
+            href: "/blog",
+          }),
+          expect.objectContaining({
+            name: "Author Page",
+            href: "/author/rosaria-vargas",
+          }),
+          expect.objectContaining({
+            name: "Case Study Listing Page",
+            href: "/casestudy",
+          }),
+          expect.objectContaining({
+            name: "Case Study Detailed Page",
+            href: "/casestudy/techflow",
+          }),
+        ]),
       },
     ]);
   });

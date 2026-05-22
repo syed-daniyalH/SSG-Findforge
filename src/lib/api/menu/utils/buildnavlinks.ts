@@ -30,6 +30,7 @@ export interface NavChild {
   id: number;
   name: string;
   slug: string;
+  href?: string;
   imageUrl?: string;
   icon?: string;
   children?: NavChild[];
@@ -69,6 +70,41 @@ const PRIMARY_NAV_ITEMS: PrimaryNavConfig[] = [
     name: "Resources",
     href: "/blog",
     slugs: ["blog", "blogs", "resource", "resources"],
+  },
+];
+
+const RESOURCE_NAV_CHILDREN: NavChild[] = [
+  {
+    id: 9001,
+    name: "Blog",
+    slug: "blog",
+    href: "/blog",
+    imageUrl: "/images/ai.webp",
+    icon: "/icons/blog.svg",
+  },
+  {
+    id: 9002,
+    name: "Author Page",
+    slug: "author-page",
+    href: "/author/rosaria-vargas",
+    imageUrl: "/images/author1.webp",
+    icon: "/icons/octicon_people.svg",
+  },
+  {
+    id: 9003,
+    name: "Case Study Listing Page",
+    slug: "case-study-listing-page",
+    href: "/casestudy",
+    imageUrl: "/images/design.webp",
+    icon: "/icons/deliverables.svg",
+  },
+  {
+    id: 9004,
+    name: "Case Study Detailed Page",
+    slug: "case-study-detailed-page",
+    href: "/casestudy/techflow",
+    imageUrl: "/images/story1.webp",
+    icon: "/icons/rectangle-code.svg",
   },
 ];
 
@@ -156,12 +192,17 @@ function findMatchingNavLink(
 export function buildPrimaryNavLinks(links: Navlink[]): Navlink[] {
   return PRIMARY_NAV_ITEMS.map((item) => {
     const matchedLink = findMatchingNavLink(links, item.slugs);
+    const resourceChildren =
+      item.name === "Resources" ? RESOURCE_NAV_CHILDREN : undefined;
 
     return {
       name: item.name,
       href: matchedLink?.href ?? item.href,
-      isMega: Boolean(matchedLink?.isMega && matchedLink.children?.length),
-      children: matchedLink?.children,
+      isMega: Boolean(
+        resourceChildren?.length ||
+          (matchedLink?.isMega && matchedLink.children?.length),
+      ),
+      children: resourceChildren ?? matchedLink?.children,
     };
   });
 }

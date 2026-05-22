@@ -204,6 +204,7 @@ interface MegaMenuProps {
 
 const MegaMenu = ({ data, parentSlug }: MegaMenuProps) => {
   const [activeItem, setActiveItem] = useState<NavChild>(data[0]);
+  const isResourcesMenu = parentSlug === "blog" || parentSlug === "resources";
   const parentLabel =
     parentSlug === "services"
       ? "Services"
@@ -215,6 +216,39 @@ const MegaMenu = ({ data, parentSlug }: MegaMenuProps) => {
   }, [data]);
 
   if (!data || data.length === 0) return null;
+
+  if (isResourcesMenu) {
+    return (
+      <div className="absolute left-0 right-0 invisible top-full pt-4 z-50 opacity-0 pointer-events-none group-hover:pointer-events-auto group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out">
+        <div className="mx-auto grid max-w-[760px] grid-cols-1 gap-3 rounded-[24px] border border-gray-100 bg-white p-4 shadow-xl sm:grid-cols-2">
+          {data.map((item) => (
+            <Link
+              key={item.id}
+              href={item.href || `/${item.slug}`}
+              className="group/resource flex items-center gap-4 rounded-[16px] border border-transparent p-4 transition-all hover:border-primary/20 hover:bg-[#F8FAFC]"
+            >
+              <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-[12px] bg-gray-100">
+                <Image
+                  src={item.imageUrl || "/images/ai.webp"}
+                  alt={item.name}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover/resource:scale-105"
+                />
+              </div>
+              <div>
+                <h4 className="text-[15px] font-bold text-black group-hover/resource:text-primary">
+                  {item.name}
+                </h4>
+                <p className="mt-1 font-poppins text-[12px] leading-5 text-gray-500">
+                  Open {item.name.toLowerCase()}
+                </p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="absolute left-0 right-0 invisible top-full pt-4 z-50 opacity-0 pointer-events-none group-hover:pointer-events-auto group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out">
