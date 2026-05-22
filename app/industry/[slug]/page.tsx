@@ -39,9 +39,11 @@ export default async function DetailedIndustry({
     title: apiIndustry?.title ?? localIndustry?.title ?? "Industry",
     description: apiIndustry?.description ?? localIndustry?.description ?? "",
     image:
-      apiIndustry?.imageUrl ??
-      localIndustry?.image ??
-      "/images/industry-default.webp",
+      slug === "healthcare"
+        ? "/images/doctor-banner-4k.webp"
+        : apiIndustry?.imageUrl ??
+          localIndustry?.image ??
+          "/images/industry-default.webp",
     icon: localIndustry?.icon ?? "/icons/business.svg",
   };
 
@@ -55,6 +57,10 @@ export default async function DetailedIndustry({
     ctaText: "Talk to an Expert",
     ctaLink: "/contact",
   };
+  const pageHeroSlide: HeroSlide =
+    slug === "healthcare"
+      ? { ...heroSlide, image: "/images/doctor-banner-4k.webp" }
+      : heroSlide;
 
   const mapSolutionItemsToCards = (
     items: SoftwareSolutionItem[],
@@ -207,7 +213,7 @@ export default async function DetailedIndustry({
       >
         <Hero
           badge={{
-            text: `Industry > ${heroSlide.title}`,
+            text: `Industry > ${pageHeroSlide.title}`,
             size: "medium",
             radius: "full",
             icon: pageIndustry.icon,
@@ -215,12 +221,12 @@ export default async function DetailedIndustry({
             className:
               "bg-white text-[#374151] border border-[#FFFFFF99] font-semibold font-poppins",
           }}
-          title={`Custom ${heroSlide.title} Software Development`}
-          description={heroSlide.description}
+          title={`Custom ${pageHeroSlide.title} Software Development`}
+          description={pageHeroSlide.description}
           banner={true}
           image={{
-            src: heroSlide.image,
-            alt: heroSlide.title,
+            src: pageHeroSlide.image,
+            alt: pageHeroSlide.title,
           }}
         />
       </section>
