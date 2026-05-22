@@ -45,7 +45,7 @@ const stories = [
 
 const FeaturedStories = () => {
     return (
-        <section className="py-6">
+        <section className="py-8">
             <Swiper
                 modules={[Autoplay, Pagination]}
                 spaceBetween={24}
@@ -53,15 +53,16 @@ const FeaturedStories = () => {
                 loop={true}
                 autoplay={{ delay: 5000 }}
                 pagination={{ clickable: true }}
-                className="featured-swiper pb-18!"
+                className="featured-swiper pb-16!"
             >
                 {stories.map((story) => (
                     <SwiperSlide key={story.id}>
-                        <div className="relative group">
+                        <div className="relative px-5 py-7 sm:px-8 md:px-10">
 
                             {/* Stacked Card Decorative Backgrounds */}
-                            <div className="absolute inset-x-0 -bottom-3 top-3 bg-black rounded-[18px] md:rounded-[26px] -z-10 opacity-100" />
-                            <div className="absolute inset-x-0 -bottom-6 top-6 bg-grad-primary rounded-[18px] md:rounded-[26px] -z-20 opacity-100" />
+                            <div className="absolute left-3 right-3 top-[42px] bottom-[42px] rounded-[18px] bg-black md:left-5 md:right-5 md:rounded-[22px]" />
+                            <div className="absolute left-0 top-[54px] h-[78%] w-[64px] rounded-l-[16px] rounded-r-[10px] bg-[#d00512] md:w-[82px]" />
+                            <div className="absolute right-0 top-[54px] h-[78%] w-[64px] rounded-l-[10px] rounded-r-[16px] bg-[#d00512] md:w-[82px]" />
 
 
                             {/* Main Content Card */}
@@ -69,29 +70,28 @@ const FeaturedStories = () => {
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6 }}
-                                className="bg-grad-primary rounded-[18px] md:rounded-[26px] overflow-hidden grid lg:grid-cols-2 items-center"
+                                className="relative z-10 grid min-h-[360px] items-center overflow-hidden rounded-[18px] bg-[#b5020f] shadow-[0_18px_35px_rgba(20,0,0,0.18)] md:rounded-[22px] lg:grid-cols-[1.02fr_1fr]"
                             >
                                 {/* Left Side: Text Content */}
-                                <div className="p-6 md:p-10 lg:p-12 space-y-5">
+                                <div className="space-y-6 p-8 md:p-10 lg:py-11 lg:pl-11 lg:pr-8">
                                     <motion.h2
                                         initial={{ opacity: 0, x: -20 }}
                                         animate={{ opacity: 1, x: 0 }}
-                                        className="text-white text-2xl md:text-3xl lg:text-[34px] font-bold leading-tight italic"
-                                        style={{ letterSpacing: '-0.5px' }}
+                                        className="max-w-[370px] text-[28px] font-bold leading-[1.2] text-white md:text-[34px] lg:text-[36px]"
                                     >
                                         {story.title}
                                     </motion.h2>
 
-                                    <p className="text-white/80 text-sm md:text-base leading-relaxed max-w-lg font-poppins">
+                                    <p className="max-w-[440px] font-poppins text-sm leading-6 text-white md:text-base md:leading-7">
                                         {story.description}
                                     </p>
 
                                     {/* Tags */}
-                                    <div className="flex flex-wrap gap-2 md:gap-3">
+                                    <div className="flex flex-wrap gap-2">
                                         {story.tags.map((tag) => (
                                             <span
                                                 key={tag}
-                                                className="px-3 md:px-4 py-1 md:py-1.5 border border-white/30 rounded-full text-white text-xs md:text-sm hover:bg-white/10 transition font-poppins"
+                                                className="rounded-full border border-white px-3 py-1 font-poppins text-[11px] leading-none text-white transition hover:bg-white/10"
                                             >
                                                 {tag}
                                             </span>
@@ -102,26 +102,25 @@ const FeaturedStories = () => {
                                     <motion.button
                                         whileHover={{ scale: 1.05 }}
                                         whileTap={{ scale: 0.95 }}
-                                        className="flex items-center gap-2 bg-white text-primary px-6 py-3 rounded-full font-semibold text-sm md:text-base transition shadow-xl font-poppins"
+                                        className="mt-5 flex h-11 w-fit items-center gap-3 rounded-full bg-white px-7 font-poppins text-sm font-semibold text-primary shadow-xl transition"
                                     >
                                         View Project
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                                             <line x1="7" y1="17" x2="17" y2="7"></line>
                                             <polyline points="7 7 17 7 17 17"></polyline>
                                         </svg>
                                     </motion.button>
                                 </div>
 
-                                {/* Right Side: Two Consistent Overlapping Images */}
-                                <div className="relative h-70 sm:h-80 lg:h-[360px] flex items-center justify-center">
+                                {/* Right Side Image */}
+                                <div className="relative flex h-[260px] items-center justify-center px-8 pb-8 lg:h-full lg:px-10 lg:py-10 lg:pl-4">
 
-                                    {/* Background Image (Back Layer) */}
-                                    <div className="absolute   w-[65%] h-[70%] rounded-[20px] overflow-hidden shadow-2xl z-10">
+                                    <div className="relative z-10 h-full w-full overflow-hidden rounded-[14px] md:rounded-[16px] lg:h-[305px]">
                                         <Image
                                             src={story.images}
-                                            alt={`${story.title} image 1`}
+                                            alt={`${story.title} image`}
                                             fill
-                                            sizes="(max-width: 768px) 60vw, 35vw"
+                                            sizes="(max-width: 768px) 85vw, 40vw"
                                             className="object-cover"
                                         />
                                     </div>
