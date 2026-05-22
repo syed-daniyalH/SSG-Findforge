@@ -195,7 +195,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { NavChild } from "@/lib/api/menu/utils/buildnavlinks";
 import Icon from "@/components/ui/icon";
-import { buildMenuChildHref } from "@/lib/routes";
+import { buildMenuChildHref, buildMenuSectionHref } from "@/lib/routes";
 
 interface MegaMenuProps {
   data: NavChild[];
@@ -261,29 +261,34 @@ const MegaMenu = ({ data, parentSlug }: MegaMenuProps) => {
           </Link>
 
           <div className="flex flex-col gap-2">
-            {data.map((item) => (
-              <div
-                key={item.id}
-                onMouseEnter={() => setActiveItem(item)}
-                className={`flex items-center gap-4 px-4 py-4 rounded-xl cursor-pointer transition-all duration-300 border-2
-                  ${activeItem.id === item.id 
-                    ? "border-dashed border-[#BD0917] bg-white shadow-sm" 
-                    : "border-transparent hover:bg-gray-50"}`}
-              >
-                {/* Icon Box */}
-                <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 
-                  ${activeItem.id === item.id ? "bg-[#BD0917]/5" : "bg-gray-100"}`}>
-                  <Icon 
-                    src={item.icon || "/icons/facebook.svg"} 
-                    iconSize={20} 
-                    className={activeItem.id === item.id ? "text-[#BD0917]" : "text-gray-400"} 
-                  />
-                </div>
-                <span className={`text-[15px] font-bold ${activeItem.id === item.id ? "text-black" : "text-gray-600"}`}>
-                  {item.name}
-                </span>
-              </div>
-            ))}
+            {data.map((item) => {
+              const href = item.href ?? buildMenuSectionHref(parentSlug, item.slug);
+
+              return (
+                <Link
+                  key={item.id}
+                  href={href}
+                  onMouseEnter={() => setActiveItem(item)}
+                  className={`flex items-center gap-4 px-4 py-4 rounded-xl cursor-pointer transition-all duration-300 border-2
+                    ${activeItem.id === item.id 
+                      ? "border-dashed border-[#BD0917] bg-white shadow-sm" 
+                      : "border-transparent hover:bg-gray-50"}`}
+                >
+                  {/* Icon Box */}
+                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 
+                    ${activeItem.id === item.id ? "bg-[#BD0917]/5" : "bg-gray-100"}`}>
+                    <Icon 
+                      src={item.icon || "/icons/facebook.svg"} 
+                      iconSize={20} 
+                      className={activeItem.id === item.id ? "text-[#BD0917]" : "text-gray-400"} 
+                    />
+                  </div>
+                  <span className={`text-[15px] font-bold ${activeItem.id === item.id ? "text-black" : "text-gray-600"}`}>
+                    {item.name}
+                  </span>
+                </Link>
+              );
+            })}
           </div>
         </div>
 
