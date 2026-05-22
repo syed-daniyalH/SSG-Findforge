@@ -98,15 +98,15 @@ export default function CaseStudyIndexClient({
       </div>
 
       <div className="mt-16">
-        <div className="relative min-h-[218px] overflow-hidden rounded-[14px] bg-black px-8 py-10 text-white md:px-10">
-          <div className="relative z-10 max-w-[380px]">
+        <div className="relative grid min-h-[218px] overflow-hidden rounded-[14px] bg-black text-white md:grid-cols-[1fr_330px]">
+          <div className="relative z-10 px-8 py-10 md:px-10">
             <div className="mb-5 flex h-8 w-8 items-center justify-center rounded-full border border-white/20 bg-white/10">
               <Image src="/icons/monitor.svg" alt="" width={16} height={16} className="brightness-0 invert" />
             </div>
-            <h2 className="text-[24px] font-bold leading-tight text-white">
+            <h2 className="max-w-[310px] text-[24px] font-bold leading-tight text-white">
               Ready to Start Your Project?
             </h2>
-            <p className="mt-4 max-w-[330px] font-poppins text-[12px] leading-5 text-white/75">
+            <p className="mt-4 max-w-[285px] font-poppins text-[12px] leading-5 text-white/75">
               Let&apos;s discuss how technology can bring your idea to life.
             </p>
             <Link
@@ -116,14 +116,16 @@ export default function CaseStudyIndexClient({
               Start a Conversation
             </Link>
           </div>
-          <Image
-            src="/images/ctaPerson.webp"
-            alt=""
-            width={260}
-            height={260}
-            className="absolute bottom-0 right-4 hidden md:block"
-          />
-          <div className="absolute inset-y-0 right-0 w-1/2 bg-grad-hero opacity-40" />
+          <div className="relative hidden overflow-hidden bg-grad-hero md:block">
+            <Image
+              src="/images/ctaPerson.webp"
+              alt=""
+              width={270}
+              height={270}
+              className="absolute bottom-0 right-5 z-10"
+            />
+            <div className="absolute inset-0 bg-black/10" />
+          </div>
         </div>
       </div>
     </section>
