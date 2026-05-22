@@ -71,8 +71,55 @@ export default async function DetailedIndustry({
     ? mapSolutionItemsToCards(apiIndustry.templateData.softwareSolutions.items)
     : null;
 
-  const firstRowCards = solutionCards?.slice(0, 2) ?? firstRowData;
-  const secondRowCards = solutionCards?.slice(2) ?? secondRowData;
+  const healthcareValueCards: InfoCardData[] = [
+    {
+      number: 1,
+      name: "Deliver better patient service",
+      description:
+        "Enable a seamless customer experience for your patients, allowing them to access their medical information anytime and anywhere with advanced electronic health records software. You'll save time and resources through powerful",
+      layout: "horizontal",
+      variant: "default",
+    },
+    {
+      number: 2,
+      name: "Manage Medical Data",
+      description:
+        "Enable a seamless customer experience for your patients, allowing them to access their medical information anytime and anywhere with advanced electronic health records software. You'll save time and resources through powerful",
+      layout: "horizontal",
+      variant: "gradient",
+    },
+    {
+      number: 3,
+      name: "Automate to Improve Patient Care",
+      description:
+        "Enable a seamless customer experience for your patients, allowing them to access their medical information anytime and anywhere with advanced electronic health records software. You'll save time and resources through powerful",
+      layout: "vertical",
+      variant: "default",
+    },
+    {
+      number: 4,
+      name: "Optimise costs and increase efficiency",
+      description:
+        "Enable a seamless customer experience for your patients, allowing them to access their medical information anytime and anywhere with advanced electronic health records software. You'll save time and resources through powerful",
+      layout: "vertical",
+      variant: "default",
+    },
+    {
+      number: 5,
+      name: "Performance Reporting",
+      description:
+        "Enable a seamless customer experience for your patients, allowing them to access their medical information anytime and anywhere with advanced electronic health records software. You'll save time and resources through powerful",
+      layout: "vertical",
+      variant: "default",
+    },
+  ];
+
+  const valueCards =
+    slug === "healthcare"
+      ? healthcareValueCards
+      : solutionCards ?? [...firstRowData, ...secondRowData];
+  const firstRowCards = valueCards.slice(0, 2);
+  const secondRowCards = valueCards.slice(2);
   const ctaData = apiIndustry?.templateData?.cta;
   const technologyExpertise = apiIndustry?.templateData?.technologyExpertise;
   const technologyCards: TechFeature[] =
