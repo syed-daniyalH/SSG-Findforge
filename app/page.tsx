@@ -12,14 +12,15 @@ import { whyChooseData } from "@/content/whychoose.data";
 import Blogs from "@/components/sections/blogs";
 
 export default function Home() {
+  const landingContainer = "max-w-[1260px] mx-auto px-5 sm:px-6 lg:px-8";
   const sectionClass =
-    "max-w-[1120px] mx-auto px-5 sm:px-6 lg:px-8 my-8 md:my-10";
+    `${landingContainer} my-8 md:my-10`;
 
   return (
     <div className="home-page bg-[#F8FAFC]">
       <section
         id="hero"
-        className="max-w-[1120px] mx-auto px-5 sm:px-6 lg:px-8 mt-6 mb-8 pt-20 md:mb-10"
+        className={`${landingContainer} mt-6 mb-8 pt-20 md:mb-10`}
       >
         <Hero
           badge={{
@@ -72,12 +73,12 @@ export default function Home() {
 
       <section
         id="industries"
-        className="max-w-[1120px] mx-auto px-5 sm:px-6 lg:px-8 mt-8 mb-0 md:mt-10"
+        className={`${landingContainer} mt-8 mb-0 md:mt-10`}
       >
         <Industries />
       </section>
 
-      <section id="chooseUs" className="max-w-[1120px] mx-auto px-5 sm:px-6 lg:px-8 mt-5 mb-8 md:mb-10">
+      <section id="chooseUs" className={`${landingContainer} mt-5 mb-8 md:mb-10`}>
         <WhyChooseUs data={whyChooseData} className="pb-10"/>
       </section>
 
