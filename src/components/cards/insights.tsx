@@ -37,6 +37,7 @@ const Insights = ({
           {/* Icon */}
           {icon && (
             <Button
+              href={slug ? `/blog/${slug}` : undefined}
               showIcon
               icon={icon}
               iconRotate={45}
