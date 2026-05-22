@@ -68,15 +68,15 @@ export default function Home() {
 
 
 
-      <section id="chooseUs" className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-30 my-10">
-        <WhyChooseUs data={whyChooseData}/>
-      </section>
-
       <section
         id="industries"
         className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-30 my-10"
       >
         <Industries />
+      </section>
+
+      <section id="chooseUs" className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-30 my-10">
+        <WhyChooseUs data={whyChooseData}/>
       </section>
 
       <section
