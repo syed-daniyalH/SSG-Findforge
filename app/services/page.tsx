@@ -58,7 +58,7 @@ export default async function Service() {
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-30 my-10">
+      <section className="max-w-[1120px] mx-auto px-5 sm:px-6 lg:px-8 my-10">
         <Clients />
       </section>
 
@@ -108,9 +108,9 @@ export default async function Service() {
             md:flex-row md:justify-between md:items-end pb-10
             flex-col gap-5 items-start"
         >
-          <div className="w-full lg:w-[70%] xl:w-1/2">
+          <div className="w-full max-w-[720px]">
             <h2 className="text-secondary">Our Key Solutions</h2>
-            <p className="text-neutral-dark pt-2 ">
+            <p className="text-neutral-dark pt-3 font-poppins text-sm leading-6">
               From ensuring seamless day-to-day operations to protecting against
               cyber threats, our services help organisations navigate the
               complexities of today&apos;s landscape.
@@ -118,7 +118,7 @@ export default async function Service() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
           {services.map((item) => {
             return (
               <KeySolutionCard

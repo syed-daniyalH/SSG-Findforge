@@ -63,33 +63,35 @@ export const KeySolutionCardData: KeySolutionCardProps[] = [
 const KeySolutionCard = (data: KeySolutionCardProps) => {
   
   return (
-    <>
-      <div className="flex w-full lg:max-w-150.75 bg-[#F9FAFB] border border-[#E2E8F0] rounded-2xl">
-        <div className="flex flex-col mx-auto justify-center pl-6 pr-1 gap-2">
-          <h3 className="text-primary">{data.name}</h3>
-          <p className="">{data.description}</p>
+    <div className="relative flex min-h-[168px] w-full overflow-hidden rounded-[12px] border border-[#E2E8F0] bg-[#F9FAFB]">
+        <div className="relative z-10 flex w-[56%] flex-col justify-center gap-2 px-6 py-6">
+          <h3 className="text-[15px] font-bold leading-5 text-primary">{data.name}</h3>
+          <p className="line-clamp-3 font-poppins text-[12px] leading-5 text-slate-gray">
+            {data.description}
+          </p>
           <Button
             text="View Service"
             radius="full"
-            size="large"
+            size="extraSmall"
             href={`/services/${data.slug}`}
             showIcon
             icon="/icons/primaryArrow.svg"
-            iconMode="hover"
-            className="w-fit border border-[#E5E5E5] mt-4"
+            iconMode="static1"
+            className="mt-3 h-8! w-fit border border-[#E5E5E5] bg-white px-4! py-0! text-[11px] text-black"
           />
         </div>
-        <div className="relative min-w-50.75 h-auto overflow-hidden">
+        <div className="absolute inset-y-0 right-0 w-[52%] overflow-hidden">
           <Image
             src={data.image}
-            alt="AI"
+            alt={data.name}
             fill
             priority
-            className="object-cover rounded-r-2xl"
+            sizes="(max-width: 1024px) 50vw, 300px"
+            className="object-cover object-center"
           />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#F9FAFB] via-[#F9FAFB]/55 to-transparent" />
         </div>
-      </div>
-    </>
+    </div>
   );
 };
 
