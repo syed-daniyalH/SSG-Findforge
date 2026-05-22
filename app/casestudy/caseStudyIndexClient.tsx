@@ -1,12 +1,11 @@
 "use client";
 
 import CaseStudyCard from "@/components/cards/casestudy";
-import Badge from "@/components/ui/badge";
 import Button from "@/components/ui/button";
-import CTA from "@/components/ui/cta";
 import { useCaseStudyFilters } from "@/lib/useCaseStudyFilters";
 import type { CaseStudyCardProps } from "@/types/casestudy.type";
 import Image from "next/image";
+import Link from "next/link";
 
 interface CaseStudyIndexClientProps {
   data: CaseStudyCardProps[];
@@ -30,26 +29,23 @@ export default function CaseStudyIndexClient({
   return (
     <section
       id="casestudy"
-      className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-30 my-10"
+      className="mx-auto max-w-[760px] px-5 py-24 sm:px-6 lg:px-8"
     >
-      <div className="flex flex-col items-center gap-2 pt-20 pb-10">
-        <Badge
-          text="Our Work"
-          size="large"
-          radius="full"
-          icon="/icons/stars.svg"
-          showIcon={true}
-          className="bg-white text-primary font-semibold font-poppins border border-[#E0E7FF]"
-        />
-        <h1 className="text-primary">Case Studies</h1>
-        <p className="text-[#333333] px-10 text-center w-full md:w-[90%] xl:w-[70%]">
-          Explore how Techionik turns ideas into shipped products, production
-          systems, and measurable outcomes.
+      <div className="flex flex-col items-center pb-12 text-center">
+        <p className="font-poppins text-[11px] font-semibold uppercase text-primary">
+          Our Work
+        </p>
+        <h1 className="pt-3 text-[36px] font-bold leading-tight text-primary md:text-[46px]">
+          Case Studies
+        </h1>
+        <p className="max-w-[520px] pt-4 font-poppins text-[13px] leading-6 text-neutral-dark">
+          Explore our portfolio of past projects, design insights, and
+          development solutions across global brands and digital products.
         </p>
       </div>
 
-      <div className="space-y-4 mb-10">
-        <div className="flex gap-2 flex-wrap mb-8">
+      <div className="mb-8 flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-wrap gap-2">
           {categories.map((category) => {
             const isActive = activeCategory === category;
 
@@ -58,10 +54,11 @@ export default function CaseStudyIndexClient({
                 key={category}
                 text={category}
                 radius="full"
+                size="extraSmall"
                 onClick={() => setActiveCategory(category)}
-                className={`py-2 transition ${
+                className={`h-7! px-3! py-0! font-poppins text-[10px] transition ${
                   isActive
-                    ? "bg-grad-primary text-white"
+                    ? "bg-primary text-white"
                     : "bg-[#F1F5F9] text-secondary"
                 }`}
               />
@@ -69,7 +66,7 @@ export default function CaseStudyIndexClient({
           })}
         </div>
 
-        <div className="relative max-w-62.5">
+        <div className="relative w-full md:max-w-[190px]">
           <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[#94A3B8]">
             <Image
               src="/icons/searchgray.svg"
@@ -83,12 +80,12 @@ export default function CaseStudyIndexClient({
             value={searchQuery}
             onChange={(event) => setSearchQuery(event.target.value)}
             placeholder="Search projects..."
-            className="w-full pl-10 pr-4 py-2 border border-[#E2E8F0] rounded-full placeholder:text-[#94A3B8] outline-none"
+            className="h-8 w-full rounded-full border border-[#E2E8F0] py-2 pl-9 pr-4 font-poppins text-[11px] outline-none placeholder:text-[#94A3B8]"
           />
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 gap-7 md:grid-cols-2">
         {filteredData.length > 0 ? (
           filteredData.map((item, index) => (
             <CaseStudyCard key={`${item.slug}-${index}`} {...item} />
@@ -100,21 +97,34 @@ export default function CaseStudyIndexClient({
         )}
       </div>
 
-      <div
-        id="cta"
-        className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-10 my-10"
-      >
-        <CTA
-          title="Talk to one of our experts"
-          description="Looking to digitally transform your business? Get in touch to see how we can help you."
-          image="/images/ctaPerson.webp"
-          showBadge={true}
-          button1={{
-            text: "Book A Meeting",
-            href: "/contact-us",
-            icon: "/icons/calendar.svg",
-          }}
-        />
+      <div className="mt-16">
+        <div className="relative min-h-[218px] overflow-hidden rounded-[14px] bg-black px-8 py-10 text-white md:px-10">
+          <div className="relative z-10 max-w-[380px]">
+            <div className="mb-5 flex h-8 w-8 items-center justify-center rounded-full border border-white/20 bg-white/10">
+              <Image src="/icons/monitor.svg" alt="" width={16} height={16} className="brightness-0 invert" />
+            </div>
+            <h2 className="text-[24px] font-bold leading-tight text-white">
+              Ready to Start Your Project?
+            </h2>
+            <p className="mt-4 max-w-[330px] font-poppins text-[12px] leading-5 text-white/75">
+              Let&apos;s discuss how technology can bring your idea to life.
+            </p>
+            <Link
+              href="/contact-us"
+              className="mt-6 inline-flex h-10 items-center rounded-full bg-white px-5 font-poppins text-[12px] font-semibold text-primary"
+            >
+              Start a Conversation
+            </Link>
+          </div>
+          <Image
+            src="/images/ctaPerson.webp"
+            alt=""
+            width={260}
+            height={260}
+            className="absolute bottom-0 right-4 hidden md:block"
+          />
+          <div className="absolute inset-y-0 right-0 w-1/2 bg-grad-hero opacity-40" />
+        </div>
       </div>
     </section>
   );

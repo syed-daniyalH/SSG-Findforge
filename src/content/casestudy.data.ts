@@ -3,13 +3,13 @@ import { CaseStudyCardProps } from "@/types/casestudy.type";
 export const caseStudyCardsData: CaseStudyCardProps[] = [
   {
     image: "/images/brand.webp",
-    category: "Branding",
-    company: "TechFlow Inc.",
+    category: "Website",
+    company: "Apple Inc.",
     title: "Revolutionary AI Platform Design",
     description:
-      "A complete brand redesign and digital platform for a cutting-edge AI technology company, focusing on user experience and modern aesthetics.",
+      "A complete design and digital platform for a cutting-edge technology company, focused on user experience and modern aesthetics.",
     slug: "/casestudy/techflow",
-    subcategories: ["UI/UX", "Branding", "Web Design"],
+    subcategories: ["UI/UX", "Design", "Development"],
     stats: [
       { label: "Engagement", value: "+245%" },
       { label: "Conversion", value: "+180%" },
@@ -17,14 +17,14 @@ export const caseStudyCardsData: CaseStudyCardProps[] = [
     ],
   },
   {
-    image: "/images/design.webp",
-    category: "Mobile App",
-    company: "NextGen Labs",
-    title: "Enterprise SaaS Dashboard System",
+    image: "/images/ecom.webp",
+    category: "Ecommerce",
+    company: "Dior",
+    title: "Revolutionary AI Platform",
     description:
-      "Built a scalable SaaS dashboard with real-time analytics, user management, and advanced reporting features.",
+      "Crafting a premium digital brand experience with refined visuals, smooth shopping flows, and elevated product storytelling.",
     slug: "/casestudy/nextgen",
-    subcategories: ["Frontend", "Backend", "SaaS"],
+    subcategories: ["UI/UX", "Design", "Development"],
     stats: [
       { label: "Users", value: "+12K" },
       { label: "Performance", value: "99.9%" },
@@ -32,14 +32,14 @@ export const caseStudyCardsData: CaseStudyCardProps[] = [
     ],
   },
   {
-    image: "/images/design1.webp",
-    category: "Web Design",
-    company: "PixelCraft Studio",
-    title: "Mobile Banking App Redesign",
+    image: "/images/app.webp",
+    category: "Website",
+    company: "Health App",
+    title: "Health App Management",
     description:
-      "Redesigned a banking app focusing on usability, accessibility, and modern financial UX patterns.",
+      "A healthcare analytics and reporting experience built for faster decisions, clear patient data, and secure operations.",
     slug: "/casestudy/pixelcraft",
-    subcategories: ["Mobile", "UI/UX", "Fintech"],
+    subcategories: ["UI/UX", "Design", "Development"],
     stats: [
       { label: "Engagement", value: "+190%" },
       { label: "Downloads", value: "+65K" },
@@ -47,14 +47,14 @@ export const caseStudyCardsData: CaseStudyCardProps[] = [
     ],
   },
   {
-    image: "/images/ecom.webp",
-    category: "E-commerce",
-    company: "ShopSphere",
-    title: "High-Converting E-commerce Platform",
+    image: "/images/design.webp",
+    category: "Web Design",
+    company: "Medical Design",
+    title: "Healthcare Appointment System",
     description:
-      "Designed and developed a conversion-optimized e-commerce platform with seamless checkout experience.",
+      "Designed a digital appointment workflow with simpler scheduling, patient management, and responsive interfaces.",
     slug: "/casestudy/shopsphere",
-    subcategories: ["E-commerce", "UI/UX", "Conversion"],
+    subcategories: ["UI/UX", "Design", "Development"],
     stats: [
       { label: "Sales", value: "+320%" },
       { label: "Conversion", value: "+210%" },
@@ -63,13 +63,13 @@ export const caseStudyCardsData: CaseStudyCardProps[] = [
   },
   {
     image: "/images/ecom1.webp",
-    category: "Web Design",
-    company: "CloudNova",
-    title: "Cloud Infrastructure Management Tool",
+    category: "Ecommerce",
+    company: "Shopify",
+    title: "Digital Asset Marketplace",
     description:
-      "A powerful cloud management dashboard for monitoring infrastructure and optimizing resources.",
+      "A product marketplace built for smooth catalog browsing, fast checkout, and scalable storefront management.",
     slug: "/casestudy/cloudnova",
-    subcategories: ["DevOps", "Cloud", "SaaS"],
+    subcategories: ["UI/UX", "Design", "Development"],
     stats: [
       { label: "Efficiency", value: "+300%" },
       { label: "Uptime", value: "99.99%" },
@@ -77,14 +77,14 @@ export const caseStudyCardsData: CaseStudyCardProps[] = [
     ],
   },
   {
-    image: "/images/app.webp",
-    category: "Education",
-    company: "Learnify",
-    title: "E-learning Platform Experience Design",
+    image: "/images/design1.webp",
+    category: "Workspace",
+    company: "Collaboration Workspace",
+    title: "Collaborative Workspace",
     description:
-      "Created an interactive learning platform for students with gamification and progress tracking.",
+      "Created a collaborative workspace experience for planning, documentation, and team productivity.",
     slug: "/casestudy/learnify",
-    subcategories: ["EdTech", "UI/UX", "Web App"],
+    subcategories: ["UI/UX", "Design", "Development"],
     stats: [
       { label: "Engagement", value: "+275%" },
       { label: "Completion", value: "82%" },

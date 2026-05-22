@@ -185,9 +185,7 @@
 // export default CaseStudyCard;
 
 import Image from "next/image";
-import Badge from "../ui/badge";
 import Link from "next/link";
-import Button from "../ui/button";
 import { CaseStudyCardProps } from "@/types/casestudy.type";
 
 const CaseStudyCard = ({
@@ -201,11 +199,11 @@ const CaseStudyCard = ({
   stats = [],
 }: CaseStudyCardProps) => {
   return (
-    <section className="">
-      <div className="card border-2 border-[#E2E8F0] rounded-2xl overflow-hidden flex flex-col h-full">
+    <Link href={slug} className="block h-full">
+      <article className="flex h-full flex-col overflow-hidden rounded-[8px] border border-[#E2E8F0] bg-white transition hover:-translate-y-0.5 hover:shadow-md">
         
         {/* IMAGE */}
-        <div className="relative w-full h-100 overflow-hidden border-b-2 border-[#E2E8F0]">
+        <div className="relative aspect-[1.45] w-full overflow-hidden border-b border-[#E2E8F0]">
           <Image
             src={image}
             alt={company || title}
@@ -216,51 +214,41 @@ const CaseStudyCard = ({
         </div>
 
         {/* CONTENT */}
-        <div className="px-8 py-8 flex flex-col grow">
+        <div className="flex grow flex-col px-5 py-5">
 
           {/* HEADER */}
-          <div className="flex justify-between items-center mb-8">
-            <Badge
-              text={category}
-              radius="full"
-              className="bg-[#F1F5F9] text-neutral-dark px-3 py-1"
-            />
-
-            <Link href={slug}>
-              <Button
-                showIcon={true}
-                icon="/icons/primaryArrow.svg"
-                size="small"
-                iconMode="static1"
-                radius="full"
-              />
-            </Link>
+          <div className="mb-4 flex items-center justify-between">
+            <span className="font-poppins text-[10px] font-semibold uppercase tracking-wide text-primary">
+              {category}
+            </span>
+            <span className="flex h-7 w-7 items-center justify-center rounded-full border border-[#E2E8F0]">
+              <Image src="/icons/primaryArrow.svg" alt="" width={12} height={12} />
+            </span>
           </div>
 
           {/* TEXT */}
-          <div className="mb-8 space-y-4 grow">
+          <div className="mb-5 grow">
             {company && (
-              <p className="text-neutral-dark uppercase">{company}</p>
+              <p className="font-poppins text-[10px] font-medium uppercase text-neutral-dark">{company}</p>
             )}
 
-            <h3>{title}</h3>
+            <h3 className="pt-2 text-[17px] font-bold leading-6 text-secondary">{title}</h3>
 
-            <p className="text-neutral-dark line-clamp-3">
+            <p className="line-clamp-3 pt-3 font-poppins text-[12px] leading-5 text-neutral-dark">
               {description}
             </p>
           </div>
 
           {/* SUBCATEGORIES */}
           {subcategories.length > 0 && (
-            <div className="flex flex-wrap gap-2 mb-8">
+            <div className="mb-5 flex flex-wrap gap-2">
               {subcategories.map((sub, index) => (
-                <Badge
+                <span
                   key={index}
-                  text={sub}
-                  radius="full"
-                  size="medium"
-                  className="text-neutral-dark border border-[#E2E8F0]"
-                />
+                  className="rounded-full border border-[#E2E8F0] px-2.5 py-1 font-poppins text-[10px] text-neutral-dark"
+                >
+                  {sub}
+                </span>
               ))}
             </div>
           )}
@@ -268,23 +256,23 @@ const CaseStudyCard = ({
           {/* STATS */}
           {stats.length > 0 && (
             <div
-              className="grid border-t-2 pt-4 border-t-[#E2E8F0] gap-4"
+              className="grid gap-4 border-t border-t-[#E2E8F0] pt-4"
               style={{
                 gridTemplateColumns: `repeat(${stats.length}, minmax(0, 1fr))`,
               }}
             >
               {stats.map((stat, index) => (
                 <div key={index}>
-                  <p className="font-medium">{stat.value}</p>
-                  <p className="text-neutral-dark">{stat.label}</p>
+                  <p className="font-poppins text-[12px] font-bold text-secondary">{stat.value}</p>
+                  <p className="font-poppins text-[10px] text-neutral-dark">{stat.label}</p>
                 </div>
               ))}
             </div>
           )}
 
         </div>
-      </div>
-    </section>
+      </article>
+    </Link>
   );
 };
 
