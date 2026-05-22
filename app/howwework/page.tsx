@@ -33,6 +33,12 @@ const onboardingSteps = [
   ["A Clear Proposal", "You receive a straightforward proposal covering scope, timelines, and costs so every decision is clear before work starts.", "/images/laptop.webp"],
 ];
 
+const approachCards = [
+  ["Strategy First", "We begin by understanding your business goals, ensuring every solution aligns with real-world impact and provides clear value.", "/icons/InPlus.svg"],
+  ["Collaborative Development", "Our team works closely with clients throughout the process, ensuring transparency, flexible adjustments, and seamless delivery.", "/icons/work-people.svg"],
+  ["Scalable Architecture", "We design systems that grow with your business, adapt to future technological needs, and operate smoothly under load.", "/icons/architecture.svg"],
+];
+
 const developmentLifecycle = [
   ["1. Discovery & Planning", ["Analyse your business needs, identify challenges, and define the project roadmap.", "Business analysis", "Market research", "Project scope definition"]],
   ["2. Solution Architecture", ["Our architecture designs the technical framework required to deliver scalable digital products.", "System architecture", "Technology selection", "Infrastructure planning"]],
@@ -211,6 +217,36 @@ export default function HowWeWork() {
                 <h3 className="pt-2 text-[17px] font-bold text-secondary">{title}</h3>
                 <p className="pt-3 font-poppins text-[12px] leading-6 text-neutral-dark">{description}</p>
               </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-[1120px] px-5 py-14 sm:px-6 lg:px-8">
+        <div>
+          <h2 className="text-[30px] font-bold leading-tight text-secondary">
+            Our Approach to Building Technology
+          </h2>
+          <p className="pt-4 font-poppins text-[14px] leading-6 text-neutral-dark">
+            Frameworks and mindsets designed for efficiency, resilience, and
+            measurable success.
+          </p>
+        </div>
+        <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
+          {approachCards.map(([title, description, icon]) => (
+            <article
+              key={title}
+              className="min-h-[205px] rounded-[24px] border border-[#E3E7ED] bg-[#FAFAFA] px-7 py-8"
+            >
+              <div className="flex h-9 w-9 items-center justify-center rounded-full border border-[#E3E7ED] bg-white">
+                <Image src={icon} alt="" width={16} height={16} />
+              </div>
+              <h3 className="pt-8 text-[16px] font-bold leading-6 text-secondary">
+                {title}
+              </h3>
+              <p className="pt-4 font-poppins text-[13px] leading-6 text-neutral-dark">
+                {description}
+              </p>
             </article>
           ))}
         </div>
