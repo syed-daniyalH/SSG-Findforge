@@ -125,6 +125,22 @@ const ABOUT_NAV_CHILDREN: NavChild[] = [
     imageUrl: "/images/ceo.webp",
     icon: "/icons/work-people.svg",
   },
+  {
+    id: 9103,
+    name: "Client Testimonials",
+    slug: "testimonial",
+    href: "/testimonial",
+    imageUrl: "/images/testimonial1.webp",
+    icon: "/icons/ratingStar.svg",
+  },
+  {
+    id: 9104,
+    name: "How We Work",
+    slug: "how-we-work",
+    href: "/how-we-work",
+    imageUrl: "/images/meeting.webp",
+    icon: "/icons/workflow.svg",
+  },
 ];
 
 export async function getMenuStructure(): Promise<MenuItem[]> {

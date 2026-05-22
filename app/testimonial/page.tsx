@@ -1,192 +1,61 @@
-import { Testimonial, TestimonialCard } from "@/components/cards/testimonial";
-import Badge from "@/components/ui/badge";
 import CTA from "@/components/ui/cta";
+import Image from "next/image";
+
+const testimonials = [
+  { name: "Rosaria Vargas", role: "CEO", image: "/images/testimonial1.webp" },
+  { name: "John Doe", role: "Operations Director", image: "/images/testimonial2.webp" },
+  { name: "Marcus Lee", role: "Product Lead", image: "/images/testimonial3.webp" },
+  { name: "Rosaria Vargas", role: "CEO", image: "/images/testimonial1.webp" },
+  { name: "John Doe", role: "Operations Director", image: "/images/testimonial2.webp" },
+  { name: "Marcus Lee", role: "Product Lead", image: "/images/testimonial3.webp" },
+];
+
+function QuoteCard({ name, role, image, large = false }: { name: string; role: string; image: string; large?: boolean }) {
+  return (
+    <article className={`rounded-[10px] border border-[#E8EDF4] bg-white p-5 ${large ? "md:col-span-2" : ""}`}>
+      <div className="flex items-start gap-4">
+        <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-[8px]">
+          <Image src={image} alt={name} fill className="object-cover object-top" />
+        </div>
+        <div className="min-w-0">
+          <h3 className="text-[14px] font-bold leading-5 text-secondary">{name}</h3>
+          <p className="font-poppins text-[11px] text-primary">{role}</p>
+          <div className="mt-3 flex gap-1">
+            {Array.from({ length: 5 }).map((_, index) => (
+              <Image key={index} src="/icons/ratingStar.svg" alt="" width={13} height={13} />
+            ))}
+          </div>
+        </div>
+      </div>
+      <p className="mt-4 font-poppins text-[12px] leading-5 text-neutral-dark">
+        Kodehash Technologies delivered exceptional design and engineering,
+        giving our team a faster, cleaner experience and stronger results.
+      </p>
+    </article>
+  );
+}
 
 export default function Testimonials() {
   return (
-    <section className="testimonial-page ">
-      <div className="flex flex-col items-center gap-2 my-10 pt-40">
-        <Badge
-          text="Client Testimonials"
-          size="large"
-          radius="full"
-          icon="/icons/stars.svg"
-          showIcon={true}
-          className="bg-white text-primary font-semibold font-poppins border border-[#E0E7FF]"
-        />
-        <h1 className="text-primary">Our Success Stories</h1>
-        <p className="text-[#333333] px-10 text-center">
+    <main className="testimonial-page">
+      <section className="mx-auto max-w-[1120px] px-5 pt-24 text-center sm:px-6 lg:px-8">
+        <p className="font-poppins text-[11px] font-semibold text-primary">Testimonials</p>
+        <h1 className="mt-3 text-[34px] font-bold leading-tight text-primary md:text-[42px]">
+          Our Success Stories
+        </h1>
+        <p className="mx-auto mt-4 max-w-[560px] font-poppins text-[14px] leading-6 text-neutral-dark">
           Hear from industry peers like you and discover how we co-create
           meaningful partnerships with each client.
         </p>
-      </div>
+      </section>
 
-      <div
-        id="testimonial"
-        className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-30 my-10"
-      >
-        <div className="">
-          <div className="hidden md:block">
-            <Testimonial
-              name="John Doe"
-              title="AI & Automation Engineer"
-              quote="Kodehash Technologies delivered exceptional UX/UI design, completely revamping our website. The fresh look and user-friendly interface have boosted engagement and conversions. The fresh look and user-friendly interface have boosted engagement and conversions."
-              avatar="/images/testimonial3.webp"
-              rating={5}
-              lineBar="/icons/lineBar.svg"
-            />
-          </div>
-          <div className="md:hidden">
-            <TestimonialCard
-              name="John Doe"
-              title="AI & Automation Engineer"
-              quote="Kodehash Technologies delivered exceptional UX/UI design, completely revamping our website. The fresh look and user-friendly interface have boosted engagement and conversions. The fresh look and user-friendly interface have boosted engagement and conversions."
-              avatar="/images/testimonial3.webp"
-              rating={5}
-              lineBar="/icons/lineBar.svg"
-              // showLogo
-              // logo="/images/pergola.webp"
-            />
-          </div>
+      <section className="mx-auto grid max-w-[900px] grid-cols-1 gap-5 px-5 py-12 sm:px-6 md:grid-cols-2 lg:px-8">
+        {testimonials.map((item, index) => (
+          <QuoteCard key={`${item.name}-${index}`} {...item} large={index === 0 || index === 3} />
+        ))}
+      </section>
 
-          <div
-            className="flex flex-col gap-5 mt-3
-            md:flex-row"
-          >
-            <TestimonialCard
-              name="John Doe"
-              title="AI & Automation Engineer"
-              quote="Kodehash Technologies delivered exceptional UX/UI design, completely revamping our website. The fresh look and user-friendly interface have boosted engagement and conversions. The fresh look and user-friendly interface have boosted engagement and conversions."
-              avatar="/images/testimonial2.webp"
-              rating={5}
-              lineBar="/icons/lineBar.svg"
-              // showLogo
-              // logo="/images/pergola.webp"
-            />
-
-            <TestimonialCard
-              name="John Doe"
-              title="AI & Automation Engineer"
-              quote="Kodehash Technologies delivered exceptional UX/UI design, completely revamping our website. The fresh look and user-friendly interface have boosted engagement and conversions. The fresh look and user-friendly interface have boosted engagement and conversions."
-              avatar="/images/testimonial1.webp"
-              rating={5}
-              lineBar="/icons/lineBar.svg"
-              // showLogo
-              // logo="/images/pergola.webp"
-            />
-          </div>
-        </div>
-
-        <div className="">
-          <div className="hidden md:block">
-            <Testimonial
-              name="John Doe"
-              title="AI & Automation Engineer"
-              quote="Kodehash Technologies delivered exceptional UX/UI design, completely revamping our website. The fresh look and user-friendly interface have boosted engagement and conversions. The fresh look and user-friendly interface have boosted engagement and conversions."
-              avatar="/images/testimonial3.webp"
-              rating={5}
-              position="right"
-              lineBar="/icons/lineBar.svg"
-            />
-          </div>
-          <div className="md:hidden">
-            <TestimonialCard
-              name="John Doe"
-              title="AI & Automation Engineer"
-              quote="Kodehash Technologies delivered exceptional UX/UI design, completely revamping our website. The fresh look and user-friendly interface have boosted engagement and conversions. The fresh look and user-friendly interface have boosted engagement and conversions."
-              avatar="/images/testimonial3.webp"
-              rating={5}
-              lineBar="/icons/lineBar.svg"
-              // showLogo
-              // logo="/images/pergola.webp"
-            />
-          </div>
-
-          <div
-            className="flex flex-col gap-5 mt-3
-            md:flex-row"
-          >
-            <TestimonialCard
-              name="John Doe"
-              title="AI & Automation Engineer"
-              quote="Kodehash Technologies delivered exceptional UX/UI design, completely revamping our website. The fresh look and user-friendly interface have boosted engagement and conversions. The fresh look and user-friendly interface have boosted engagement and conversions."
-              avatar="/images/testimonial2.webp"
-              rating={5}
-              lineBar="/icons/lineBar.svg"
-              // showLogo
-              // logo="/images/pergola.webp"
-            />
-
-            <TestimonialCard
-              name="John Doe"
-              title="AI & Automation Engineer"
-              quote="Kodehash Technologies delivered exceptional UX/UI design, completely revamping our website. The fresh look and user-friendly interface have boosted engagement and conversions. The fresh look and user-friendly interface have boosted engagement and conversions."
-              avatar="/images/testimonial1.webp"
-              rating={5}
-              lineBar="/icons/lineBar.svg"
-              // showLogo
-              // logo="/images/pergola.webp"
-            />
-          </div>
-        </div>
-
-        <div className="">
-          <div className="hidden md:block">
-            <Testimonial
-              name="John Doe"
-              title="AI & Automation Engineer"
-              quote="Kodehash Technologies delivered exceptional UX/UI design, completely revamping our website. The fresh look and user-friendly interface have boosted engagement and conversions. The fresh look and user-friendly interface have boosted engagement and conversions."
-              avatar="/images/testimonial3.webp"
-              rating={5}
-              lineBar="/icons/lineBar.svg"
-            />
-          </div>
-          <div className="md:hidden">
-            <TestimonialCard
-              name="John Doe"
-              title="AI & Automation Engineer"
-              quote="Kodehash Technologies delivered exceptional UX/UI design, completely revamping our website. The fresh look and user-friendly interface have boosted engagement and conversions. The fresh look and user-friendly interface have boosted engagement and conversions."
-              avatar="/images/testimonial3.webp"
-              rating={5}
-              lineBar="/icons/lineBar.svg"
-              // showLogo
-              // logo="/images/pergola.webp"
-            />
-          </div>
-
-          <div
-            className="flex flex-col gap-5 mt-3
-            md:flex-row"
-          >
-            <TestimonialCard
-              name="John Doe"
-              title="AI & Automation Engineer"
-              quote="Kodehash Technologies delivered exceptional UX/UI design, completely revamping our website. The fresh look and user-friendly interface have boosted engagement and conversions. The fresh look and user-friendly interface have boosted engagement and conversions."
-              avatar="/images/testimonial2.webp"
-              rating={5}
-              lineBar="/icons/lineBar.svg"
-              // showLogo
-              // logo="/images/pergola.webp"
-            />
-
-            <TestimonialCard
-              name="John Doe"
-              title="AI & Automation Engineer"
-              quote="Kodehash Technologies delivered exceptional UX/UI design, completely revamping our website. The fresh look and user-friendly interface have boosted engagement and conversions. The fresh look and user-friendly interface have boosted engagement and conversions."
-              avatar="/images/testimonial1.webp"
-              rating={5}
-              lineBar="/icons/lineBar.svg"
-              // showLogo
-              // logo="/images/pergola.webp"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div
-        id="cta"
-        className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-30 my-10"
-      >
+      <section className="mx-auto max-w-[900px] px-5 pb-16 sm:px-6 lg:px-8">
         <CTA
           title="Talk to one of our experts"
           description="Looking to digitally transform your business? Get in touch to see how we can help you."
@@ -198,8 +67,7 @@ export default function Testimonials() {
             icon: "/icons/calendar.svg",
           }}
         />
-      </div>
-    </section>
+      </section>
+    </main>
   );
 }
-
