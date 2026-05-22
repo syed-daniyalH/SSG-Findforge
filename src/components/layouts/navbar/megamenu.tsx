@@ -254,41 +254,49 @@ const MegaMenu = ({ data, parentSlug }: MegaMenuProps) => {
   }
 
   return (
-    <div className="absolute left-0 right-0 invisible top-full pt-2 z-50 opacity-0 pointer-events-none group-hover:pointer-events-auto group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out">
-      <div className="max-w-7xl mx-auto bg-white shadow-xl rounded-[40px] overflow-hidden flex min-h-125 border border-gray-100 p-10 gap-10">
+    <div className="absolute left-0 right-0 invisible top-full pt-8 z-50 opacity-0 pointer-events-none group-hover:pointer-events-auto group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out">
+      <div className="mx-auto flex min-h-[500px] max-w-[1080px] overflow-hidden rounded-[34px] border border-[#ECEEF2] bg-white p-10 shadow-[0_16px_28px_rgba(15,23,42,0.18)]">
         
         {/* --- LEFT COLUMN: MAIN SERVICES LIST --- */}
-        <div className="w-[30%] flex flex-col gap-4 border-r border-gray-50 pr-6">
-          <Link href={parentHref} className="text-[#BD0917] font-bold flex items-center gap-2 mb-4 hover:underline">
-            Explore {parentLabel} <span className="text-lg">→</span>
+        <div className="flex w-[304px] shrink-0 flex-col border-r border-[#EEF1F5] pr-10">
+          <Link href={parentHref} className="mb-9 flex items-center gap-3 text-[15px] font-bold text-[#C40010] hover:underline">
+            {parentSlug === "services" ? "Our Main Services" : `Explore ${parentLabel}`} <span className="text-2xl leading-none">→</span>
           </Link>
 
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-[11px]">
             {data.map((item) => {
               const href = item.href ?? buildMenuSectionHref(parentSlug, item.slug);
+              const isActive = activeItem.id === item.id;
 
               return (
                 <Link
                   key={item.id}
                   href={href}
                   onMouseEnter={() => setActiveItem(item)}
-                  className={`flex items-center gap-4 px-4 py-4 rounded-xl cursor-pointer transition-all duration-300 border-2
-                    ${activeItem.id === item.id 
-                      ? "border-dashed border-[#BD0917] bg-white shadow-sm" 
-                      : "border-transparent hover:bg-gray-50"}`}
+                  className={`flex items-center gap-3 rounded-[4px] border px-4 transition-all duration-300
+                    ${isActive
+                      ? "min-h-[70px] border-dashed border-[#D60012] bg-white py-4"
+                      : "min-h-[38px] border-transparent py-2 hover:bg-[#F8FAFC]"}`}
                 >
                   {/* Icon Box */}
-                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 
-                    ${activeItem.id === item.id ? "bg-[#BD0917]/5" : "bg-gray-100"}`}>
+                  <div className={`flex h-[28px] w-[28px] shrink-0 items-center justify-center rounded-[6px]
+                    ${isActive ? "bg-[#FFE8EA]" : "bg-[#F6F7F9]"}`}>
                     <Icon 
                       src={item.icon || "/icons/facebook.svg"} 
-                      iconSize={20} 
-                      className={activeItem.id === item.id ? "text-[#BD0917]" : "text-gray-400"} 
+                      iconSize={15} 
+                      className="text-[#C40010]"
                     />
                   </div>
-                  <span className={`text-[15px] font-bold ${activeItem.id === item.id ? "text-black" : "text-gray-600"}`}>
-                    {item.name}
-                  </span>
+                  <div className="min-w-0">
+                    <span className="block text-[12px] font-bold leading-5 text-black">
+                      {item.name}
+                    </span>
+                    {isActive && (
+                      <p className="mt-1 line-clamp-2 font-poppins text-[9px] leading-[14px] text-[#6B7280]">
+                        Custom end-to-end software, APIs, integrations, and digital platforms tailored for your needs.
+                      </p>
+                    )}
+                  </div>
                 </Link>
               );
             })}
@@ -296,17 +304,17 @@ const MegaMenu = ({ data, parentSlug }: MegaMenuProps) => {
         </div>
 
         {/* --- MIDDLE COLUMN: SERVICE DETAILS --- */}
-        <div className="flex-1 grid grid-cols-2 gap-x-10 gap-y-12">
+        <div className="grid flex-1 grid-cols-2 content-start gap-x-10 gap-y-11 border-r border-[#EEF1F5] px-10 pt-[58px]">
           {activeItem.children?.map((child) => (
             <Link 
               key={child.id} 
               href={buildMenuChildHref(parentSlug, activeItem.slug, child.slug)}
               className="group/detail flex flex-col gap-2"
             >
-              <h4 className="text-[16px] font-bold text-black group-hover/detail:text-[#BD0917] transition-colors">
+              <h4 className="text-[13px] font-bold leading-5 text-black transition-colors group-hover/detail:text-[#C40010]">
                 {child.name}
               </h4>
-              <p className="text-[13px] text-gray-500 leading-relaxed line-clamp-2">
+              <p className="line-clamp-2 font-poppins text-[10px] leading-[16px] text-[#6B7280]">
                 Custom end-to-end software, APIs, integrations, and digital platforms tailored for your needs.
               </p>
             </Link>
@@ -314,49 +322,49 @@ const MegaMenu = ({ data, parentSlug }: MegaMenuProps) => {
         </div>
 
         {/* --- RIGHT COLUMN: LATEST BLOGS --- */}
-        <div className="w-[25%] flex flex-col border-l border-gray-50 pl-10">
-          <Link href="/blog" className="text-[#BD0917] font-bold flex items-center gap-2 mb-6 hover:underline">
-            Our Latest Blogs <span className="text-lg">→</span>
+        <div className="flex w-[226px] shrink-0 flex-col pl-10">
+          <Link href="/blog" className="mb-10 flex items-center gap-3 text-[15px] font-bold text-[#C40010] hover:underline">
+            Our Latest Blogs <span className="text-2xl leading-none">→</span>
           </Link>
 
           <div className="bg-white group/blog cursor-pointer">
-            <div className="relative h-44 w-full rounded-2xl overflow-hidden mb-4">
+            <div className="relative mb-4 h-[152px] w-full overflow-hidden rounded-[18px]">
               <Image 
-                src="/images/ai.webp" // Replace with real dynamic image
+                src="/images/se.webp"
                 alt="Blog" 
                 fill 
                 className="object-cover group-hover/blog:scale-105 transition-transform duration-500"
               />
             </div>
             <div className="space-y-3">
-              <div className="flex items-center gap-2 text-[11px] text-gray-400 uppercase font-bold tracking-widest">
+              <div className="flex items-center gap-2 font-poppins text-[9px] font-medium uppercase tracking-wide text-[#6B7280]">
                 <span>AI</span>
                 <span>•</span>
                 <span>13 March 2024</span>
               </div>
-              <h5 className="font-bold text-[16px] leading-tight text-black group-hover/blog:text-[#BD0917]">
+              <h5 className="text-[13px] font-bold leading-[18px] text-black group-hover/blog:text-[#C40010]">
                 Train Or Bus Journey? Which one suits?
               </h5>
-              <p className="text-[13px] text-gray-500 line-clamp-2">
+              <p className="line-clamp-2 font-poppins text-[11px] leading-[17px] text-[#6B7280]">
                 The choice between a train or bus journey depends on various factors such as the...
               </p>
-              <Link href="/blog" className="text-[#BD0917] text-sm font-bold flex items-center gap-1 group/more">
+              <Link href="/blog" className="group/more flex items-center gap-2 text-[12px] font-bold text-[#C40010]">
                 Read More <span className="group-hover/more:translate-x-1 transition-transform">↗</span>
               </Link>
             </div>
           </div>
 
           {/* Bottom Review Section */}
-          <div className="mt-auto pt-6 flex flex-col gap-4">
+          <div className="mt-auto flex flex-col gap-3 pt-6">
             <div className="flex -space-x-3">
-              {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="w-8 h-8 rounded-full border-2 border-white overflow-hidden bg-gray-200">
-                  <Image src={`/images/testimonial${i}.webp`} alt="User" width={32} height={32} />
+              {["testimonial1.webp", "testimonial2.webp", "testimonial3.webp", "author1.webp", "ahmadbhai.webp"].map((imageName) => (
+                <div key={imageName} className="h-8 w-8 overflow-hidden rounded-full border-2 border-white bg-gray-200">
+                  <Image src={`/images/${imageName}`} alt="User" width={32} height={32} className="h-full w-full object-cover" />
                 </div>
               ))}
             </div>
-            <Link href="/testimonial" className="text-[#BD0917] text-sm font-bold flex items-center gap-2">
-              Read Customer Reviews <span>→</span>
+            <Link href="/testimonial" className="flex items-center gap-2 text-[13px] font-bold text-black hover:text-[#C40010]">
+              Read Customer Reviews <span className="text-[#C40010]">→</span>
             </Link>
           </div>
         </div>
