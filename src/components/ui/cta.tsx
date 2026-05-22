@@ -38,11 +38,11 @@ const CTA = ({
   /* ===================== BADGE LAYOUT ===================== */
   if (showBadge) {
     return (
-      <section className="border bg-grad-cta grid grid-cols-1 xl:grid-cols-2 py-9 xl:py-0 rounded-[24px] overflow-hidden">
+      <section className="grid min-h-[420px] grid-cols-1 overflow-hidden rounded-[34px] border border-black/5 bg-[radial-gradient(circle_at_78%_34%,rgba(181,2,15,0.58)_0%,rgba(90,0,6,0.42)_27%,rgba(0,0,0,0.98)_62%)] xl:grid-cols-[1fr_0.95fr]">
 
         {/* Left Content (BADGE VERSION) */}
         <div
-          className="flex flex-col justify-center px-10 md:pl-24 gap-4"
+          className="flex flex-col justify-center gap-7 px-8 py-12 md:px-14 lg:pl-24"
           style={{
             backgroundImage: backgroundImage ? `url(${backgroundImage})` : "none",
             backgroundSize: "cover",
@@ -53,28 +53,28 @@ const CTA = ({
           <div className="">
             <Badge
               size="small"
-              radius="md"
+              radius="lg"
               showIcon
               icon="/icons/monitor.svg"
-              className="bg-[#FFFFFF1A] border border-[#FFFFFF1A] py-3 px-3"
+              className="h-14 w-14 justify-center border border-white/10 bg-white/10 p-0 shadow-[inset_0_0_18px_rgba(255,255,255,0.07)]"
             />
           </div>
 
           {/* Title */}
-          <h2 className="text-white">
+          <h2 className="text-[34px] leading-[40px] text-white md:text-[44px] md:leading-[52px]">
             {title}
           </h2>
 
           {/* Description */}
           {description && (
             <p 
-              className="text-white"
+              className="max-w-[520px] font-poppins text-lg leading-8 text-white"
               dangerouslySetInnerHTML={createMarkup(description)}
             />
           )}
 
           {/* Buttons */}
-          <div className="flex flex-col gap-4 sm:flex-row">
+          <div className="flex flex-col gap-3 sm:flex-row">
 
             {button1 && (
               <Button
@@ -84,7 +84,7 @@ const CTA = ({
                 showIcon={!!button1.icon}
                 size="large"
                 radius="full"
-                className="bg-white text-secondary font-semibold font-poppins hover:shadow-soft"
+                className="bg-white text-secondary font-semibold font-poppins h-14! px-8! hover:shadow-soft"
               />
             )}
 
@@ -105,13 +105,13 @@ const CTA = ({
 
         {/* Right Image */}
         {image && (
-          <div className="hidden xl:block">
+          <div className="relative hidden min-h-[420px] xl:block">
             <Image
               src={image}
               alt="CTA Image"
-              width={500}
-              height={300}
-              className="object-contain"
+              fill
+              sizes="42vw"
+              className="object-contain object-bottom"
             />
           </div>
         )}

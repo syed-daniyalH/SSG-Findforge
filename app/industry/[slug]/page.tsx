@@ -348,19 +348,25 @@ export default async function DetailedIndustry({
 
       <section
         id="cta"
-        className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-20 my-10"
+        className="max-w-[1280px] mx-auto px-5 sm:px-6 lg:px-8 my-10 md:my-14"
       >
         <CTA
-          title={ctaData?.title ?? "Talk to one of our experts"}
-          description={
-            ctaData?.description ??
-            "Looking to digitally transform your business? Get in touch to see how we can help you."
+          title={
+            slug === "healthcare"
+              ? "Ready to innovate?"
+              : ctaData?.title ?? "Talk to one of our experts"
           }
-          image={ctaData?.image ?? "/images/ctaPerson.webp"}
+          description={
+            slug === "healthcare"
+              ? "Looking to digitally transform your business? Get in touch to see how we can help you."
+              : ctaData?.description ??
+                "Looking to digitally transform your business? Get in touch to see how we can help you."
+          }
+          image={slug === "healthcare" ? "/images/ctaPerson.webp" : ctaData?.image ?? "/images/ctaPerson.webp"}
           showBadge={true}
           button1={{
-            text: ctaData?.buttonLabel ?? "Book A Meeting",
-            href: ctaData?.buttonUrl ?? "/contact",
+            text: slug === "healthcare" ? "Book A Meeting" : ctaData?.buttonLabel ?? "Book A Meeting",
+            href: slug === "healthcare" ? "/contact" : ctaData?.buttonUrl ?? "/contact",
             icon: "/icons/calendar.svg",
           }}
         />
