@@ -115,7 +115,6 @@
 // ];
 
 import Icon from "../ui/icon";
-import clsx from "clsx";
 
 // Single Item Interface
 export interface TechFeature {
@@ -131,32 +130,35 @@ interface TechFeatureCardGroupProps {
 
 const TechFeatureCard = ({ title, iconSrc, features }: TechFeature) => {
   return (
-    <div className="flex flex-col gap-6 p-8 lg:p-12 h-full">
-      {/* Header with Gradient Icon */}
-      <div className="flex items-center gap-5">
+    <div className="flex h-full gap-5 py-9 pr-4 md:py-11 md:pr-10">
+      <div className="pt-0.5">
         <Icon 
           src={iconSrc} 
           alt={title} 
-          iconSize={24} 
+          size={34}
+          iconSize={16} 
           bgClass="bg-gradient-to-b from-[#BD0917] to-[#4B4B4B]"
+          borderColor="transparent"
         />
-        <h3 className="text-[#1A1A1A] text-[22px] font-bold tracking-tight">
-          {title}
-        </h3>
       </div>
 
-      {/* Feature List */}
-      <ul className="space-y-4 ml-2">
-        {features.map((feature, index) => (
-          <li 
-            key={index} 
-            className="flex items-start gap-3 text-[#5F6368] text-[15.5px] leading-relaxed"
-          >
-            <span className="mt-2.5 w-1.5 h-1.5 rounded-full bg-gray-400 shrink-0" />
-            {feature}
-          </li>
-        ))}
-      </ul>
+      <div>
+        <h3 className="text-[16px] font-bold leading-6 text-[#1A1A1A]">
+          {title}
+        </h3>
+
+        <ul className="mt-5 space-y-2">
+          {features.map((feature, index) => (
+            <li 
+              key={index} 
+              className="flex items-start gap-2 font-poppins text-[12px] leading-5 text-[#5F6368]"
+            >
+              <span className="mt-2 text-[10px] leading-none text-[#5F6368]">+</span>
+              {feature}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
@@ -164,11 +166,15 @@ const TechFeatureCard = ({ title, iconSrc, features }: TechFeature) => {
 // The Container Component
 const TechFeatureCardGroup = ({ data }: TechFeatureCardGroupProps) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 overflow-hidden border-gray-100">
+    <div className="grid grid-cols-1 overflow-hidden md:grid-cols-2">
       {data.map((item, index) => (
         <div
           key={index}
-          className={`border-gray-100 border-b ${index % 2 !== 0 ? "md:border-l" : ""} md:nth-last-[-n+2]:border-b-0`}
+          className={`border-[#EFEFEF] ${
+            index < data.length - 2 ? "md:border-b" : ""
+          } ${index % 2 === 0 ? "md:border-r md:pl-0 md:pr-12" : "md:pl-12"} ${
+            index < data.length - 1 ? "border-b" : ""
+          }`}
           
         >
           <TechFeatureCard {...item} />

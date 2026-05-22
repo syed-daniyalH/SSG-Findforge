@@ -122,12 +122,82 @@ export default async function DetailedIndustry({
   const secondRowCards = valueCards.slice(2);
   const ctaData = apiIndustry?.templateData?.cta;
   const technologyExpertise = apiIndustry?.templateData?.technologyExpertise;
+  const healthcareTechnologyCards: TechFeature[] = [
+    {
+      title: "Computer vision",
+      iconSrc: "/icons/hugeicons_appointment.svg",
+      features: [
+        "Interactive medical imaging solutions",
+        "Advanced diagnostics and screening applications",
+        "Intelligent screening tools",
+        "Medical staff training tools and simulators",
+        "Lab tests automation solutions",
+      ],
+    },
+    {
+      title: "Data Mining",
+      iconSrc: "/icons/hugeicons_appointment.svg",
+      features: [
+        "Interactive medical imaging solutions",
+        "Advanced diagnostics and screening applications",
+        "Intelligent screening tools",
+        "Medical staff training tools and simulators",
+        "Lab tests automation solutions",
+      ],
+    },
+    {
+      title: "Natural Language Processing",
+      iconSrc: "/icons/hugeicons_appointment.svg",
+      features: [
+        "Interactive medical imaging solutions",
+        "Advanced diagnostics and screening applications",
+        "Intelligent screening tools",
+        "Medical staff training tools and simulators",
+        "Lab tests automation solutions",
+      ],
+    },
+    {
+      title: "Data Science and machine learning",
+      iconSrc: "/icons/hugeicons_appointment.svg",
+      features: [
+        "Interactive medical imaging solutions",
+        "Advanced diagnostics and screening applications",
+        "Intelligent screening tools",
+        "Medical staff training tools and simulators",
+        "Lab tests automation solutions",
+      ],
+    },
+    {
+      title: "Mixed, augmented and virtual reality",
+      iconSrc: "/icons/hugeicons_appointment.svg",
+      features: [
+        "Interactive medical imaging solutions",
+        "Advanced diagnostics and screening applications",
+        "Intelligent screening tools",
+        "Medical staff training tools and simulators",
+        "Lab tests automation solutions",
+      ],
+    },
+    {
+      title: "Computer vision",
+      iconSrc: "/icons/hugeicons_appointment.svg",
+      features: [
+        "Interactive medical imaging solutions",
+        "Advanced diagnostics and screening applications",
+        "Intelligent screening tools",
+        "Medical staff training tools and simulators",
+        "Lab tests automation solutions",
+      ],
+    },
+  ];
   const technologyCards: TechFeature[] =
-    technologyExpertise?.cards?.map((card) => ({
-      title: card.title,
-      iconSrc: card.icon,
-      features: card.description,
-    })) ?? featureCardData;
+    slug === "healthcare"
+      ? healthcareTechnologyCards
+      : technologyExpertise?.cards?.map((card) => ({
+          title: card.title,
+          iconSrc: card.icon,
+          features: card.description,
+        })) ?? featureCardData;
 
   return (
     <div className="detailed-industry-page">
@@ -237,20 +307,24 @@ export default async function DetailedIndustry({
         <Stories />
       </section>
 
-      <section id="technology-expertise" className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-20 my-10">
+      <section id="technology-expertise" className="max-w-[1120px] mx-auto px-5 sm:px-6 lg:px-8 my-10 md:my-14">
         <div
           className="flex
-            md:flex-row md:justify-between md:items-end pb-10
-            flex-col gap-5 items-start w-[80%]"
+            md:flex-row md:justify-between md:items-end pb-12
+            flex-col gap-5 items-start max-w-[560px]"
         >
           <div className="">
-            <h2 className="text-secondary">
-              {technologyExpertise?.mainTitle ??
-                "Our technology expertise for the healthcare sector"}
+            <h2 className="text-secondary max-w-[430px]">
+              {slug === "healthcare"
+                ? "Our technology expertise for the healthcare sector"
+                : technologyExpertise?.mainTitle ??
+                  "Our technology expertise for the healthcare sector"}
             </h2>
-            <p className="text-neutral-dark pt-2">
-              {technologyExpertise?.mainDescription ??
-                "We help healthcare institutions of all sizes and specialisms adopt digital transformations powered by data science, IoT, cloud, VR/AR/MR and other modern technologies."}
+            <p className="text-neutral-dark pt-5 font-poppins text-sm leading-6">
+              {slug === "healthcare"
+                ? "We help healthcare institutions of all sizes and specialisms adopt digital transformations powered by data science, IoT, cloud, VR/AR/MR and other modern technologies."
+                : technologyExpertise?.mainDescription ??
+                  "We help healthcare institutions of all sizes and specialisms adopt digital transformations powered by data science, IoT, cloud, VR/AR/MR and other modern technologies."}
             </p>
           </div>
         </div>
