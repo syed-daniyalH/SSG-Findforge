@@ -1,4 +1,6 @@
-import KeySolutionCard from "@/components/cards/keySolutionCard";
+import KeySolutionCard, {
+  KeySolutionCardData,
+} from "@/components/cards/keySolutionCard";
 import ServiceCard1, {
   ServiceCard1Data,
   ServiceCard1Props,
@@ -19,6 +21,21 @@ import Image from "next/image";
 
 export default async function Service() {
   const { cards: services } = await getServiceCardsAndCTA();
+  const serviceCards = services.map((item) => ({
+    name: item.name,
+    slug: item.slug,
+    description: item.description,
+    image: item.imageUrl || "/images/ai.webp",
+  }));
+  const serviceCardKeys = new Set(
+    serviceCards.map((item) => item.slug || item.name)
+  );
+  const keySolutionCards = [
+    ...serviceCards,
+    ...KeySolutionCardData.filter(
+      (item) => !serviceCardKeys.has(item.slug) && !serviceCardKeys.has(item.name)
+    ),
+  ].slice(0, KeySolutionCardData.length);
 
   return (
     <div className="service-page">
@@ -119,14 +136,14 @@ export default async function Service() {
         </div>
 
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
-          {services.map((item) => {
+          {keySolutionCards.map((item) => {
             return (
               <KeySolutionCard
-                key={item.id}
+                key={item.slug || item.name}
                 name={item.name}
                 slug={item.slug}
                 description={item.description}
-                image={item.imageUrl || "/images/ai.webp"}
+                image={item.image}
               />
             );
           })}

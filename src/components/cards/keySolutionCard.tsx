@@ -14,49 +14,49 @@ export const KeySolutionCardData: KeySolutionCardProps[] = [
     slug: "cybersecurity-solutions",
     description:
       "Custom end-to-end software, APIs, integrations, and digital platforms tailored for your needs.",
-    image: "/images/ai.webp",
+    image: "/images/security-card.webp",
   },
   {
-    name: "AI Solutions",
-    slug: "ai-solutions",
+    name: "Custom Software Development Solutions",
+    slug: "custom-software-development-solutions",
     description:
-      "Custom end-to-end software, APIs, integrations, and digital platforms tailored for your needs.",
-    image: "/images/ai.webp",
+      "Proactive, intelligent cybersecurity solutions that help you prevent, detect, and respond to threats.",
+    image: "/images/se.webp",
   },
   {
-    name: "AI Solutions",
-    slug: "ai-solutions",
+    name: "Cloud Solutions",
+    slug: "cloud-solutions",
     description:
       "Custom end-to-end software, APIs, integrations, and digital platforms tailored for your needs.",
-    image: "/images/ai.webp",
+    image: "/images/automated.webp",
   },
   {
-    name: "Cybersecurity Solutions",
-    slug: "cybersecurity-solutions",
+    name: "Custom Website Development Solutions",
+    slug: "custom-website-development-solutions",
     description:
-      "Custom end-to-end software, APIs, integrations, and digital platforms tailored for your needs.",
-    image: "/images/ai.webp",
+      "Proactive, intelligent cybersecurity solutions that help you prevent, detect, and respond to threats.",
+    image: "/images/app.webp",
   },
   {
-    name: "Cybersecurity Solutions",
-    slug: "cybersecurity-solutions",
+    name: "Designing Solutions",
+    slug: "designing-solutions",
     description:
       "Custom end-to-end software, APIs, integrations, and digital platforms tailored for your needs.",
-    image: "/images/ai.webp",
+    image: "/images/design.webp",
   },
   {
-    name: "Cybersecurity Solutions",
-    slug: "cybersecurity-solutions",
+    name: "AI & Machine Learning Solutions",
+    slug: "ai-machine-learning-solutions",
     description:
-      "Custom end-to-end software, APIs, integrations, and digital platforms tailored for your needs.",
-    image: "/images/ai.webp",
+      "Proactive, intelligent cybersecurity solutions that help you prevent, detect, and respond to threats.",
+    image: "/images/ai-automated.webp",
   },
   {
-    name: "AI Solutions",
-    slug: "ai-solutions",
+    name: "Outsourcing Solutions",
+    slug: "outsourcing-solutions",
     description:
       "Custom end-to-end software, APIs, integrations, and digital platforms tailored for your needs.",
-    image: "/images/ai.webp",
+    image: "/images/servicedesign.webp",
   },
 ];
 
