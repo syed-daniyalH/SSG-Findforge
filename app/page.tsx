@@ -6,7 +6,6 @@ import Services from "@/components/sections/services";
 import WhyChooseUs from "@/components/ui/chooseUs";
 import Clients from "@/components/ui/clients";
 import CTA from "@/components/ui/cta";
-import Blogs from "./blog/page";
 import ClientTestimonial from "@/components/sections/clientsTestimonial";
 import Impacts from "@/components/ui/impact";
 import { whyChooseData } from "@/content/whychoose.data";
@@ -119,13 +118,6 @@ export default function Home() {
         className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-30 my-10"
       >
         <Stories />
-      </section>
-
-      <section
-        id="blogs"
-        className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-30 my-10"
-      >
-        <Blogs />
       </section>
 
       <section
