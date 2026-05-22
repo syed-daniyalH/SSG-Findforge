@@ -85,19 +85,19 @@ const ValuesCard = ({
       <div className={`flex justify-start gap-5 ${className}`}>
         {/* The Red Circular Icon Container */}
         <div className="relative flex flex-col items-center">
-          <div className="w-20 h-20 rounded-full bg-[#B5020F33] flex items-center justify-center border-2 border-[#B5020F]">
+          <div className="w-16 h-16 rounded-full bg-[#B5020F33] flex items-center justify-center border-2 border-[#B5020F]">
             <Image
               src={icon}
               alt={title}
-              width={32}
-              height={32}
+              width={26}
+              height={26}
               className="object-contain" // Makes icons white if they are dark
             />
           </div>
           
           {/* Dashed Connector Line */}
           {!isLast && (
-            <div className="h-20 w-px border-l-2 border-dashed border-primary/40 my-2"></div>
+            <div className="h-16 w-px border-l-2 border-dashed border-primary/40 my-2"></div>
           )}
         </div>
 

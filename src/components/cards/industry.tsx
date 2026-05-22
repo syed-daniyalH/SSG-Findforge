@@ -275,9 +275,9 @@ const IndustryCard = ({ item }: { item: IndustryItem }) => {
   // Featured Layout (The blue gradient card)
   if (item.layout === "featured") {
     return (
-      <div className="bg-grad-hero flex flex-col-reverse gap-6 sm:flex-row sm:gap-0 justify-between px-9 py-9 rounded-2xl">
+      <div className="bg-grad-hero flex min-h-[230px] flex-col-reverse gap-6 rounded-[14px] px-7 py-7 sm:flex-row sm:gap-0 justify-between">
         <div className="flex flex-col gap-20">
-          <div className="w-12 h-12 rounded-lg bg-white flex items-center justify-center shrink-0">
+          <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center shrink-0">
             <Image src={item.icon} alt={item.title} width={20} height={20} className="object-contain" />
           </div>
           <div>
@@ -297,9 +297,9 @@ const IndustryCard = ({ item }: { item: IndustryItem }) => {
   // Standard Layout (White background with subtitle)
   if (item.layout === "standard") {
     return (
-      <div className="bg-white border border-[#E5E5E599] flex justify-between px-9 py-9 rounded-2xl">
+      <div className="bg-white border border-[#E5E5E599] flex min-h-[230px] justify-between px-7 py-7 rounded-[14px]">
         <div className="flex flex-col items-start gap-6">
-          <div className="w-12 h-12 rounded-lg bg-white border border-[#F5F5F5] flex items-center justify-center shrink-0">
+          <div className="w-10 h-10 rounded-lg bg-white border border-[#F5F5F5] flex items-center justify-center shrink-0">
             <Image src={item.icon} alt={item.title} width={20} height={20} className="object-contain" />
           </div>
           <div>
@@ -318,9 +318,9 @@ const IndustryCard = ({ item }: { item: IndustryItem }) => {
 
   // Compact/Horizontal Layouts
   return (
-    <div className="bg-white border border-[#E5E5E599] flex justify-between px-9 py-9 rounded-2xl max-h-40">
+    <div className="bg-white border border-[#E5E5E599] flex min-h-[120px] justify-between px-7 py-7 rounded-[14px]">
       <div className="flex items-center gap-6">
-        <div className="w-12 h-12 rounded-lg bg-white border border-[#F5F5F5] flex items-center justify-center shrink-0">
+        <div className="w-10 h-10 rounded-lg bg-white border border-[#F5F5F5] flex items-center justify-center shrink-0">
           <Image src={item.icon} alt={item.title} width={20} height={20} className="object-contain" />
         </div>
         <div>

@@ -54,7 +54,7 @@ const Blogs = async () => {
     <section className="">
       <div
         className="flex
-            md:flex-row md:justify-between md:items-end pb-10
+            md:flex-row md:justify-between md:items-end pb-8
             flex-col gap-5 items-start"
       >
         <div className="">
@@ -64,7 +64,7 @@ const Blogs = async () => {
           </p>
         </div>
         <div className="flex gap-2 border-b-2 border-black pb-1">
-          <Link href="/blog" className="text-black font-semibold font-poppins">
+          <Link href="/blog" className="text-black font-semibold font-poppins text-sm">
             View All Insights
           </Link>
           <Image

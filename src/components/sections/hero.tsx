@@ -45,19 +45,18 @@ const Hero = ({
       ======================= */}
       {!author && !banner && (
         <section
-          className={`bg-grad-glass py-20 flex items-center rounded-[40px] gap-10
-          px-10 sm:px-15 md:px-20 lg:pl-20 lg:pr-0 ${className}`}
+          className={`bg-grad-glass flex min-h-[420px] items-center overflow-hidden rounded-[28px] px-7 py-12 sm:px-10 md:px-14 lg:min-h-[470px] lg:py-14 lg:pl-14 lg:pr-0 ${className}`}
         >
           {/* LEFT */}
-          <div className="hero-text space-y-12 max-w-2xl">
+          <div className="hero-text max-w-[560px] space-y-7 md:space-y-8">
             {badge && <Badge {...badge} />}
 
             <h1>{title}</h1>
 
-            <p className="body1">{description}</p>
+            <p className="body1 max-w-[500px]">{description}</p>
 
             {buttons.length > 0 && (
-              <div className="flex flex-col gap-4 sm:flex-row">
+              <div className="flex flex-col gap-3 sm:flex-row">
                 {buttons.map((btn, index) => (
                   <Button key={index} {...btn} />
                 ))}
@@ -67,12 +66,13 @@ const Hero = ({
 
           {/* RIGHT */}
           {image && (
-            <div className="hero-graphic-image xl:block hidden">
+            <div className="hero-graphic-image hidden flex-1 justify-end xl:flex">
               <Image
                 src={image.src}
                 alt={image.alt || "Hero Image"}
-                width={image.width || 1000}
-                height={image.height || 500}
+                width={image.width || 590}
+                height={image.height || 420}
+                className="-mr-4 h-auto w-[560px] object-contain"
               />
             </div>
           )}

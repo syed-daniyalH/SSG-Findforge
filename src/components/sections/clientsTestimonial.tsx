@@ -7,7 +7,7 @@ const ClientTestimonial = () => {
         <section className="">
 
             <div className="flex
-            md:flex-row md:justify-between md:items-end pb-10
+            md:flex-row md:justify-between md:items-end pb-8
             flex-col gap-5 items-start">
                 <div className="">
                     <h2 className="text-secondary">Client Testimonials</h2>
@@ -16,7 +16,7 @@ const ClientTestimonial = () => {
                 <div className="flex gap-2 border-b-2 border-black pb-1">
                     <Link
                         href="/testimonial"
-                        className="text-black font-semibold font-poppins"
+                        className="text-black font-semibold font-poppins text-sm"
                         >
                         View All Clients
                     </Link>
@@ -28,7 +28,7 @@ const ClientTestimonial = () => {
                     />
                 </div>
             </div>
-            <div className="flex gap-10">
+            <div className="flex gap-6">
                 <div className="">
                     <div className="hidden md:block">
                         <Testimonial
@@ -81,7 +81,7 @@ const ClientTestimonial = () => {
                     </div>
                 </div>
                 {/* Image */}
-                <div className="relative w-full overflow-hidden rounded-2xl
+                <div className="relative w-full overflow-hidden rounded-[18px]
                  hidden xl:flex">
                 <Image
                     src="/images/office.webp"

@@ -12,12 +12,14 @@ import { whyChooseData } from "@/content/whychoose.data";
 import Blogs from "@/components/sections/blogs";
 
 export default function Home() {
+  const sectionClass =
+    "max-w-[1120px] mx-auto px-5 sm:px-6 lg:px-8 my-8 md:my-10";
 
   return (
     <div className="home-page bg-[#F8FAFC]">
       <section
         id="hero"
-        className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-30 my-10 pt-20"
+        className="max-w-[1120px] mx-auto px-5 sm:px-6 lg:px-8 mt-6 mb-8 pt-20 md:mb-10"
       >
         <Hero
           badge={{
@@ -61,7 +63,7 @@ export default function Home() {
 
       <section
         id="clients"
-        className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-30 my-10"
+        className={sectionClass}
       >
         <Clients />
       </section>
@@ -70,18 +72,18 @@ export default function Home() {
 
       <section
         id="industries"
-        className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-30 mt-10 mb-0"
+        className="max-w-[1120px] mx-auto px-5 sm:px-6 lg:px-8 mt-8 mb-0 md:mt-10"
       >
         <Industries />
       </section>
 
-      <section id="chooseUs" className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-30 mt-6 mb-10">
+      <section id="chooseUs" className="max-w-[1120px] mx-auto px-5 sm:px-6 lg:px-8 mt-5 mb-8 md:mb-10">
         <WhyChooseUs data={whyChooseData} className="pb-10"/>
       </section>
 
       <section
         id="cta"
-        className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-30 my-10"
+        className={sectionClass}
       >
         <CTA
           title="AI-Powered Engineering for Scalable Growth"
@@ -102,49 +104,49 @@ export default function Home() {
 
       <section
         id="our-services"
-        className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-30 my-10"
+        className={sectionClass}
       >
         <Services />
       </section>
 
       <section
         id="process"
-        className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-30 my-10"
+        className={sectionClass}
       >
         <Process />
       </section>
 
       <section
         id="stories"
-        className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-30 my-10"
+        className={sectionClass}
       >
         <Stories />
       </section>
 
       <section
         id="insights"
-        className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-30 my-10"
+        className={sectionClass}
       >
         <Blogs />
       </section>
 
       <section
         id="testimonial"
-        className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-30 my-10"
+        className={sectionClass}
       >
         <ClientTestimonial />
       </section>
 
       <section
         id="impacts"
-        className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-30 my-10"
+        className={sectionClass}
       >
         <Impacts />
       </section>
 
       <section
         id="cta"
-        className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-30 my-10"
+        className={sectionClass}
       >
         <CTA
           title="Talk to one of our experts"

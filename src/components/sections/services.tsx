@@ -37,7 +37,7 @@ const servicesData: ServiceItem[] = [
 const Services = () => {
   return (
     <section>
-      <div className="mb-10 flex flex-col gap-5 md:mb-12 md:flex-row md:items-end md:justify-between">
+      <div className="mb-8 flex flex-col gap-5 md:mb-10 md:flex-row md:items-end md:justify-between">
         <div>
           <h2 className="text-secondary">What We Do</h2>
           <p className="mt-4 font-poppins text-base leading-7 text-neutral-dark md:text-lg">

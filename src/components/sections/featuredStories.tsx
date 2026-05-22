@@ -18,7 +18,7 @@ const Stories = () => {
                     </p>
                 </div>
                 <div className="flex gap-2 border-b-2 border-black pb-1">
-                    <Link href="/case-studies" className="text-black font-semibold font-poppins">
+                    <Link href="/case-studies" className="text-black font-semibold font-poppins text-sm">
                         View All Projects
                     </Link>
                     <Image

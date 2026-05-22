@@ -45,23 +45,23 @@ const stories = [
 
 const FeaturedStories = () => {
     return (
-        <section className="py-8">
+        <section className="py-6">
             <Swiper
                 modules={[Autoplay, Pagination]}
-                spaceBetween={30}
+                spaceBetween={24}
                 slidesPerView={1}
                 loop={true}
                 autoplay={{ delay: 5000 }}
                 pagination={{ clickable: true }}
-                className="featured-swiper pb-24!"
+                className="featured-swiper pb-18!"
             >
                 {stories.map((story) => (
                     <SwiperSlide key={story.id}>
                         <div className="relative group">
 
                             {/* Stacked Card Decorative Backgrounds */}
-                            <div className="absolute inset-x-0 -bottom-4 top-4 bg-black rounded-[20px] md:rounded-[40px] -z-10 opacity-100" />
-                            <div className="absolute inset-x-0 -bottom-8 top-8 bg-grad-primary rounded-[20px] md:rounded-[40px] -z-20 opacity-100" />
+                            <div className="absolute inset-x-0 -bottom-3 top-3 bg-black rounded-[18px] md:rounded-[26px] -z-10 opacity-100" />
+                            <div className="absolute inset-x-0 -bottom-6 top-6 bg-grad-primary rounded-[18px] md:rounded-[26px] -z-20 opacity-100" />
 
 
                             {/* Main Content Card */}
@@ -69,14 +69,14 @@ const FeaturedStories = () => {
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6 }}
-                                className="bg-grad-primary rounded-[20px] md:rounded-[40px] overflow-hidden grid lg:grid-cols-2 items-center"
+                                className="bg-grad-primary rounded-[18px] md:rounded-[26px] overflow-hidden grid lg:grid-cols-2 items-center"
                             >
                                 {/* Left Side: Text Content */}
-                                <div className="p-6 md:p-12 lg:p-16 space-y-6">
+                                <div className="p-6 md:p-10 lg:p-12 space-y-5">
                                     <motion.h2
                                         initial={{ opacity: 0, x: -20 }}
                                         animate={{ opacity: 1, x: 0 }}
-                                        className="text-white text-2xl md:text-3xl lg:text-4xl font-bold leading-tight italic"
+                                        className="text-white text-2xl md:text-3xl lg:text-[34px] font-bold leading-tight italic"
                                         style={{ letterSpacing: '-0.5px' }}
                                     >
                                         {story.title}
@@ -113,7 +113,7 @@ const FeaturedStories = () => {
                                 </div>
 
                                 {/* Right Side: Two Consistent Overlapping Images */}
-                                <div className="relative h-75 sm:h-87.5 lg:h-105 flex items-center justify-center">
+                                <div className="relative h-70 sm:h-80 lg:h-[360px] flex items-center justify-center">
 
                                     {/* Background Image (Back Layer) */}
                                     <div className="absolute   w-[65%] h-[70%] rounded-[20px] overflow-hidden shadow-2xl z-10">

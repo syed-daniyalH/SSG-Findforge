@@ -38,7 +38,7 @@ const CTA = ({
   /* ===================== BADGE LAYOUT ===================== */
   if (showBadge) {
     return (
-      <section className="border bg-grad-cta grid grid-cols-1 xl:grid-cols-2 py-10 xl:py-0 rounded-[40px] overflow-hidden">
+      <section className="border bg-grad-cta grid grid-cols-1 xl:grid-cols-2 py-9 xl:py-0 rounded-[24px] overflow-hidden">
 
         {/* Left Content (BADGE VERSION) */}
         <div
@@ -200,7 +200,7 @@ const CTA = ({
 
   /* ===================== NORMAL CTA (NO BADGE) ===================== */
   return (
-    <section className="border bg-grad-hero py-16 flex justify-between rounded-[40px] gap-10 overflow-hidden">
+    <section className="border bg-grad-hero py-12 flex justify-between rounded-[24px] gap-8 overflow-hidden">
 
       {/* Left Content (NO BADGE VERSION) */}
       <div
@@ -212,14 +212,14 @@ const CTA = ({
       >
 
         {/* Title */}
-        <h2 className="text-[28px] text-white sm:text-[32px] md:text-[40px] lg:text-[48px] leading-tight xl:px-30 lg:px-20 md:px-20 px-10">
+        <h2 className="text-[26px] text-white sm:text-[30px] md:text-[36px] lg:text-[42px] leading-tight xl:px-20 lg:px-16 md:px-14 px-8">
           {title}
         </h2>
 
         {/* Description */}
         {description && (
           <p 
-            className="text-white/80 xl:px-30 lg:px-20 md:px-20 px-10"
+            className="text-white/80 xl:px-20 lg:px-16 md:px-14 px-8"
             dangerouslySetInnerHTML={{ __html: description }}
           />
         )}
@@ -232,7 +232,7 @@ const CTA = ({
         )} */}
 
         {/* Buttons */}
-        <div className="flex flex-col gap-4 sm:flex-row xl:px-30 lg:px-20 md:px-20 px-10">
+        <div className="flex flex-col gap-3 sm:flex-row xl:px-20 lg:px-16 md:px-14 px-8">
 
           {button1 && (
             <Button

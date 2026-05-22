@@ -1,15 +1,15 @@
 const Impacts = () => {
   return (
-    <section className="flex gap-10
+    <section className="flex gap-8
     lg:flex-row lg:items-center lg:justify-between lg:gap-0
     md:flex flex-col md:gap-10">
         <div className="">
             <h2 className="">Proven Impact</h2>
-            <p className="text-neutral-dark text-[18px]">Real results from our enterprise partners.</p>
+            <p className="text-neutral-dark text-base md:text-[18px]">Real results from our enterprise partners.</p>
         </div>
         <div className="flex gap-3 flex-wrap md:flex-nowrap">
-            <div className="flex flex-col gap-2 text-center max-w-55 w-46.5 bg-[#B5020F1A] 
-            border border-[#E2E8F0] rounded-2xl p-4">
+            <div className="flex flex-col gap-2 text-center max-w-55 w-44 bg-[#B5020F1A] 
+            border border-[#E2E8F0] rounded-[14px] p-4">
                 <span className="
                 font-jakarta font-bold text-primary
                 leading-10 tracking-[-0.9px] align-middle
@@ -26,8 +26,8 @@ const Impacts = () => {
                 </span>            
             </div>
 
-            <div className="flex flex-col gap-2 text-center max-w-55 w-46.5 bg-[#B5020F1A] 
-            border border-[#E2E8F0] rounded-2xl p-4">
+            <div className="flex flex-col gap-2 text-center max-w-55 w-44 bg-[#B5020F1A] 
+            border border-[#E2E8F0] rounded-[14px] p-4">
                 <span className="
                 font-jakarta font-bold text-secondary
                 leading-10 tracking-[-0.9px] align-middle hover:text-primary
@@ -45,7 +45,7 @@ const Impacts = () => {
             </div>
 
             <div className="flex flex-col gap-2 text-center max-w-55 bg-[#B5020F1A] 
-            border border-[#E2E8F0] rounded-2xl p-4">
+            border border-[#E2E8F0] rounded-[14px] p-4">
                 <span className="
                 font-jakarta font-bold text-secondary
                 leading-10 tracking-[-0.9px] align-middle hover:text-primary

@@ -4,14 +4,14 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="bg-grad-footer py-16 px-6 md:px-12 lg:px-20 text-white">
-      <div className="max-w-7xl mx-auto">
+    <footer className="bg-grad-footer px-5 py-12 text-white md:px-8">
+      <div className="max-w-[1120px] mx-auto">
         {/* Main Grid: 1 col on mobile, 2 on tablet, 4 on desktop */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-24 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12 mb-10">
           
           {/* Brand Section */}
           <div className="flex flex-col gap-6">
-            <div className="relative w-48 h-9">
+            <div className="relative w-40 h-8">
               <Image
                 src="/images/logo.webp"
                 alt="SSG Mindforge Logo"
@@ -19,7 +19,7 @@ const Footer = () => {
                 className="object-cover"
               />
             </div>
-            <p className="text-sm leading-relaxed max-w-xs">
+            <p className="text-xs leading-relaxed max-w-xs text-white/85">
               SSG Mindforge is a digital agency UI / UX Design and Website
               Development located in Ohio, United States of America
             </p>
@@ -32,8 +32,8 @@ const Footer = () => {
 
           {/* Links Column 1 */}
           <div>
-            <h3 className="text-lg font-semibold mb-6 text-white">Service</h3>
-            <ul className="space-y-4 text-sm">
+            <h3 className="text-base font-semibold mb-4 text-white">Service</h3>
+            <ul className="space-y-3 text-xs text-white/85">
               <li><Link href="/services/ai-automation" className="hover:opacity-100 transition">AI Automation</Link></li>
               <li><Link href="/services/data-science" className="hover:opacity-100 transition">Data Science</Link></li>
               <li><Link href="/services/software-services" className="hover:opacity-100 transition">Software Services</Link></li>
@@ -45,8 +45,8 @@ const Footer = () => {
 
           {/* Links Column 2 */}
           <div>
-            <h3 className="text-lg font-semibold mb-6 text-white">Company</h3>
-            <ul className="space-y-4 text-sm">
+            <h3 className="text-base font-semibold mb-4 text-white">Company</h3>
+            <ul className="space-y-3 text-xs text-white/85">
               <li><Link href="/services" className="hover:opacity-100 transition">Services</Link></li>
               <li><Link href="/about-us" className="hover:opacity-100 transition">About</Link></li>
               <li><Link href="/suites" className="hover:opacity-100 transition">Our Team</Link></li>
@@ -58,8 +58,8 @@ const Footer = () => {
 
           {/* Links Column 3 */}
           <div>
-            <h3 className="text-lg font-semibold mb-6 text-white">Legal</h3>
-            <ul className="space-y-4 text-sm">
+            <h3 className="text-base font-semibold mb-4 text-white">Legal</h3>
+            <ul className="space-y-3 text-xs text-white/85">
               <li><Link href="/terms-and-conditions" className="hover:opacity-100 transition">Terms & Conditions</Link></li>
               <li><Link href="/privacy-policy" className="hover:opacity-100 transition">Privacy Policy</Link></li>
               <li><Link href="/tax-strategy" className="hover:opacity-100 transition">Recruitment notice</Link></li>
@@ -71,8 +71,8 @@ const Footer = () => {
 
           {/* Links Column 4 */}
           <div>
-            <h3 className="text-lg font-semibold mb-6 text-white">Testing Links</h3>
-            <ul className="space-y-4 text-sm">
+            <h3 className="text-base font-semibold mb-4 text-white">Testing Links</h3>
+            <ul className="space-y-3 text-xs text-white/85">
               <li><Link href="/location" className="hover:opacity-100 transition">Location</Link></li>
               <li><Link href="/how-we-work" className="hover:opacity-100 transition">How we work</Link></li>
               <li><Link href="/testimonial" className="hover:opacity-100 transition">Testimonial</Link></li>
@@ -83,10 +83,10 @@ const Footer = () => {
           </div>
         </div>
 
-        <hr className="border-t border-white/20 mb-8" />
+        <hr className="border-t border-white/20 mb-6" />
 
         {/* Bottom Bar: Stacked on mobile, row on desktop */}
-        <div className="flex flex-col lg:flex-row justify-between items-center gap-6 text-xs md:text-sm">
+        <div className="flex flex-col lg:flex-row justify-between items-center gap-5 text-xs">
           <p>Copyright 2026.</p>
           
           <div className="flex flex-col md:flex-row items-center gap-6 lg:gap-8">

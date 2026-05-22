@@ -11,14 +11,14 @@ interface NavMenuProps {
 
 const NavMenu: React.FC<NavMenuProps> = ({ navLinks }) => {
   return (
-    <nav className="flex items-center justify-center gap-7 xl:gap-10 text-[15px] font-poppins">
+    <nav className="flex items-center justify-center gap-5 xl:gap-7 text-[13px] font-poppins">
       {navLinks.map((link) => {
         if (link.isMega) {
           return (
             <div key={link.name} className="group static h-full flex items-center">
               <Link
                 href={link.href || "#"}
-                className="inline-flex items-center gap-2 py-4 text-secondary font-medium transition-colors hover:text-primary"
+                className="inline-flex items-center gap-1.5 py-3 text-secondary font-medium transition-colors hover:text-primary"
               >
                 {link.name}
                 <Image
@@ -55,7 +55,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ navLinks }) => {
           <Link
             key={link.name}
             href={link.href!}
-            className="py-4 text-secondary font-medium transition-colors hover:text-primary"
+            className="py-3 text-secondary font-medium transition-colors hover:text-primary"
           >
             {link.name}
           </Link>

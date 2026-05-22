@@ -24,7 +24,7 @@ const processSteps = [
 
 const Process = () => {
   return (
-    <section className="bg-black rounded-[40px] flex py-20 px-5 sm:px-20 justify-between">
+    <section className="bg-black rounded-[24px] flex justify-between px-6 py-12 sm:px-12 lg:px-14">
       
       <div className="process xl:w-1/2">
         
@@ -41,7 +41,7 @@ const Process = () => {
         </div>
       </div>
         
-        <div className="flex flex-col items-center py-20">
+        <div className="flex flex-col items-center py-12">
           {processSteps.map((step, index) => (
             <ValuesCard
               key={index}
@@ -57,7 +57,7 @@ const Process = () => {
 
       {/* Image */}
         <div
-          className="relative w-111.25 overflow-hidden rounded-2xl
+          className="relative w-[410px] overflow-hidden rounded-[18px]
             hidden xl:flex"
         >
           <Image

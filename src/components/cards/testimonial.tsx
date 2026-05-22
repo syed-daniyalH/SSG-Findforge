@@ -37,7 +37,7 @@ export const Testimonial = ({
       }`}
     >
       {/* Image */}
-      <div className="relative w-full h-55 overflow-hidden rounded-2xl
+      <div className="relative w-full h-50 overflow-hidden rounded-[18px]
       hidden md:block">
         <Image
           src={avatar}
@@ -136,7 +136,7 @@ export const TestimonialCard = (
 
     const hasLogo = showLogo && logo;
     return (
-        <section className="bg-[#F8FAFC] rounded-2xl py-8 px-8 w-full md:w-1/2">
+        <section className="bg-[#F8FAFC] rounded-[18px] py-6 px-6 w-full md:w-1/2">
             <p className="text-justify text-cool-gray text-[12px]">
                 {quote}
             </p>

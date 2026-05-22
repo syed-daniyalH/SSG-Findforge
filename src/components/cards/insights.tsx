@@ -26,12 +26,12 @@ const Insights = ({
       <section className="w-full">
 
         {/* Image */}
-        <div className="relative flex items-end overflow-hidden h-55.5">
+        <div className="relative flex h-[165px] items-end overflow-hidden">
           <Image
             src={imageUrl}
             alt={name}
             fill
-            className="rounded-4xl object-cover object-top"
+            className="rounded-[16px] object-cover object-top"
           />
 
           {/* Icon */}
@@ -51,8 +51,8 @@ const Insights = ({
 
         {/* Content */}
         <div className="pt-3 space-y-4">
-          <h3 className="text-secondary">{name}</h3>
-          <p className="text-slate-gray">{truncatedDesc}</p>
+          <h3 className="text-secondary text-[18px] leading-6">{name}</h3>
+          <p className="text-slate-gray text-sm leading-6">{truncatedDesc}</p>
         </div>
 
       </section>

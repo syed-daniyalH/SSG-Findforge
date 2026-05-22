@@ -199,7 +199,7 @@ const WhyChooseUs = ({ data, className = "py-10" }: WhyChooseProps) => {
   return (
     <section className={className}>
       {/* Header */}
-      <div className="mb-12">
+      <div className="mb-8">
         <h2 className="text-3xl font-bold text-[#0F172A] mb-4">{data.title}</h2>
         <div 
           className="text-[#64748B] max-w-2xl leading-relaxed"
@@ -208,7 +208,7 @@ const WhyChooseUs = ({ data, className = "py-10" }: WhyChooseProps) => {
       </div>
 
       {/* Bento Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
         {displayItems.map((item, index) => {
           // 1st & 4th are wide (7 cols), 2nd & 3rd are narrow (5 cols)
           const isWide = index === 0 || index === 3;
@@ -226,7 +226,7 @@ const WhyChooseUs = ({ data, className = "py-10" }: WhyChooseProps) => {
           return (
             <div
               key={index}
-              className={`${colSpan} bg-white border border-[#F1F5F9] rounded-3xl p-8 flex flex-col shadow-sm transition-all duration-300 hover:shadow-md`}
+              className={`${colSpan} bg-white border border-[#F1F5F9] rounded-[18px] p-6 flex flex-col shadow-sm transition-all duration-300 hover:shadow-md`}
             >
               <div className="flex justify-between items-start mb-6">
                 <div className="space-y-3 w-[75%]">

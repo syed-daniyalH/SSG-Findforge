@@ -7,7 +7,7 @@ const Industries = () => {
   return (
     <section className="">
         <div className="flex
-        md:flex-row md:justify-between md:items-end pb-10
+        md:flex-row md:justify-between md:items-end pb-8
         flex-col gap-5 items-start">
             <div className="">
                 <h2 className="text-secondary">Industries We Serve</h2>
@@ -15,7 +15,7 @@ const Industries = () => {
             <div className="flex gap-2 border-b-2 border-black pb-1">
                 <Link
                 href="/industry"
-                className="text-black font-semibold font-poppins"
+                className="text-black font-semibold font-poppins text-sm"
                 >
                 View full Industries
                 </Link>

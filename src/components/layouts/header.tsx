@@ -10,9 +10,9 @@ const Header = async () => {
 
   return (
     <header
-      className="fixed top-0 left-0 z-50 w-full border-b border-black/5 bg-white/95 shadow-[0_12px_32px_rgba(15,23,42,0.06)] backdrop-blur-md transition-all duration-300"
+      className="fixed top-0 left-0 z-50 w-full border-b border-black/5 bg-white/95 shadow-[0_8px_24px_rgba(15,23,42,0.05)] backdrop-blur-md transition-all duration-300"
     >
-      <div className="mx-auto flex h-[88px] w-full max-w-7xl items-center gap-6 px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-[70px] w-full max-w-[1120px] items-center gap-5 px-5 sm:px-6 lg:px-8">
         <div className="shrink-0 text-2xl font-bold text-primary">
           <Link href="/">
             <Image
@@ -23,7 +23,7 @@ const Header = async () => {
               priority
               fetchPriority="high"
               sizes="(max-width: 768px) 100vw, 220px"
-              className="h-auto w-[165px] antialiased sm:w-[190px] xl:w-[230px]"
+              className="h-auto w-[145px] antialiased sm:w-[165px] xl:w-[178px]"
             />
           </Link>
         </div>
@@ -42,7 +42,7 @@ const Header = async () => {
             radius="full"
             href="/contact-us"
             variant="gradient"
-            className="inline-flex min-w-[148px] justify-center text-[15px] font-semibold shadow-[0_14px_28px_rgba(181,2,15,0.18)]"
+            className="inline-flex min-w-[124px] justify-center px-5! h-10! text-[13px] font-semibold shadow-[0_10px_22px_rgba(181,2,15,0.18)]"
           />
         </div>
 
