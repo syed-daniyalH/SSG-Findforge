@@ -38,7 +38,7 @@ const CTA = ({
   /* ===================== BADGE LAYOUT ===================== */
   if (showBadge) {
     return (
-      <section className="relative grid min-h-[360px] overflow-hidden rounded-[34px] bg-[radial-gradient(circle_at_80%_38%,rgba(181,2,15,0.55)_0%,rgba(78,0,6,0.36)_30%,rgba(0,0,0,1)_64%)] text-white md:min-h-[410px] md:grid-cols-[minmax(0,1fr)_43%]">
+      <section className="relative left-1/2 grid min-h-[380px] w-[calc(100vw-32px)] max-w-[1260px] -translate-x-1/2 overflow-hidden rounded-[34px] bg-[radial-gradient(circle_at_78%_42%,rgba(190,0,18,0.78)_0%,rgba(72,0,8,0.95)_36%,rgba(5,0,1,1)_67%),linear-gradient(90deg,#000_0%,#000_44%,#2a0005_100%)] text-white md:min-h-[410px] md:w-[calc(100vw-64px)] md:grid-cols-[minmax(0,1fr)_46%] xl:min-h-[430px]">
 
         {/* Left Content (BADGE VERSION) */}
         <div
@@ -61,14 +61,14 @@ const CTA = ({
           </div>
 
           {/* Title */}
-          <h2 className="max-w-[560px] text-[31px] font-bold leading-[1.15] text-white md:text-[38px] lg:text-[42px]">
+          <h2 className="max-w-[620px] text-[31px] font-bold leading-[1.15] text-white md:text-[38px] lg:text-[42px]">
             {title}
           </h2>
 
           {/* Description */}
           {description && (
             <p 
-              className="mt-7 max-w-[500px] font-poppins text-[15px] leading-8 text-white md:text-[16px]"
+              className="mt-7 max-w-[530px] font-poppins text-[15px] leading-8 text-white md:text-[16px]"
               dangerouslySetInnerHTML={createMarkup(description)}
             />
           )}
@@ -106,12 +106,12 @@ const CTA = ({
 
         {/* Right Image */}
         {image && (
-          <div className="relative hidden min-h-[360px] md:block md:min-h-[410px]">
+          <div className="relative hidden min-h-[380px] md:block md:min-h-[410px] xl:min-h-[430px]">
             <Image
               src={image}
               alt="CTA Image"
               fill
-              sizes="(max-width: 1024px) 43vw, 460px"
+              sizes="(max-width: 1024px) 46vw, 560px"
               className="object-contain object-bottom"
             />
           </div>
