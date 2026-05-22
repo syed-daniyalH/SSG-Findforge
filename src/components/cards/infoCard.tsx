@@ -283,9 +283,9 @@ interface InfoCardGroupProps {
 }
 
 const IconBadge = ({ number }: { number?: number }) => (
-  <div className="w-12 h-12 bg-white rounded-full shrink-0">
-    <span className="text-primary text-2xl font-bold flex items-center justify-center h-full">
-      {number}
+  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#F1F1F1] bg-white shadow-[0_4px_12px_rgba(15,23,42,0.08)]">
+    <span className="font-poppins text-[16px] font-semibold leading-none text-primary">
+      {String(number).padStart(2, "0")}
     </span>
   </div>
 );
@@ -296,45 +296,47 @@ export const InfoCard = ({ name, number, description, layout, variant }: InfoCar
   const isDefault = variant === "default" || variant === undefined;
   const isInteractive = variant === undefined || variant === "default";
 
-  const baseCardClasses = "group rounded-2xl border px-8 pt-8 space-y-6 transition-all duration-300 w-full";
+  const baseCardClasses =
+    "group w-full rounded-[14px] border px-7 py-8 transition-all duration-300 md:px-9";
 
   const cardClasses = clsx(
     baseCardClasses,
-    layout === "horizontal" ? "lg:flex-1" : "flex-1",
-    isGradient && "bg-grad-primary",
+    layout === "horizontal" ? "min-h-[240px]" : "min-h-[340px]",
+    isGradient && "bg-grad-primary border-transparent",
     isDefault && "bg-[#FAFAFA] border-[#F5F5F5]",
-    isInteractive && "bg-hover-grad-primary"
+    isInteractive && "hover:bg-grad-primary"
   );
 
   const textClasses = clsx(
-    "text-xl font-semibold", // added base text size
+    "text-[18px] font-bold leading-[24px]",
     isGradient ? "text-white" : "text-secondary group-hover:text-white"
   );
 
   const descriptionClasses = clsx(
+    "font-poppins text-[15px] leading-[25px]",
     isGradient ? "text-white/90" : "text-neutral-dark group-hover:text-white/90"
   );
 
   return (
     <div className={cardClasses}>
       {layout === "horizontal" ? (
-        <>
-          <div className="flex gap-6 items-center">
+        <div className="flex h-full flex-col justify-between gap-8">
+          <div className="flex items-center gap-6">
             <IconBadge number={number} />
             <h3 className={textClasses}>{name}</h3>
           </div>
-          <div className="pb-18">
+          <div className="max-w-[460px]">
             <p className={descriptionClasses}>{description}</p>
           </div>
-        </>
+        </div>
       ) : (
-        <>
+        <div className="flex h-full flex-col justify-between gap-8">
           <IconBadge number={number} />
-          <div className="space-y-6 pb-18">
+          <div className="space-y-5">
             <h3 className={textClasses}>{name}</h3>
             <p className={descriptionClasses}>{description}</p>
           </div>
-        </>
+        </div>
       )}
     </div>
   );
@@ -342,8 +344,11 @@ export const InfoCard = ({ name, number, description, layout, variant }: InfoCar
 
 // 3. The New Group Component
 const InfoCardGroup = ({ data }: InfoCardGroupProps) => {
+  const columnsClass =
+    data.length === 2 ? "lg:grid-cols-2" : "md:grid-cols-3";
+
   return (
-    <div className="flex flex-wrap gap-4">
+    <div className={clsx("grid grid-cols-1 gap-7", columnsClass)}>
       {data.map((item, index) => (
         <InfoCard key={index} {...item} />
       ))}
@@ -357,35 +362,41 @@ export const firstRowData: InfoCardData[] = [
   {
     number: 1,
     name: "Deliver better patient service",
-    description: "Enable a seamless customer experience for your patients...",
+    description:
+      "Enable a seamless customer experience for your patients, allowing them to access their medical information anytime and anywhere with advanced electronic health records software. You'll save time and resources through powerful",
     layout: "horizontal",
-    variant: "gradient",
+    variant: "default",
   },
   {
     number: 2,
     name: "Manage Medical Data",
-    description: "Enable a seamless customer experience for your patients...",
+    description:
+      "Enable a seamless customer experience for your patients, allowing them to access their medical information anytime and anywhere with advanced electronic health records software. You'll save time and resources through powerful",
     layout: "horizontal",
+    variant: "gradient",
   },
 ];
 
 export const secondRowData: InfoCardData[] = [
   {
     number: 3,
-    name: "Automate to Improve Care",
-    description: "Enable a seamless customer experience...",
+    name: "Automate to Improve Patient Care",
+    description:
+      "Enable a seamless customer experience for your patients, allowing them to access their medical information anytime and anywhere with advanced electronic health records software. You'll save time and resources through powerful",
     layout: "vertical",
   },
   {
     number: 4,
-    name: "Optimise costs",
-    description: "Enable a seamless customer experience...",
+    name: "Optimise costs and increase efficiency",
+    description:
+      "Enable a seamless customer experience for your patients, allowing them to access their medical information anytime and anywhere with advanced electronic health records software. You'll save time and resources through powerful",
     layout: "vertical",
   },
   {
     number: 5,
     name: "Performance Reporting",
-    description: "Enable a seamless customer experience...",
+    description:
+      "Enable a seamless customer experience for your patients, allowing them to access their medical information anytime and anywhere with advanced electronic health records software. You'll save time and resources through powerful",
     layout: "vertical",
   },
 ];

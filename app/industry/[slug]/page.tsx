@@ -64,7 +64,7 @@ export default async function DetailedIndustry({
       name: item.title,
       description: item.description,
       layout: index < 2 ? "horizontal" : "vertical",
-      variant: index === 0 ? "gradient" : "default",
+      variant: index === 1 ? "gradient" : "default",
     }));
 
   const solutionCards = apiIndustry?.templateData?.softwareSolutions?.items
@@ -146,10 +146,12 @@ export default async function DetailedIndustry({
         <HealthCare />
       </section>
 
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-20 my-10">
-        <div className="space-y-4">
-          <h2 className="lg:w-2/3 mb-8">
-            The value of custom healthcare software
+      <section className="max-w-[1120px] mx-auto px-5 sm:px-6 lg:px-8 my-10 md:my-14">
+        <div className="space-y-10">
+          <h2 className="max-w-[700px] text-[30px] leading-[38px] md:text-[36px] md:leading-[46px]">
+            {slug === "healthcare"
+              ? "The value of custom healthcare software for your medical organisation"
+              : "The value of custom healthcare software"}
           </h2>
 
           {/* Row 1: Horizontal Cards */}
