@@ -70,13 +70,13 @@ export default function Home() {
 
       <section
         id="industries"
-        className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-30 my-10"
+        className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-30 mt-10 mb-0"
       >
         <Industries />
       </section>
 
-      <section id="chooseUs" className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-30 my-10">
-        <WhyChooseUs data={whyChooseData}/>
+      <section id="chooseUs" className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-30 mt-6 mb-10">
+        <WhyChooseUs data={whyChooseData} className="pb-10"/>
       </section>
 
       <section

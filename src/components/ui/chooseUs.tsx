@@ -187,16 +187,17 @@ import Icon from "./icon";
 
 interface WhyChooseProps {
   data: WhyChooseTechionik;
+  className?: string;
 }
 
-const WhyChooseUs = ({ data }: WhyChooseProps) => {
+const WhyChooseUs = ({ data, className = "py-10" }: WhyChooseProps) => {
   if (!data || !data.items) return null;
 
   // We only use the first 4 items from the API
   const displayItems = data.items.slice(0, 4);
 
   return (
-    <section className="py-10">
+    <section className={className}>
       {/* Header */}
       <div className="mb-12">
         <h2 className="text-3xl font-bold text-[#0F172A] mb-4">{data.title}</h2>
