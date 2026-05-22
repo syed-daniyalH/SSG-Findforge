@@ -15,7 +15,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ navLinks }) => {
       {navLinks.map((link) => {
         if (link.isMega) {
           return (
-            <div key={link.name} className="group static h-full flex items-center">
+            <div key={link.name} className="group static flex h-[70px] items-center">
               <Link
                 href={link.href || "#"}
                 className="inline-flex items-center gap-1.5 py-3 text-secondary font-medium transition-colors hover:text-primary"

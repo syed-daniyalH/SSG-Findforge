@@ -219,7 +219,7 @@ const MegaMenu = ({ data, parentSlug }: MegaMenuProps) => {
 
   if (isResourcesMenu) {
     return (
-      <div className="absolute left-0 right-0 invisible top-full pt-4 z-50 opacity-0 pointer-events-none group-hover:pointer-events-auto group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out">
+      <div className="absolute left-0 right-0 invisible top-full pt-2 z-50 opacity-0 pointer-events-none group-hover:pointer-events-auto group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out">
         <div className="mx-auto grid max-w-[760px] grid-cols-1 gap-3 rounded-[24px] border border-gray-100 bg-white p-4 shadow-xl sm:grid-cols-2">
           {data.map((item) => (
             <Link
@@ -251,7 +251,7 @@ const MegaMenu = ({ data, parentSlug }: MegaMenuProps) => {
   }
 
   return (
-    <div className="absolute left-0 right-0 invisible top-full pt-4 z-50 opacity-0 pointer-events-none group-hover:pointer-events-auto group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out">
+    <div className="absolute left-0 right-0 invisible top-full pt-2 z-50 opacity-0 pointer-events-none group-hover:pointer-events-auto group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out">
       <div className="max-w-7xl mx-auto bg-white shadow-xl rounded-[40px] overflow-hidden flex min-h-125 border border-gray-100 p-10 gap-10">
         
         {/* --- LEFT COLUMN: MAIN SERVICES LIST --- */}
