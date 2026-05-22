@@ -205,6 +205,9 @@ interface MegaMenuProps {
 const MegaMenu = ({ data, parentSlug }: MegaMenuProps) => {
   const [activeItem, setActiveItem] = useState<NavChild>(data[0]);
   const isResourcesMenu = parentSlug === "blog" || parentSlug === "resources";
+  const isSimpleLinkMenu = data.every(
+    (item) => item.href && (!item.children || item.children.length === 0),
+  );
   const parentLabel =
     parentSlug === "services"
       ? "Services"
@@ -217,7 +220,7 @@ const MegaMenu = ({ data, parentSlug }: MegaMenuProps) => {
 
   if (!data || data.length === 0) return null;
 
-  if (isResourcesMenu) {
+  if (isResourcesMenu || isSimpleLinkMenu) {
     return (
       <div className="absolute left-0 right-0 invisible top-full pt-2 z-50 opacity-0 pointer-events-none group-hover:pointer-events-auto group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out">
         <div className="mx-auto grid max-w-[760px] grid-cols-1 gap-3 rounded-[24px] border border-gray-100 bg-white p-4 shadow-xl sm:grid-cols-2">

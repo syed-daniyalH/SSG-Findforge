@@ -108,6 +108,25 @@ const RESOURCE_NAV_CHILDREN: NavChild[] = [
   },
 ];
 
+const ABOUT_NAV_CHILDREN: NavChild[] = [
+  {
+    id: 9101,
+    name: "About Us",
+    slug: "about-us",
+    href: "/about-us",
+    imageUrl: "/images/about-banner.webp",
+    icon: "/icons/octicon_people.svg",
+  },
+  {
+    id: 9102,
+    name: "C Suite",
+    slug: "suite",
+    href: "/suite",
+    imageUrl: "/images/ceo.webp",
+    icon: "/icons/work-people.svg",
+  },
+];
+
 export async function getMenuStructure(): Promise<MenuItem[]> {
   try {
     const res = await fetch(`${BASE_URL}${ENDPOINTS.MENU_STRUCTURE}`, {
@@ -194,15 +213,17 @@ export function buildPrimaryNavLinks(links: Navlink[]): Navlink[] {
     const matchedLink = findMatchingNavLink(links, item.slugs);
     const resourceChildren =
       item.name === "Resources" ? RESOURCE_NAV_CHILDREN : undefined;
+    const aboutChildren =
+      item.name === "About Us" ? ABOUT_NAV_CHILDREN : undefined;
+    const children = resourceChildren ?? aboutChildren ?? matchedLink?.children;
 
     return {
       name: item.name,
       href: matchedLink?.href ?? item.href,
       isMega: Boolean(
-        resourceChildren?.length ||
-          (matchedLink?.isMega && matchedLink.children?.length),
+        children?.length || (matchedLink?.isMega && matchedLink.children?.length),
       ),
-      children: resourceChildren ?? matchedLink?.children,
+      children,
     };
   });
 }
