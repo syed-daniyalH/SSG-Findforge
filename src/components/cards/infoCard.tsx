@@ -294,8 +294,6 @@ const IconBadge = ({ number }: { number?: number }) => (
 export const InfoCard = ({ name, number, description, layout, variant }: InfoCardData) => {
   const isGradient = variant === "gradient";
   const isDefault = variant === "default" || variant === undefined;
-  const isInteractive = variant === undefined || variant === "default";
-
   const baseCardClasses =
     "group w-full rounded-[14px] border px-7 py-8 transition-all duration-300 md:px-9";
 
@@ -304,17 +302,17 @@ export const InfoCard = ({ name, number, description, layout, variant }: InfoCar
     layout === "horizontal" ? "min-h-[240px]" : "min-h-[340px]",
     isGradient && "bg-grad-primary border-transparent",
     isDefault && "bg-[#FAFAFA] border-[#F5F5F5]",
-    isInteractive && "hover:bg-grad-primary"
+    isDefault && "hover:border-primary/20 hover:shadow-[0_14px_34px_rgba(15,23,42,0.08)]"
   );
 
   const textClasses = clsx(
     "text-[18px] font-bold leading-[24px]",
-    isGradient ? "text-white" : "text-secondary group-hover:text-white"
+    isGradient ? "text-white" : "text-secondary"
   );
 
   const descriptionClasses = clsx(
     "font-poppins text-[15px] leading-[25px]",
-    isGradient ? "text-white/90" : "text-neutral-dark group-hover:text-white/90"
+    isGradient ? "text-white/90" : "text-neutral-dark"
   );
 
   return (
