@@ -14,7 +14,7 @@ export const insightsData: BlogsProps[] = [
     quotationWriter: "John Doe, CEO of Tech Innovations",
     
     author: {
-      name: "Rosaria Vargas",
+      name: "Ahmed Hassan",
       authorSlug: "rosaria-vargas",
       authorDescription: "Ahmed Hassan is the Assistant Manager, Brand & Communications at SSG MindForge, bringing five years of deep expertise in the IT outsourcing industry. He crafts thought leadership on staff augmentation, dedicated development teams, and full-cycle outsourcing, with a focus on building and scaling Global Capability Centers and Offshore Capability Centers. Ahmed’s insights span cloud services, back-end frameworks (Java, .NET, Node.js), and front-end technologies (React, Angular, Vue.js), positioning TECHIONIK as a trusted partner for end-to-end outsourced software delivery worldwide.Ahmed Hassan is the Assistant Manager, Brand & Communications at SSG MindForge, bringing five years of deep expertise in the IT outsourcing industry. He crafts thought leadership on staff augmentation, dedicated development teams, and full-cycle outsourcing, with a focus on building and scaling Global Capability Centers and Offshore Capability Centers. Ahmed’s insights span cloud services, back-end frameworks (Java, .NET, Node.js), and front-end technologies (React, Angular, Vue.js), positioning TECHIONIK as a trusted partner for end-to-end outsourced software delivery worldwide.",
       designation: "Content Writer",
@@ -40,7 +40,7 @@ export const insightsData: BlogsProps[] = [
     quotationWriter: "John Doe, CEO of Tech Innovations",
     
     author: {
-      name: "Rosaria Vargas",
+      name: "Ahmed Hassan",
       authorSlug: "rosaria-vargas",
       authorDescription: "Ahmed Hassan is the Assistant Manager, Brand & Communications at SSG MindForge, bringing five years of deep expertise in the IT outsourcing industry. He crafts thought leadership on staff augmentation, dedicated development teams, and full-cycle outsourcing, with a focus on building and scaling Global Capability Centers and Offshore Capability Centers. Ahmed’s insights span cloud services, back-end frameworks (Java, .NET, Node.js), and front-end technologies (React, Angular, Vue.js), positioning TECHIONIK as a trusted partner for end-to-end outsourced software delivery worldwide.Ahmed Hassan is the Assistant Manager, Brand & Communications at SSG MindForge, bringing five years of deep expertise in the IT outsourcing industry. He crafts thought leadership on staff augmentation, dedicated development teams, and full-cycle outsourcing, with a focus on building and scaling Global Capability Centers and Offshore Capability Centers. Ahmed’s insights span cloud services, back-end frameworks (Java, .NET, Node.js), and front-end technologies (React, Angular, Vue.js), positioning TECHIONIK as a trusted partner for end-to-end outsourced software delivery worldwide.",
       designation: "Content Writer",
@@ -66,7 +66,7 @@ export const insightsData: BlogsProps[] = [
     quotationWriter: "John Doe, CEO of Tech Innovations",
     
     author: {
-      name: "Rosaria Vargas",
+      name: "Ahmed Hassan",
       authorSlug: "rosaria-vargas",
       authorDescription: "Ahmed Hassan is the Assistant Manager, Brand & Communications at SSG MindForge, bringing five years of deep expertise in the IT outsourcing industry. He crafts thought leadership on staff augmentation, dedicated development teams, and full-cycle outsourcing, with a focus on building and scaling Global Capability Centers and Offshore Capability Centers. Ahmed’s insights span cloud services, back-end frameworks (Java, .NET, Node.js), and front-end technologies (React, Angular, Vue.js), positioning TECHIONIK as a trusted partner for end-to-end outsourced software delivery worldwide.Ahmed Hassan is the Assistant Manager, Brand & Communications at SSG MindForge, bringing five years of deep expertise in the IT outsourcing industry. He crafts thought leadership on staff augmentation, dedicated development teams, and full-cycle outsourcing, with a focus on building and scaling Global Capability Centers and Offshore Capability Centers. Ahmed’s insights span cloud services, back-end frameworks (Java, .NET, Node.js), and front-end technologies (React, Angular, Vue.js), positioning TECHIONIK as a trusted partner for end-to-end outsourced software delivery worldwide.",
       designation: "Content Writer",
@@ -92,7 +92,7 @@ export const insightsData: BlogsProps[] = [
     quotationWriter: "John Doe, CEO of Tech Innovations",
     
     author: {
-      name: "Rosaria Vargas",
+      name: "Ahmed Hassan",
       authorSlug: "rosaria-vargas",
       authorDescription: "Ahmed Hassan is the Assistant Manager, Brand & Communications at SSG MindForge, bringing five years of deep expertise in the IT outsourcing industry. He crafts thought leadership on staff augmentation, dedicated development teams, and full-cycle outsourcing, with a focus on building and scaling Global Capability Centers and Offshore Capability Centers. Ahmed’s insights span cloud services, back-end frameworks (Java, .NET, Node.js), and front-end technologies (React, Angular, Vue.js), positioning TECHIONIK as a trusted partner for end-to-end outsourced software delivery worldwide.Ahmed Hassan is the Assistant Manager, Brand & Communications at SSG MindForge, bringing five years of deep expertise in the IT outsourcing industry. He crafts thought leadership on staff augmentation, dedicated development teams, and full-cycle outsourcing, with a focus on building and scaling Global Capability Centers and Offshore Capability Centers. Ahmed’s insights span cloud services, back-end frameworks (Java, .NET, Node.js), and front-end technologies (React, Angular, Vue.js), positioning TECHIONIK as a trusted partner for end-to-end outsourced software delivery worldwide.",
       designation: "Content Writer",
@@ -117,7 +117,7 @@ export const insightsData: BlogsProps[] = [
     quotationWriter: "John Doe, CEO of Tech Innovations",
     
     author: {
-      name: "Rosaria Vargas",
+      name: "Ahmed Hassan",
       authorSlug: "rosaria-vargas",
       authorDescription: "Ahmed Hassan is the Assistant Manager, Brand & Communications at SSG MindForge, bringing five years of deep expertise in the IT outsourcing industry. He crafts thought leadership on staff augmentation, dedicated development teams, and full-cycle outsourcing, with a focus on building and scaling Global Capability Centers and Offshore Capability Centers. Ahmed’s insights span cloud services, back-end frameworks (Java, .NET, Node.js), and front-end technologies (React, Angular, Vue.js), positioning TECHIONIK as a trusted partner for end-to-end outsourced software delivery worldwide.Ahmed Hassan is the Assistant Manager, Brand & Communications at SSG MindForge, bringing five years of deep expertise in the IT outsourcing industry. He crafts thought leadership on staff augmentation, dedicated development teams, and full-cycle outsourcing, with a focus on building and scaling Global Capability Centers and Offshore Capability Centers. Ahmed’s insights span cloud services, back-end frameworks (Java, .NET, Node.js), and front-end technologies (React, Angular, Vue.js), positioning TECHIONIK as a trusted partner for end-to-end outsourced software delivery worldwide.",
       designation: "Content Writer",
@@ -142,7 +142,7 @@ export const insightsData: BlogsProps[] = [
     quotationWriter: "John Doe, CEO of Tech Innovations",
     
     author: {
-      name: "Rosaria Vargas",
+      name: "Ahmed Hassan",
       authorSlug: "rosaria-vargas",
       authorDescription: "Ahmed Hassan is the Assistant Manager, Brand & Communications at SSG MindForge, bringing five years of deep expertise in the IT outsourcing industry. He crafts thought leadership on staff augmentation, dedicated development teams, and full-cycle outsourcing, with a focus on building and scaling Global Capability Centers and Offshore Capability Centers. Ahmed’s insights span cloud services, back-end frameworks (Java, .NET, Node.js), and front-end technologies (React, Angular, Vue.js), positioning TECHIONIK as a trusted partner for end-to-end outsourced software delivery worldwide.Ahmed Hassan is the Assistant Manager, Brand & Communications at SSG MindForge, bringing five years of deep expertise in the IT outsourcing industry. He crafts thought leadership on staff augmentation, dedicated development teams, and full-cycle outsourcing, with a focus on building and scaling Global Capability Centers and Offshore Capability Centers. Ahmed’s insights span cloud services, back-end frameworks (Java, .NET, Node.js), and front-end technologies (React, Angular, Vue.js), positioning TECHIONIK as a trusted partner for end-to-end outsourced software delivery worldwide.",
       designation: "Content Writer",
@@ -156,4 +156,5 @@ export const insightsData: BlogsProps[] = [
     },
   },
 ];
+
 

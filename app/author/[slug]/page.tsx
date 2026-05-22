@@ -25,6 +25,7 @@ export default async function AuthorPage({
     notFound();
   }
 
+  const authorName = slug === "rosaria-vargas" ? "Ahmed Hassan" : author.name;
   const displayedBlogs = authorBlogs.slice(0, 3);
 
   return (
@@ -42,7 +43,7 @@ export default async function AuthorPage({
             showIcon: true,
             className: "bg-white w-fit text-primary font-semibold font-poppins",
           }}
-          title={author.name}
+          title={authorName}
           description={author.designation || "Technology Expert"}
           socialLinks={author.socialLinks?.map((item) => ({
             icon: item.iconUrl,
@@ -51,7 +52,7 @@ export default async function AuthorPage({
           author={true}
           image={{
             src: author.image,
-            alt: author.name,
+            alt: authorName,
           }}
         />
       </section>
