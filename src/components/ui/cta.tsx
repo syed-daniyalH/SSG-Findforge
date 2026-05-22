@@ -38,11 +38,11 @@ const CTA = ({
   /* ===================== BADGE LAYOUT ===================== */
   if (showBadge) {
     return (
-      <section className="grid min-h-[420px] grid-cols-1 overflow-hidden rounded-[34px] border border-black/5 bg-[radial-gradient(circle_at_78%_34%,rgba(181,2,15,0.58)_0%,rgba(90,0,6,0.42)_27%,rgba(0,0,0,0.98)_62%)] xl:grid-cols-[1fr_0.95fr]">
+      <section className="relative grid min-h-[360px] overflow-hidden rounded-[34px] bg-[radial-gradient(circle_at_80%_38%,rgba(181,2,15,0.55)_0%,rgba(78,0,6,0.36)_30%,rgba(0,0,0,1)_64%)] text-white md:min-h-[410px] md:grid-cols-[minmax(0,1fr)_43%]">
 
         {/* Left Content (BADGE VERSION) */}
         <div
-          className="flex flex-col justify-center gap-7 px-8 py-12 md:px-14 lg:pl-24"
+          className="relative z-10 flex flex-col justify-center px-8 py-12 md:px-14 lg:pl-[76px]"
           style={{
             backgroundImage: backgroundImage ? `url(${backgroundImage})` : "none",
             backgroundSize: "cover",
@@ -50,31 +50,31 @@ const CTA = ({
         >
 
           {/* Badge Section */}
-          <div className="">
+          <div className="mb-8">
             <Badge
               size="small"
               radius="lg"
               showIcon
               icon="/icons/monitor.svg"
-              className="h-14 w-14 justify-center border border-white/10 bg-white/10 p-0 shadow-[inset_0_0_18px_rgba(255,255,255,0.07)]"
+              className="h-11 w-11 justify-center border border-white/15 bg-white/10 p-0 shadow-[inset_0_0_18px_rgba(255,255,255,0.08)] md:h-12 md:w-12"
             />
           </div>
 
           {/* Title */}
-          <h2 className="text-[34px] leading-[40px] text-white md:text-[44px] md:leading-[52px]">
+          <h2 className="max-w-[560px] text-[31px] font-bold leading-[1.15] text-white md:text-[38px] lg:text-[42px]">
             {title}
           </h2>
 
           {/* Description */}
           {description && (
             <p 
-              className="max-w-[520px] font-poppins text-lg leading-8 text-white"
+              className="mt-7 max-w-[500px] font-poppins text-[15px] leading-8 text-white md:text-[16px]"
               dangerouslySetInnerHTML={createMarkup(description)}
             />
           )}
 
           {/* Buttons */}
-          <div className="flex flex-col gap-3 sm:flex-row">
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row">
 
             {button1 && (
               <Button
@@ -84,7 +84,8 @@ const CTA = ({
                 showIcon={!!button1.icon}
                 size="large"
                 radius="full"
-                className="bg-white text-secondary font-semibold font-poppins h-14! px-8! hover:shadow-soft"
+                iconMode="static1"
+                className="h-12! bg-white px-7! font-poppins text-[14px]! font-bold text-secondary hover:shadow-soft"
               />
             )}
 
@@ -105,12 +106,12 @@ const CTA = ({
 
         {/* Right Image */}
         {image && (
-          <div className="relative hidden min-h-[420px] xl:block">
+          <div className="relative hidden min-h-[360px] md:block md:min-h-[410px]">
             <Image
               src={image}
               alt="CTA Image"
               fill
-              sizes="42vw"
+              sizes="(max-width: 1024px) 43vw, 460px"
               className="object-contain object-bottom"
             />
           </div>

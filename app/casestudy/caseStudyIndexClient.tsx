@@ -2,10 +2,10 @@
 
 import CaseStudyCard from "@/components/cards/casestudy";
 import Button from "@/components/ui/button";
+import CTA from "@/components/ui/cta";
 import { useCaseStudyFilters } from "@/lib/useCaseStudyFilters";
 import type { CaseStudyCardProps } from "@/types/casestudy.type";
 import Image from "next/image";
-import Link from "next/link";
 
 interface CaseStudyIndexClientProps {
   data: CaseStudyCardProps[];
@@ -98,35 +98,17 @@ export default function CaseStudyIndexClient({
       </div>
 
       <div className="mt-16">
-        <div className="relative grid min-h-[218px] overflow-hidden rounded-[14px] bg-black text-white md:grid-cols-[1fr_330px]">
-          <div className="relative z-10 px-8 py-10 md:px-10">
-            <div className="mb-5 flex h-8 w-8 items-center justify-center rounded-full border border-white/20 bg-white/10">
-              <Image src="/icons/monitor.svg" alt="" width={16} height={16} className="brightness-0 invert" />
-            </div>
-            <h2 className="max-w-[310px] text-[24px] font-bold leading-tight text-white">
-              Ready to Start Your Project?
-            </h2>
-            <p className="mt-4 max-w-[285px] font-poppins text-[12px] leading-5 text-white/75">
-              Let&apos;s discuss how technology can bring your idea to life.
-            </p>
-            <Link
-              href="/contact-us"
-              className="mt-6 inline-flex h-10 items-center rounded-full bg-white px-5 font-poppins text-[12px] font-semibold text-primary"
-            >
-              Start a Conversation
-            </Link>
-          </div>
-          <div className="relative hidden overflow-hidden bg-grad-hero md:block">
-            <Image
-              src="/images/ctaPerson.webp"
-              alt=""
-              width={270}
-              height={270}
-              className="absolute bottom-0 right-5 z-10"
-            />
-            <div className="absolute inset-0 bg-black/10" />
-          </div>
-        </div>
+        <CTA
+          title="Ready to Start Your Project?"
+          description="Let&apos;s create something extraordinary together. Get in touch to discuss how we can bring your vision to life."
+          image="/images/ctaPerson.webp"
+          showBadge={true}
+          button1={{
+            text: "Start A Conversation",
+            href: "/contact-us",
+            icon: "/icons/primaryArrow.svg",
+          }}
+        />
       </div>
     </section>
   );
