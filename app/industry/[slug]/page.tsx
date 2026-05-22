@@ -203,7 +203,7 @@ export default async function DetailedIndustry({
     <div className="detailed-industry-page">
       <section
         id="hero"
-        className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-20 my-10 pt-20"
+        className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-6 my-10 pt-20"
       >
         <Hero
           badge={{

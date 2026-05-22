@@ -137,31 +137,31 @@ const Hero = ({
           SECTION 3 (banner = true)
       ======================= */}
       {banner && (
-        <section className={`rounded-[40px] ${className}`}>
+        <section className={`rounded-[28px] ${className}`}>
           {image && (
-            <div className="relative overflow-hidden w-[full] min-h-125 lg:min-h-150 rounded-[40px] flex items-center">
+            <div className="relative flex min-h-[430px] items-center overflow-hidden rounded-[28px] lg:min-h-[520px]">
               <Image
                 src={image.src}
                 alt={image.alt || "Hero Image"}
                 fill
                 priority
-                className={`object-cover ${image.className}`}
+                className={`object-cover object-center ${image.className}`}
               />
 
               {/* White Text Card Wrapper */}
-              <div className="relative z-10 w-full px-6 md:px-10 lg:pl-16 lg:pr-32">
-                <div className="bg-white w-full max-w-180 rounded-[40px] border border-[#F3F4F6] p-8 md:p-12 lg:py-16 lg:px-14 shadow-sm">
+              <div className="relative z-10 w-full px-5 py-10 md:px-10 lg:pl-14 lg:pr-[42%]">
+                <div className="w-full max-w-[720px] rounded-[28px] border border-[#F3F4F6] bg-white p-8 shadow-sm md:p-12 lg:px-14 lg:py-14">
                   {badge && (
                     <div className="mb-6">
                       <Badge {...badge} />
                     </div>
                   )}
 
-                  <h1 className="text-secondary leading-tight mb-6">
+                  <h1 className="mb-6 text-secondary leading-tight">
                     {title}
                   </h1>
 
-                  <p className="body1 text-[#374151] mb-8 max-w-137.5">
+                  <p className="body1 mb-8 max-w-[560px] text-[#374151]">
                     {description}
                   </p>
 
