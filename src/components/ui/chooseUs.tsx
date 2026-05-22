@@ -199,20 +199,22 @@ const WhyChooseUs = ({ data, className = "py-10" }: WhyChooseProps) => {
   return (
     <section className={className}>
       {/* Header */}
-      <div className="mb-8">
-        <h2 className="text-3xl font-bold text-[#0F172A] mb-4">{data.title}</h2>
+      <div className="mb-14">
+        <h2 className="mb-5 text-[30px] font-bold leading-[1.2] text-[#0F172A] md:text-[32px]">{data.title}</h2>
         <div 
-          className="text-[#64748B] max-w-2xl leading-relaxed"
+          className="max-w-[620px] font-poppins text-[17px] leading-8 text-[#64748B] md:text-[18px]"
           dangerouslySetInnerHTML={{ __html: data.description }}
         />
       </div>
 
       {/* Bento Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-12">
         {displayItems.map((item, index) => {
-          // 1st & 4th are wide (7 cols), 2nd & 3rd are narrow (5 cols)
           const isWide = index === 0 || index === 3;
-          const colSpan = isWide ? "md:col-span-7" : "md:col-span-5";
+          const colSpan =
+            index === 0 || index === 3 ? "md:col-span-8" : "md:col-span-4";
+          const minHeight =
+            index === 0 || index === 1 ? "min-h-[280px]" : "min-h-[198px]";
           
           // Icon and Color Mapping based on your target design
           const configurations = [
@@ -226,36 +228,36 @@ const WhyChooseUs = ({ data, className = "py-10" }: WhyChooseProps) => {
           return (
             <div
               key={index}
-              className={`${colSpan} bg-white border border-[#F1F5F9] rounded-[18px] p-6 flex flex-col shadow-sm transition-all duration-300 hover:shadow-md`}
+              className={`${colSpan} ${minHeight} flex flex-col rounded-[14px] border border-[#DDE6F2] bg-white p-7 transition-all duration-300 hover:border-[#D4DEEC] hover:shadow-sm md:p-8`}
             >
-              <div className="flex justify-between items-start mb-6">
-                <div className="space-y-3 w-[75%]">
+              <div className="mb-6 flex items-start justify-between">
+                <div className={`${isWide ? "w-[74%]" : "w-full"} space-y-3`}>
                   {/* Narrow items (2 & 3) have icon above title */}
                   {!isWide && (
-                    <Icon src={config.icon} alt="icon" iconSize={24} className="rounded-xl mb-4" bgColor={config.bg} />
+                    <Icon src={config.icon} alt="icon" iconSize={24} className="mb-5 rounded-[8px]" bgColor={config.bg} />
                   )}
-                  <h3 className="font-semibold text-[#0F172A] text-lg">{item.title}</h3>
+                  <h3 className="text-[17px] font-bold leading-6 text-black">{item.title}</h3>
                   <div 
-                    className="text-[#94A3B8] text-sm leading-relaxed"
+                    className="font-poppins text-[15px] leading-6 text-[#8EA0BD]"
                     dangerouslySetInnerHTML={{ __html: item.description }}
                   />
                 </div>
 
                 {/* Wide items (1 & 4) have icon on the right */}
                 {isWide && (
-                  <Icon src={config.icon} alt="icon" iconSize={24} className="rounded-xl" bgColor={config.bg} />
+                  <Icon src={config.icon} alt="icon" iconSize={24} className="rounded-[8px]" bgColor={config.bg} />
                 )}
               </div>
 
               {/* Item 1 Specific: Mock UI */}
               {index === 0 && (
-                <div className="mt-auto border border-[#F1F5F9] bg-[#F8FAFC] rounded-xl p-6 relative space-y-8">
+                <div className="relative mt-auto min-h-[118px] rounded-[8px] border border-[#DDE6F2] bg-[#F8FAFC] p-4 md:p-5">
                   <div className="space-y-3">
-                    <div className="h-2 rounded-full bg-[#E2E8F0] w-1/2" />
-                    <div className="h-2 rounded-full bg-[#E2E8F0] w-3/4" />
+                    <div className="h-1.5 w-[34%] rounded-full bg-[#DDE5EF]" />
+                    <div className="h-1.5 w-[68%] rounded-full bg-[#DDE5EF]" />
                   </div>
                   <div className="absolute bottom-4 right-4">
-                    <span className="text-[10px] font-medium text-[#10B981] bg-[#DCFCE7] px-2 py-1 rounded-lg border border-[#BBF7D0]">
+                    <span className="rounded-[5px] border border-[#8DEACB] bg-[#CCF8EA] px-2.5 py-1 font-poppins text-[10px] font-medium text-[#10B981]">
                       98% Match
                     </span>
                   </div>
@@ -264,9 +266,9 @@ const WhyChooseUs = ({ data, className = "py-10" }: WhyChooseProps) => {
 
               {/* Item 4 Specific: List Items */}
               {index === 3 && (
-                <ul className="">
+                <ul className="mt-auto space-y-2">
                   {["ISO 27001 Certified", "99.9% Uptime SLA"].map((text, i) => (
-                    <li key={i} className="flex items-center text-[#94A3B8] text-xs font-medium">
+                    <li key={i} className="flex items-center gap-2 font-poppins text-[14px] font-medium text-[#CBD5E1]">
                       <Icon src="/icons/circle-blue-tick.svg" alt="tick" iconSize={14} noBg noBorder className="text-[#6366F1]" />
                       {text}
                     </li>

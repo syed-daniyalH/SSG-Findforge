@@ -178,6 +178,35 @@ export default async function SubService({ params }: PageProps) {
         description: item?.description ?? "",
       })) ?? whyChooseData.items,
   };
+  const dataScienceWhyChooseData: WhyChooseTechionik = {
+    title: "Why Choose Us",
+    description:
+      "We combine engineering excellence with advanced AI to solve the most complex challenges in tender management.",
+    items: [
+      {
+        title: "Intelligent Tendering Platform",
+        description:
+          "AI-powered search, bid scoring, and automated proposal generation that learns from your winning history.",
+      },
+      {
+        title: "Workflow Automation",
+        description:
+          "RPA & ML for paperwork, compliance checks, approvals, and compliance reporting.",
+      },
+      {
+        title: "Custom Tech Solutions",
+        description:
+          "Your business problems deserve custom engineering - not off-the-shelf band-aids.",
+      },
+      {
+        title: "Secure & Cloud-First",
+        description:
+          "Industry-grade security, encryption, and compliance frameworks built on future-ready infrastructure.",
+      },
+    ],
+  };
+  const resolvedWhyChooseData =
+    service.slug === "data-science" ? dataScienceWhyChooseData : whyChooseDataToUse;
 
   const serviceCta = service.templateData?.cta;
   const ctaTitle = serviceCta?.title ?? "Talk to one of our experts";
@@ -281,10 +310,10 @@ export default async function SubService({ params }: PageProps) {
 
       <section
         id="chooseUs"
-        className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-30 my-10"
+        className="mx-auto my-10 max-w-[1120px] px-5 sm:px-6 lg:px-8"
       >
         {/* <WhyChooseUs /> */}
-        <WhyChooseUs data={whyChooseDataToUse} />
+        <WhyChooseUs data={resolvedWhyChooseData} />
       </section>
 
       <section
