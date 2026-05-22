@@ -98,14 +98,6 @@ const RESOURCE_NAV_CHILDREN: NavChild[] = [
     imageUrl: "/images/design.webp",
     icon: "/icons/deliverables.svg",
   },
-  {
-    id: 9004,
-    name: "Case Study Detailed Page",
-    slug: "case-study-detailed-page",
-    href: "/casestudy/techflow",
-    imageUrl: "/images/story1.webp",
-    icon: "/icons/rectangle-code.svg",
-  },
 ];
 
 const ABOUT_NAV_CHILDREN: NavChild[] = [
