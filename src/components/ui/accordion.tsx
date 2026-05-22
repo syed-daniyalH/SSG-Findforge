@@ -14,29 +14,29 @@ const Accordion = ({ items }: FAQProps) => {
   };
 
   return (
-    <div className="w-full max-w-5xl mx-auto space-y-4 py-10">
+    <div className="w-full space-y-0 pt-14 pb-4 md:pt-18">
       {items.map((item, index) => {
         const isOpen = openIndex === index;
         
         return (
           <div 
             key={index} 
-            className="border-b border-gray-100 last:border-none pb-4"
+            className="border-b border-[#EAF0F8]"
           >
             <button
               onClick={() => toggle(index)}
-              className="flex w-full items-center justify-between py-4 text-left transition-all group"
+              className="group flex w-full items-center justify-between gap-6 py-6 text-left transition-all md:py-7"
             >
-              <span className={`text-lg font-bold font-spartan transition-colors ${isOpen ? 'text-secondary' : 'text-slate-gray'}`}>
+              <span className="font-spartan text-[17px] font-bold leading-7 text-black transition-colors md:text-[18px]">
                 {item.question}
               </span>
               
-              <div className={`flex items-center justify-center w-8 h-8 rounded-full transition-all ${isOpen ? 'bg-[#BD0917] text-white' : 'bg-[#F8F9FA] text-[#BD0917]'}`}>
+              <div className={`flex h-[26px] w-[26px] shrink-0 items-center justify-center rounded-full transition-all ${isOpen ? 'bg-[#BD0917] text-white' : 'bg-[#F4F7FF] text-[#BD0917]'}`}>
                 <motion.div
                   animate={{ rotate: isOpen ? 180 : 0 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <ChevronDown size={18} />
+                  <ChevronDown size={14} strokeWidth={3} />
                 </motion.div>
               </div>
             </button>
@@ -52,7 +52,7 @@ const Accordion = ({ items }: FAQProps) => {
                 >
                   {/* Using dangerouslySetInnerHTML in case your answers have HTML */}
                   <div 
-                    className="text-slate-gray body2 leading-relaxed pr-12 pb-4"
+                    className="pr-0 pb-6 font-poppins text-[15px] leading-[1.9] text-neutral-dark md:pr-14"
                     dangerouslySetInnerHTML={{ __html: item.answer }}
                   />
                 </motion.div>

@@ -96,8 +96,8 @@ export default async function NestedSubServicePage({ params }: PageProps) {
   const templateFaqItems = (templateData?.faq ?? []) as FAQItem[];
   const faqItems: FAQItem[] = templateFaqItems.length > 0 ? templateFaqItems : faqData;
 
-  const faqSectionTitle = `${displayName} FAQ's`;
-  const faqSectionDescription = "";
+  const faqSectionTitle = "FAQs";
+  const faqSectionDescription = "Comprehensive solutions for the modern bid team.";
   const faqSectionLink = "#";
 
   const apiWhyChoose = templateData?.whyChooseTechionik as
@@ -264,22 +264,24 @@ export default async function NestedSubServicePage({ params }: PageProps) {
 
       <section
         id="faqs"
-        className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-30 my-10"
+        className="mx-auto my-10 max-w-[1120px] px-5 sm:px-6 lg:px-8"
       >
-        <div className="flex md:flex-row md:justify-between md:items-end pb-10 flex-col gap-5 items-start">
+        <div className="flex flex-col items-start gap-5 md:flex-row md:items-start md:justify-between">
           <div className="max-w-2xl">
-            <h2 className="text-secondary text-3xl font-bold">
+            <h2 className="text-[30px] font-bold leading-[1.2] text-secondary md:text-[32px]">
               {faqSectionTitle}
             </h2>
             {faqSectionDescription ? (
-              <p className="text-neutral-dark pt-2">{faqSectionDescription}</p>
+              <p className="pt-5 font-poppins text-[17px] leading-7 text-neutral-dark md:text-[18px]">
+                {faqSectionDescription}
+              </p>
             ) : null}
           </div>
 
-          <div className="flex gap-2 border-b-2 border-black pb-1">
+          <div className="flex gap-2 border-b border-black pb-1 pt-1 md:mt-1">
             <Link
               href={faqSectionLink}
-              className="text-black font-semibold font-poppins"
+              className="font-poppins text-sm font-semibold leading-5 text-black"
             >
               View All FAQ&apos;s
             </Link>
