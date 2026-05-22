@@ -84,7 +84,7 @@ const RESOURCE_NAV_CHILDREN: NavChild[] = [
   },
   {
     id: 9002,
-    name: "Author Page",
+    name: "Author",
     slug: "author-page",
     href: "/author/rosaria-vargas",
     imageUrl: "/images/author1.webp",
@@ -92,7 +92,7 @@ const RESOURCE_NAV_CHILDREN: NavChild[] = [
   },
   {
     id: 9003,
-    name: "Case Study Listing Page",
+    name: "Case Studies",
     slug: "case-study-listing-page",
     href: "/casestudy",
     imageUrl: "/images/design.webp",

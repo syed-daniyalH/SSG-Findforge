@@ -65,11 +65,11 @@ describe("buildPrimaryNavLinks", () => {
             href: "/blog",
           }),
           expect.objectContaining({
-            name: "Author Page",
+            name: "Author",
             href: "/author/rosaria-vargas",
           }),
           expect.objectContaining({
-            name: "Case Study Listing Page",
+            name: "Case Studies",
             href: "/casestudy",
           }),
           expect.objectContaining({
