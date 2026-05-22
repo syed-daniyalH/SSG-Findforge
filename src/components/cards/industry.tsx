@@ -275,18 +275,18 @@ const IndustryCard = ({ item }: { item: IndustryItem }) => {
   // Featured Layout (The blue gradient card)
   if (item.layout === "featured") {
     return (
-      <div className="bg-grad-hero flex min-h-[230px] flex-col-reverse gap-6 rounded-[14px] px-7 py-7 sm:flex-row sm:gap-0 justify-between">
-        <div className="flex flex-col gap-20">
-          <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center shrink-0">
-            <Image src={item.icon} alt={item.title} width={20} height={20} className="object-contain" />
+      <div className="bg-grad-hero flex min-h-[247px] flex-col-reverse gap-6 rounded-[14px] px-8 py-8 sm:flex-row sm:gap-0 justify-between">
+        <div className="flex flex-col justify-between gap-16">
+          <div className="flex h-[47px] w-[47px] shrink-0 items-center justify-center rounded-[8px] bg-white">
+            <Image src={item.icon} alt={item.title} width={19} height={19} className="object-contain" />
           </div>
           <div>
-            <h3 className="text-white">{item.title}</h3>
-            {item.subtitle && <p className="text-white">{item.subtitle}</p>}
+            <h3 className="text-[16px] font-bold leading-6 text-white">{item.title}</h3>
+            {item.subtitle && <p className="pt-3 font-poppins text-[15px] leading-6 text-white">{item.subtitle}</p>}
           </div>
         </div>
         {item.badge && 
-            <div className="">
+            <div className="pt-3">
                 <Badge text={item.badge} variant="glass" />
             </div>
         }
@@ -297,16 +297,16 @@ const IndustryCard = ({ item }: { item: IndustryItem }) => {
   // Standard Layout (White background with subtitle)
   if (item.layout === "standard") {
     return (
-      <div className="bg-white border border-[#E5E5E599] flex min-h-[230px] justify-between px-7 py-7 rounded-[14px]">
-        <div className="flex flex-col items-start gap-6">
-          <div className="w-10 h-10 rounded-lg bg-white border border-[#F5F5F5] flex items-center justify-center shrink-0">
+      <div className="flex min-h-[247px] justify-between rounded-[14px] border border-[#E9E9E9] bg-white px-8 py-8">
+        <div className="flex flex-col items-start justify-between gap-14">
+          <div className="flex h-[47px] w-[47px] shrink-0 items-center justify-center rounded-[8px] border border-[#F1F1F1] bg-white">
             <Image src={item.icon} alt={item.title} width={20} height={20} className="object-contain" />
           </div>
           <div>
-            <h3 className="text-secondary">{item.title}</h3>
-            {item.subtitle && <p className="text-neutral-dark">{item.subtitle}</p>}
-            {item.description && (
-              <p className="pt-2 text-sm leading-6 text-neutral-dark">
+            <h3 className="text-[16px] font-bold leading-6 text-secondary">{item.title}</h3>
+            {item.subtitle && <p className="pt-3 font-poppins text-[15px] leading-6 text-neutral-dark">{item.subtitle}</p>}
+            {!item.subtitle && item.description && (
+              <p className="pt-3 font-poppins text-sm leading-6 text-neutral-dark">
                 {item.description}
               </p>
             )}
@@ -318,16 +318,16 @@ const IndustryCard = ({ item }: { item: IndustryItem }) => {
 
   // Compact/Horizontal Layouts
   return (
-    <div className="bg-white border border-[#E5E5E599] flex min-h-[120px] justify-between px-7 py-7 rounded-[14px]">
+    <div className="flex min-h-[116px] justify-between rounded-[14px] border border-[#E9E9E9] bg-white px-8 py-7">
       <div className="flex items-center gap-6">
-        <div className="w-10 h-10 rounded-lg bg-white border border-[#F5F5F5] flex items-center justify-center shrink-0">
+        <div className="flex h-[47px] w-[47px] shrink-0 items-center justify-center rounded-[8px] border border-[#F1F1F1] bg-white">
           <Image src={item.icon} alt={item.title} width={20} height={20} className="object-contain" />
         </div>
         <div>
-          <h3 className="text-secondary">{item.title}</h3>
+          <h3 className="text-[16px] font-bold leading-6 text-secondary">{item.title}</h3>
           {/* Subtitle Logic */}
             {item.subtitle && (
-            <p className={`text-neutral-dark text-sm ${item.layout === "compact" ? "block lg:hidden" : "block"}`}>
+            <p className={`pt-1 font-poppins text-[15px] leading-6 text-neutral-dark ${item.layout === "compact" ? "block lg:hidden" : "block"}`}>
                 {item.subtitle}
             </p>
             )}

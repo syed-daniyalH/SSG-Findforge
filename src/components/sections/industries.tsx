@@ -7,15 +7,15 @@ const Industries = () => {
   return (
     <section className="">
         <div className="flex
-        md:flex-row md:justify-between md:items-end pb-8
+        md:flex-row md:justify-between md:items-start pb-12
         flex-col gap-5 items-start">
             <div className="">
-                <h2 className="text-secondary">Industries We Serve</h2>
+                <h2 className="text-secondary text-[30px] leading-[1.2] md:text-[32px]">Industries We Serve</h2>
             </div>
-            <div className="flex gap-2 border-b-2 border-black pb-1">
+            <div className="flex gap-2 border-b border-black pb-1 pt-1">
                 <Link
                 href="/industry"
-                className="text-black font-semibold font-poppins text-sm"
+                className="text-black font-semibold font-poppins text-sm leading-5"
                 >
                 View full Industries
                 </Link>
@@ -27,19 +27,19 @@ const Industries = () => {
                 />
             </div>
         </div>
-        <div className="grid md:grid-cols-1 lg:grid-rows-2 gap-3">
+        <div className="grid md:grid-cols-1 lg:grid-rows-2 gap-4">
         {/* Top Row */}
-        <div className="grid md:grid-cols-1 lg:grid-cols-[2fr_1fr_1fr] gap-3">
+        <div className="grid md:grid-cols-1 lg:grid-cols-[2fr_1fr_1fr] gap-4">
             <IndustryCard item={industryData[0]} />
             <IndustryCard item={industryData[1]} />
-            <div className="space-y-3">
+            <div className="space-y-4">
             <IndustryCard item={industryData[2]} />
             <IndustryCard item={industryData[3]} />
             </div>
         </div>
 
         {/* Bottom Row */}
-        <div className="grid md:grid-cols-1 lg:grid-cols-[2fr_1fr_1fr] gap-3">
+        <div className="grid md:grid-cols-1 lg:grid-cols-[2fr_1fr_1fr] gap-4">
             <IndustryCard item={industryData[4]} />
             <IndustryCard item={industryData[5]} />
             <IndustryCard item={industryData[6]} />

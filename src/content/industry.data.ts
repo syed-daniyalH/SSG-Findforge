@@ -14,6 +14,7 @@ export const industryData: IndustryItem[] = [
     id: 2,
     icon: "/icons/stethoscope.svg",
     title: "Healthcare",
+    subtitle: "Nurses, Admin, Pharmacists",
     description:
       "We understand the instant benefits of digitalizing medical care and help healthcare organizations realize them while ensuring critical compliances like HIPAA and others.",
     layout: "standard",
@@ -41,7 +42,7 @@ export const industryData: IndustryItem[] = [
   },
   {
     id: 6,
-    icon: "/icons/business.svg",
+    icon: "/icons/education.svg",
     title: "Education",
     subtitle: "Developers, QA, UI/UX, Support",
     layout: "compact",
