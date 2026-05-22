@@ -21,11 +21,11 @@ const Locations = () => {
             >
                 <div className="flex flex-col items-center gap-6 mb-14">
                     <Icon src="/icons/InPlus.svg" alt="InPlus" bgColor="white" iconSize={25} />
-                    <h2 className="">Our Purpose</h2>
+                    <h2 className="">Our Location</h2>
                     <p className="text-[#4B5563] text-center w-[80%]">
-                        Our mission is to transform the world of work through powerful software and exceptional
-                        people. By combining deep industry expertise with advanced technology, we aim to help
-                        organizations operate more efficiently while contributing to a fairer and more inclusive society.
+                        Visit our headquarters or explore our office locations. We are
+                        here to support clients with expert teams, local insight, and
+                        reliable digital delivery.
                     </p>
                 </div>
                 <div className="relative h-100 md:h-100 w-full overflow-hidden rounded-2xl group">
